@@ -1,10 +1,12 @@
 let analysisMode = 1
 
 let currentStatement = null
+let statementQueue = []
 
 
 function setAnalysisMode(mode) {
         analysisMode = mode
+        statementQueue.length = 1
 
         if (currentStatement == null) return
 
@@ -27,9 +29,15 @@ function setAnalysisMode(mode) {
 
 
 
-function analyzeStatement(raw) {
-        const mathObject = new MathObject(raw)
+function analyzeStatement(newMathObject) {
+        let mathObject = null
+        if (typeof newMathObject == 'string') {
+                mathObject = new MathObject(newMathObject)
+        } else {
+                mathObject = newMathObject
+        }
         currentStatement = mathObject
+        statementQueue.push(currentStatement)
 
         switch (analysisMode) {
                 case 1:
@@ -76,13 +84,19 @@ function renderStatement(statement) {
                 
         </div>`
 
-        const leftEl = statement.left == UNDEFINED ? '' : `<button class="${statement.left.left ? 'text-red-700 ' : 'text-red-300 '} ${statement.left.left ? 'cursor-pointer bg-gray-100/80 px-10 py-3 rounded-xl ' : ''}" onclick='renderStatement(${JSON.stringify(statement.left ?? statement)})'>${statement.left.raw ?? statement.left}</button>`
+        const leftEl = statement.left == UNDEFINED ? '' : `<button class="${statement.left.left ? 'text-red-700 ' : 'text-red-300 '} ${statement.left.left ? 'cursor-pointer bg-gray-100/80 px-10 py-3 rounded-xl ' : ''}" onclick='analyzeStatement(${JSON.stringify(statement.left ?? statement)})'>${statement.left.raw ?? statement.left}</button>`
+
         const symbolEl = `<span class="text-white px-6">${statement.symbol !== UNDEFINED ? statement.symbol : statement.raw}</span>`
-        const rightEl = statement.right == UNDEFINED ? '' : `<button class="${statement.right.left ? 'text-blue-700 ' : 'text-blue-300 '} ${statement.right.left ? 'cursor-pointer bg-gray-100/80 px-10 py-3 rounded-xl ' : ''}" onclick='renderStatement(${JSON.stringify(statement.right ?? statement)})'>${statement.right.raw ?? statement.right}</button>`
+        
+        const rightEl = statement.right == UNDEFINED ? '' : `<button class="${statement.right.left ? 'text-blue-700 ' : 'text-blue-300 '} ${statement.right.left ? 'cursor-pointer bg-gray-100/80 px-10 py-3 rounded-xl ' : ''}" onclick='analyzeStatement(${JSON.stringify(statement.right ?? statement)})'>${statement.right.raw ?? statement.right}</button>`
 
         statementAnalysisEl.innerHTML = `
         <div class="flex gap-8 justify-center-safe align-middle">${tag}  <div>${leftEl}${symbolEl}${rightEl}</div></div>
+        ${statementQueue.length > 1 ? '<button class="bg-white text-4xl text-black" onclick="statementQueue.pop(); analyzeStatement(statementQueue.pop())">Back</button>' : ''}
         `
+        console.log(statementQueue)
+
+        
 }
 
 
