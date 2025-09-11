@@ -1,14 +1,35 @@
 let analysisMode = 1
 
+let currentStatement = null
+
 
 function setAnalysisMode(mode) {
         analysisMode = mode
+
+        if (currentStatement == null) return
+
+        switch (analysisMode) {
+                case 1:
+                        clearTruthTable()
+                        renderStatement(currentStatement)
+                        break;
+                
+                case 2:
+                        clearRender()
+                        truthTable(currentStatement)
+                        break;
+
+        
+                default:
+                        break;
+        }
 }
 
 
 
 function analyzeStatement(raw) {
         const mathObject = new MathObject(raw)
+        currentStatement = mathObject
 
         switch (analysisMode) {
                 case 1:
@@ -16,6 +37,7 @@ function analyzeStatement(raw) {
                         break;
                 
                 case 2:
+                        clearRender()
                         truthTable(mathObject)
                         break;
 
@@ -64,6 +86,11 @@ function renderStatement(statement) {
 }
 
 
+function clearRender() {
+        const statementAnalysisEl = document.getElementById('statement-analysis')
+        statementAnalysisEl.innerHTML = ''
+}
+
 
 function truthTable(statement) {
         document.getElementById('truthtable-head').innerHTML = `
@@ -87,4 +114,10 @@ function truthTable(statement) {
                 
 
         }
+}
+
+function clearTruthTable() {
+        document.getElementById('truthtable-head').innerHTML = ''
+        document.getElementById('truthtable-body').innerHTML = ''
+
 }

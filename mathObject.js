@@ -95,8 +95,14 @@ class MathObject {
         parse(objectType) {
 
                 this.raw = this.raw.trim()
+
+                if (this.raw[0] == '(' && 
+                        getClosingParenthesis(this.raw) == this.raw.length - 1) {
+                        this.raw = this.raw.slice(1, -1)
+                        console.log(this.raw)
+                }
                 
-                // 1. Create list of "tokens", tokens being either 
+                // 1. Create list of "tokens", tokens being either single characters or parenthesis-encased chunk
 
                 const tokens = []
 
