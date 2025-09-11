@@ -54,24 +54,24 @@ const SYMBOLTYPES = {
         }
 }
 
-const SYMBOLNAMES = {
-  "∃": "Existential Quantifier",
-  "∀": "Universal Quantifier",
-  "∧": "Logical And",
-  "∨": "Logical Or",
-  "→": "Implication",
-  "↔": "Biconditional",
-  "=": "Equality",
-  "≠": "Inequality",
-  "∈": "Element Of",
-  "∉": "Not Element Of",
-  "⊆": "Subset",
-  "⊈": "Not Subset",
-  "¬": "Negation",
-  "𝒫": "Power Set",
-  "∩": "Intersection",
-  "∪": "Union",
-  "∅": "Empty Set"
+const SYMBOLINFO = {
+  "∃": { "name": "Existential Quantifier", "order": 6, "type": "QUANTIFIER" },
+  "∀": { "name": "Universal Quantifier", "order": 6, "type": "QUANTIFIER" },
+  "→": { "name": "Implication", "order": 5, "type": "LOGIC" },
+  "↔": { "name": "Biconditional", "order": 5, "type": "LOGIC" },
+  "∧": { "name": "Logical And", "order": 4, "type": "LOGIC" },
+  "∨": { "name": "Logical Or", "order": 4, "type": "LOGIC" },
+  "¬": { "name": "Negation", "order": 3, "type": "INVERSE" },
+  "𝒫": { "name": "Power Set", "order": 3, "type": "FUNCTION" },
+  "=": { "name": "Equality", "order": 2, "type": "COMPARISION" },
+  "≠": { "name": "Inequality", "order": 2, "type": "COMPARISION" },
+  "∈": { "name": "Element Of", "order": 2, "type": "COMPARISION" },
+  "∉": { "name": "Not Element Of", "order": 2, "type": "COMPARISION" },
+  "⊆": { "name": "Subset", "order": 2, "type": "COMPARISION" },
+  "⊈": { "name": "Not Subset", "order": 2, "type": "COMPARISION" },
+  "∩": { "name": "Intersection", "order": 1, "type": "OPERATION" },
+  "∪": { "name": "Union", "order": 1, "type": "OPERATION" },
+  "∅": { "name": "Empty Set", "order": 0, "type": "VARIABLE" }
 }
 
 
@@ -91,93 +91,110 @@ class MathObject {
 
                 this.parse(type)
         }
-
-        parse(objecttype) {
+        
+        parse(objectType) {
 
                 this.raw = this.raw.trim()
+                
+                // 1. Create list of "tokens", tokens being either 
 
-                let object1 = UNDEFINED
+                const tokens = []
 
-                let obj1Wrapped = false
-
-                if (this.raw.startsWith('(')) {
-                        const index = getClosingParenthesis(this.raw)
-                        if (index >= this.raw.length - 1) {
-                                this.raw = this.raw.slice(1, index)
-                                return this.parse(objecttype)
+                for (let i = 0; i < this.raw.length; i++) {
+                        const character = this.raw[i];
+                        if (character == '(') {
+                                const remaining = this.raw.slice(i)
+                                const length = getClosingParenthesis(remaining)
+                                tokens.push(this.raw.slice(i,i+length+1))
+                                i += length
+                        } else {
+                                tokens.push(character)
                         }
-
-                        object1 = this.raw.slice(1, index)
-                        obj1Wrapped = true
-
-                } else {
-                        object1 = this.raw[0]
                 }
 
-                if (object1 == '¬') {
-                        this.symbol = object1
-                        const object2 = this.raw.slice(1)
-                        this.left = object2.length > 1 ? new MathObject(object2) : object2
-                } else {
+                // console.log(tokens)
 
-                        this.left = object1.length > 1 ? new MathObject(object1) : object1
-        
-                        
-                        this.symbol = this.raw[object1.length + 2*obj1Wrapped ]
-                        
-                        let object2 = this.raw.slice(object1.length + 3)
-                        if (object2.startsWith('(')) {
-                                const index = getClosingParenthesis(object2)
-                                if (index < object2.length - 1) {
-                                        throw Error(`Shame on you, ${index, object2}`)
-                                }
-                                object2 = object2.slice(1,index)
-                        } else if (object2.length > 1) {
-                                throw Error("Shame on you")
-                        } else {
-                                object2 = this.raw[object1.length + 2*obj1Wrapped + 1]
+
+                // 2. Find the "top-level" token
+
+                let topLevelSymbol = undefined
+                let topLevelSymbolOrder = -1
+                let topLevelSymbolIndex = -1
+
+                tokens.forEach((token, index) => {
+                        const tokenOrder = SYMBOLINFO[token]?.order ?? 0
+                        if (tokenOrder > topLevelSymbolOrder) {
+                                topLevelSymbol = token
+                                topLevelSymbolOrder = tokenOrder
+                                topLevelSymbolIndex = index
                         }
+                })
+
+                // console.log(topLevelSymbol)
+
+
+                // 3. Find the "left" and "right" statements
+
+                const symbolType = SYMBOLINFO[topLevelSymbol]
+                this.symbol = topLevelSymbol
+
+                let leftRaw = ''
+                let rightRaw = ''
+
+                switch (symbolType?.type) {
+                        case 'LOGIC':
+                                leftRaw = tokens.slice(0,topLevelSymbolIndex).join('')
+                                rightRaw = tokens.slice(topLevelSymbolIndex+1).join('')
+                                break;
                         
-                        this.right = object2.length > 1 ? new MathObject(object2) : object2
-                        
+                        case 'INVERSE':
+                                leftRaw = tokens.slice(topLevelSymbolIndex+1).join('')
+                                break;
+                
+                        default:
+                                this.symbol = UNDEFINED
+                                break;
+                }
+
+                // console.log(leftRaw, rightRaw)
+
+                
+                // 4. Parse the left + right statements
+
+                const symbolInputs = SYMBOLTYPES[symbolType?.type]?.inputs
+                
+                if (leftRaw.length > 0) {
+                        this.left = new MathObject(leftRaw, symbolInputs[0])
+                        this.left.variables.forEach(x => this.variables.add(x))
+                } else if (leftRaw.length == 1) {
+                        this.symbolType = 'STATEMENT'
                 }
                 
-                if (this.left == UNDEFINED) {
-                        
-                } else if (typeof this.left == 'string') {
-                        this.variables.add(this.left)
-                } else {
-                        this.left.variables.forEach(variable => {
-                                this.variables.add(variable)
-                        });
+                if (rightRaw.length > 0) {
+                        this.right = new MathObject(rightRaw, symbolInputs[1])
+                        this.right.variables.forEach(x => this.variables.add(x))
+                } else if (rightRaw.length == 1) {
+                        this.symbolType = 'STATEMENT'
                 }
 
-                if (this.right == UNDEFINED) {
-                        
-                } else if (typeof this.right == 'string') {
-                        this.variables.add(this.right)
-                } else {
-                        this.right.variables.forEach(variable => {
-                                this.variables.add(variable)
-                        });
+                if (this.symbol == UNDEFINED) {
+                        this.variables.add(this.raw)
                 }
 
-                this.symbolType = Object.entries(SYMBOLTYPES)
-                        .find(symboltype => symboltype[1].symbols.includes(this.symbol))
-                this.type = this.symbolType[1].output
-
-                if (this.type !== objecttype) {
-                        throw Error('Invalid type')
-                }
-
-                return this.type
         }
 
-        evaluate(variables) {
-                // LOGIC ONLY FOR NOW
 
-                if (this.symbolType[0] !== 'LOGIC' && this.symbolType[0] !== 'INVERSE') {
-                        console.log(this.symbolType[0])
+
+
+        evaluate(variables) {
+
+                const symbolType = SYMBOLINFO[this.symbol]?.type
+
+                if (this.symbol == UNDEFINED) {
+                        return variables[this.raw]
+                }
+
+                if (symbolType !== 'LOGIC' && symbolType !== 'INVERSE') {
                         throw Error('Only Logic in truth tables')
                 }
 
