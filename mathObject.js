@@ -78,16 +78,14 @@ const SYMBOLINFO = {
 
 class MathObject {
         constructor(raw, type = STATEMENT) {
-                this.raw = raw
-                this.type = UNDEFINED
-                this.item = UNDEFINED
+                this.raw = raw // Raw string
+                this.type = UNDEFINED // Either statement or variable
 
-                this.symbol = UNDEFINED
-                this.symbolType = UNDEFINED
-                this.left = UNDEFINED
-                this.right = UNDEFINED
+                this.symbol = UNDEFINED // string symbol, such as →
+                this.left = UNDEFINED // First statement
+                this.right = UNDEFINED // Second statement 
 
-                this.variables = new Set()
+                this.variables = new Set() // Set of unbounded variables
 
                 this.parse(type)
         }
@@ -151,18 +149,23 @@ class MathObject {
                         case 'LOGIC':
                                 leftRaw = tokens.slice(0,topLevelSymbolIndex).join('')
                                 rightRaw = tokens.slice(topLevelSymbolIndex+1).join('')
+                                this.type = STATEMENT
                                 break;
-                        
+                                
                         case 'INVERSE':
                                 leftRaw = tokens.slice(topLevelSymbolIndex+1).join('')
+                                this.type = STATEMENT
                                 break;
-                
+                                
                         default:
                                 this.symbol = UNDEFINED
                                 break;
                 }
-
-                // console.log(leftRaw, rightRaw)
+                                        
+                
+                if (objectType !== this.type && this.type !== UNDEFINED) {
+                        throw Error(`Help me please ${objectType} ${this.type}`)
+                }
 
                 
                 // 4. Parse the left + right statements
@@ -173,14 +176,14 @@ class MathObject {
                         this.left = new MathObject(leftRaw, symbolInputs[0])
                         this.left.variables.forEach(x => this.variables.add(x))
                 } else if (leftRaw.length == 1) {
-                        this.symbolType = 'STATEMENT'
+                        this.type = STATEMENT
                 }
                 
                 if (rightRaw.length > 0) {
                         this.right = new MathObject(rightRaw, symbolInputs[1])
                         this.right.variables.forEach(x => this.variables.add(x))
                 } else if (rightRaw.length == 1) {
-                        this.symbolType = 'STATEMENT'
+                        this.type = STATEMENT
                 }
 
                 if (this.symbol == UNDEFINED) {
