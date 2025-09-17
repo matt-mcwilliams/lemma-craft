@@ -22,6 +22,7 @@ function drawCircle(x, y, r, color, stroke, lineWidth, label, flipLabel = false)
                 ctx.font = '40px Ariel'
                 ctx.fillStyle = 'black'
                 ctx.textAlign = 'center'
+                ctx.textBaseline = 'bottom';
                 const labelOffset = flipLabel ? r*1.2 : -r*1.1
                 ctx.fillText(label, x*canvas.width/100, (y+labelOffset)*canvas.height/100)
         }
@@ -78,6 +79,20 @@ function drawIntersection2([x1, y1, r1],
 
 }
 
+
+function colorBackground(color) {
+        ctx.fillStyle = color;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+
+function drawTitle(text) {
+        ctx.font = 'bold 48px Arial';
+        ctx.fillStyle = 'black';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText(text, 50*canvas.width/100, 5*canvas.width/100);
+}
 
 
 function clearCanvas() {

@@ -2,6 +2,7 @@ const UNDEFINED = -1
 const STATEMENT = 0
 const VARIABLE = 1
 
+
 const QUANTIFIER = 2
 const LOGIC = 3
 const COMPARISION = 4
@@ -33,12 +34,12 @@ const SYMBOLTYPES = {
                 output: STATEMENT
         },
         FUNCTION: {
-                symbols: ['𝒫'],
+                symbols: ['𝒫', '𝒞'],
                 inputs: [VARIABLE],
-                output: STATEMENT
+                output: VARIABLE
         },
         OPERATION: {
-                symbols:['∩', '∪'],
+                symbols:['∩', '∪', '\\'],
                 inputs: [VARIABLE, VARIABLE],
                 output: VARIABLE
         },
@@ -55,23 +56,25 @@ const SYMBOLTYPES = {
 }
 
 const SYMBOLINFO = {
-  "∃": { "name": "Existential Quantifier", "order": 6, "type": "QUANTIFIER" },
-  "∀": { "name": "Universal Quantifier", "order": 6, "type": "QUANTIFIER" },
-  "→": { "name": "Implication", "order": 5, "type": "LOGIC" },
-  "↔": { "name": "Biconditional", "order": 5, "type": "LOGIC" },
-  "∧": { "name": "Logical And", "order": 4, "type": "LOGIC" },
-  "∨": { "name": "Logical Or", "order": 4, "type": "LOGIC" },
-  "¬": { "name": "Negation", "order": 3, "type": "INVERSE" },
-  "𝒫": { "name": "Power Set", "order": 3, "type": "FUNCTION" },
-  "=": { "name": "Equality", "order": 2, "type": "COMPARISION" },
-  "≠": { "name": "Inequality", "order": 2, "type": "COMPARISION" },
-  "∈": { "name": "Element Of", "order": 2, "type": "COMPARISION" },
-  "∉": { "name": "Not Element Of", "order": 2, "type": "COMPARISION" },
-  "⊆": { "name": "Subset", "order": 2, "type": "COMPARISION" },
-  "⊈": { "name": "Not Subset", "order": 2, "type": "COMPARISION" },
-  "∩": { "name": "Intersection", "order": 1, "type": "OPERATION" },
-  "∪": { "name": "Union", "order": 1, "type": "OPERATION" },
-  "∅": { "name": "Empty Set", "order": 0, "type": "VARIABLE" }
+        "∃": { "name": "Existential Quantifier", "order": 7, "type": "QUANTIFIER" },
+        "∀": { "name": "Universal Quantifier", "order": 7, "type": "QUANTIFIER" },
+        "→": { "name": "Implication", "order": 6, "type": "LOGIC" },
+        "↔": { "name": "Biconditional", "order": 6, "type": "LOGIC" },
+        "∧": { "name": "Logical And", "order": 5, "type": "LOGIC" },
+        "∨": { "name": "Logical Or", "order": 5, "type": "LOGIC" },
+        "¬": { "name": "Negation", "order": 5, "type": "INVERSE" },
+        "=": { "name": "Equality", "order": 4, "type": "COMPARISION" },
+        "≠": { "name": "Inequality", "order": 4, "type": "COMPARISION" },
+        "∈": { "name": "Element Of", "order": 4, "type": "COMPARISION" },
+        "∉": { "name": "Not Element Of", "order": 3, "type": "COMPARISION" },
+        "⊆": { "name": "Subset", "order": 3, "type": "COMPARISION" },
+        "⊈": { "name": "Not Subset", "order": 3, "type": "COMPARISION" },
+        "∩": { "name": "Intersection", "order": 2, "type": "OPERATION" },
+        "∪": { "name": "Union", "order": 2, "type": "OPERATION" },
+        "\\": { "name": "Set Difference", "order": 2, "type": "OPERATION" },
+        "𝒞": { "name": "Complement Set", "order": 1, "type": "FUNCTION" },
+        "𝒫": { "name": "Power Set", "order": 1, "type": "FUNCTION" },
+        "∅": { "name": "Empty Set", "order": 0, "type": "VARIABLE" }
 }
 
 
@@ -111,6 +114,9 @@ class MathObject {
                                 const length = getClosingParenthesis(remaining)
                                 tokens.push(this.raw.slice(i,i+length+1))
                                 i += length
+                        } else if (character == '\uD835') {
+                                tokens.push(this.raw.slice(i,i+2))
+                                i += 1
                         } else {
                                 tokens.push(character)
                         }
@@ -160,6 +166,11 @@ class MathObject {
                         case 'OPERATION':
                                 leftRaw = tokens.slice(0,topLevelSymbolIndex).join('')
                                 rightRaw = tokens.slice(topLevelSymbolIndex+1).join('')
+                                this.type = VARIABLE
+                                break;
+                        
+                        case 'FUNCTION':
+                                leftRaw = tokens.slice(topLevelSymbolIndex+1).join('')
                                 this.type = VARIABLE
                                 break;
 
@@ -247,6 +258,58 @@ class MathObject {
                                 return leftResult == rightResult
                         
                         case '¬':
+                                return !leftResult
+                
+                        default:
+                                throw Error('symbol not found...')
+                }
+
+        }
+
+
+
+        isRegionInSet(regionVariables) {
+                const symbolType = SYMBOLINFO[this.symbol]?.type
+
+                if (this.symbol == UNDEFINED) {
+                        return regionVariables[this.raw]
+                }
+
+                if (symbolType !== 'OPERATION' && symbolType !== 'FUNCTION') {
+                        throw Error('Only Logic in truth tables')
+                }
+
+                let leftResult = undefined
+
+                if (this.left == UNDEFINED) {
+                        leftResult = UNDEFINED
+                } else if (typeof this.left=='string') {
+                        leftResult = regionVariables[this.left]
+                } else {
+                        leftResult = this.left.isRegionInSet(regionVariables)
+                }
+
+                let rightResult = undefined
+
+                if (this.right == UNDEFINED) {
+                        rightResult = UNDEFINED
+                } else if (typeof this.right=='string') {
+                        rightResult = regionVariables[this.right]
+                } else {
+                        rightResult = this.right.isRegionInSet(regionVariables)
+                }
+
+                switch (this.symbol) {
+                        case '∩':
+                                return leftResult && rightResult
+                        
+                        case '∪':
+                                return leftResult || rightResult
+                        
+                        case '\\':
+                                return leftResult && !rightResult
+                        
+                        case '𝒞':
                                 return !leftResult
                 
                         default:
