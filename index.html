@@ -40,9 +40,9 @@
         <h1 class="text-center text-white jacquard-24-regular text-8xl">LemmaCraft</h1>
 
         <div class="flex gap-4 justify-stretch w-3xl mx-auto mb-3">
-                <button class="block bg-gray-100 hover:bg-gray-300 disabled:bg-gray-500 w-full px-6 py-3 rounded-lg cursor-pointer disabled:cursor-default" onclick="setAnalysisMode(1); for(const child of this.parentNode.children){child.style.background = '#ddd'}; this.style.background = '#ff0000'" style="background-color: #f00;">Analyze Statement</button>
-                <button class="block bg-gray-100 hover:bg-gray-300 disabled:bg-gray-500 w-full px-6 py-3 rounded-lg cursor-pointer disabled:cursor-default" onclick="setAnalysisMode(2); for(const child of this.parentNode.children){child.style.background = '#ddd'}; this.style.background = '#ff0000'">Truth Table</button>
-                <!-- <button class="block bg-gray-100 hover:bg-gray-300 disabled:bg-gray-500 w-full px-6 py-3 rounded-lg cursor-pointer disabled:cursor-default" onclick="setAnalysisMode(3); for(const child of this.parentNode.children){child.style.background = '#ddd'}; this.style.background = '#ff0000'" disabled>Set Visualization</button> -->
+                <button class="block bg-gray-100 hover:bg-gray-300 disabled:bg-gray-500 w-full px-6 py-3 rounded-lg cursor-pointer disabled:cursor-default" onclick="setAnalysisMode(ANALYSISSTATES.STATEMENT); for(const child of this.parentNode.children){child.style.background = '#ddd'}; this.style.background = '#ff0000'" style="background-color: #f00;">Analyze Statement</button>
+                <button class="block bg-gray-100 hover:bg-gray-300 disabled:bg-gray-500 w-full px-6 py-3 rounded-lg cursor-pointer disabled:cursor-default" onclick="setAnalysisMode(ANALYSISSTATES.TRUTHTABLE); for(const child of this.parentNode.children){child.style.background = '#ddd'}; this.style.background = '#ff0000'">Truth Table</button>
+                <button class="block bg-gray-100 hover:bg-gray-300 disabled:bg-gray-500 w-full px-6 py-3 rounded-lg cursor-pointer disabled:cursor-default" onclick="setAnalysisMode(ANALYSISSTATES.VENNDIAGRAM); for(const child of this.parentNode.children){child.style.background = '#ddd'}; this.style.background = '#ff0000'">Venn Diagram</button>
         </div>
 
         <div class="bg-white rounded-lg border-green-700 border-4 block w-3xl mx-auto px-8 py-4 text-3xl flex gap-4">
@@ -68,8 +68,8 @@
                 <button onclick="insertSymbol(this.innerText)" class="block w-full py-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-300 disabled:bg-gray-500" disabled>∉</button>
                 <button onclick="insertSymbol(this.innerText)" class="block w-full py-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-300 disabled:bg-gray-500" disabled>⊆</button>
                 <button onclick="insertSymbol(this.innerText)" class="block w-full py-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-300 disabled:bg-gray-500" disabled>⊈</button>
-                <button onclick="insertSymbol(this.innerText)" class="block w-full py-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-300 disabled:bg-gray-500" disabled>∩</button>
-                <button onclick="insertSymbol(this.innerText)" class="block w-full py-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-300 disabled:bg-gray-500" disabled>∪</button>
+                <button onclick="insertSymbol(this.innerText)" class="block w-full py-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-300 disabled:bg-gray-500">∩</button>
+                <button onclick="insertSymbol(this.innerText)" class="block w-full py-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-300 disabled:bg-gray-500">∪</button>
                 <button onclick="insertSymbol(this.innerText)" class="block w-full py-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-300 disabled:bg-gray-500" disabled>𝒫</button>
                 <button onclick="insertSymbol(this.innerText)" class="block w-full py-4 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-300 disabled:bg-gray-500" disabled>∅</button>
         </div>
@@ -85,8 +85,11 @@
                 </tbody>
         </table>
 
+        <canvas id="venn-diagram" class="w-lg h-lg bg-white mx-auto"></canvas>
+
         <script src="script.js"></script>
         <script src="mathObject.js"></script>
+        <script src="canvasTools.js"></script>
 
 </body>
 </html>

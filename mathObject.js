@@ -77,7 +77,7 @@ const SYMBOLINFO = {
 
 
 class MathObject {
-        constructor(raw, type = STATEMENT) {
+        constructor(raw, type = undefined) {
                 this.raw = raw // Raw string
                 this.type = UNDEFINED // Either statement or variable
 
@@ -156,14 +156,20 @@ class MathObject {
                                 leftRaw = tokens.slice(topLevelSymbolIndex+1).join('')
                                 this.type = STATEMENT
                                 break;
-                                
+                        
+                        case 'OPERATION':
+                                leftRaw = tokens.slice(0,topLevelSymbolIndex).join('')
+                                rightRaw = tokens.slice(topLevelSymbolIndex+1).join('')
+                                this.type = VARIABLE
+                                break;
+
                         default:
                                 this.symbol = UNDEFINED
                                 break;
                 }
                                         
                 
-                if (objectType !== this.type && this.type !== UNDEFINED) {
+                if (objectType && (objectType !== this.type && this.type !== UNDEFINED)) {
                         throw Error(`Help me please ${objectType} ${this.type}`)
                 }
 

@@ -1,4 +1,10 @@
-let analysisMode = 1
+const ANALYSISSTATES = {
+        STATEMENT: 1,
+        TRUTHTABLE: 2,
+        VENNDIAGRAM: 3,
+}
+
+let analysisMode = ANALYSISSTATES.STATEMENT
 
 let currentStatement = null
 let statementQueue = []
@@ -9,19 +15,24 @@ function setAnalysisMode(mode) {
         statementQueue.length = 1
 
         if (currentStatement == null) return
+        
+        clearTruthTable()
+        clearRender()
+        // clearVennDiagram()
 
         switch (analysisMode) {
-                case 1:
-                        clearTruthTable()
+                case ANALYSISSTATES.STATEMENT:
                         renderStatement(currentStatement)
                         break;
                 
-                case 2:
-                        clearRender()
+                case ANALYSISSTATES.TRUTHTABLE:
                         truthTable(currentStatement)
                         break;
-
-        
+                
+                case ANALYSISSTATES.VENNDIAGRAM:
+                        vennDiagram(currentStatement)
+                        break;
+                                
                 default:
                         break;
         }
@@ -39,15 +50,22 @@ function analyzeStatement(newMathObject) {
         currentStatement = mathObject
         statementQueue.push(currentStatement)
 
+        clearRender()
+        clearTruthTable()
+        // clearVennDiagram()
+
         switch (analysisMode) {
-                case 1:
+                case ANALYSISSTATES.STATEMENT:
                         renderStatement(mathObject)
                         break;
                 
-                case 2:
-                        clearRender()
+                case ANALYSISSTATES.TRUTHTABLE:
                         truthTable(mathObject)
                         break;
+                
+                case ANALYSISSTATES.VENNDIAGRAM:
+                        vennDiagram(currentStatement)
+                        break
 
         
                 default:
@@ -134,4 +152,33 @@ function clearTruthTable() {
         document.getElementById('truthtable-head').innerHTML = ''
         document.getElementById('truthtable-body').innerHTML = ''
 
+}
+
+function vennDiagram(statement) {
+
+        clearCanvas()
+        
+        const variables = statement.variables
+        console.log(statement)
+        
+        if (variables.length > 3) {
+                throw Error('Too many variables for 2D venn diagram')
+        }
+
+        // drawCircle(50, 69, 25, 'rgba(200, 100, 100, 1)', 'black', 4, [...variables][2], true)
+        drawCircle(34, 40, 25, 'rgba(200, 100, 100, 1)', 'black', 4, [...variables][0])
+        drawCircle(66, 40, 25, 'rgba(200, 100, 100, 1)', 'black', 4, [...variables][1])
+        
+        // drawIntersection2([34, 40, 25], [50, 69, 25], 'rgba(50,50,50, 1)')
+        drawIntersection2([34, 40, 25], [66, 40, 25], 'rgba(50,50,50, 1)')
+        // drawIntersection2([66, 40, 25], [50, 69, 25], 'rgba(50,50,50, 1)')
+
+        // drawCircle(50, 69, 25, 'rgba(0, 0, 0, 0)', 'black', 4, [...variables][2], true)
+        drawCircle(34, 40, 25, 'rgba(0, 0, 0, 0)', 'black', 4)
+        drawCircle(66, 40, 25, 'rgba(0, 0, 0, 0)', 'black', 4)
+
+}
+
+function clearVennDiagram() {
+        clearCanvas()
 }
