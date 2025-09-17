@@ -165,30 +165,57 @@ function vennDiagram(statement) {
                 throw Error('Too many variables for 2D venn diagram')
         }
 
+        
         // drawCircle(50, 69, 25, 'rgba(200, 100, 100, 1)', 'black', 4, [...variables][2], true)
         // drawIntersection2([34, 40, 25], [50, 69, 25], 'rgba(50,50,50, 1)')
         // drawIntersection2([66, 40, 25], [50, 69, 25], 'rgba(50,50,50, 1)')
         // drawCircle(50, 69, 25, 'rgba(0, 0, 0, 0)', 'black', 4, [...variables][2], true)
-
-
-
+        
+        
+        
         const color = (boolean) => boolean ? 'rgba(200, 100, 100, 1' : 'rgba(255, 255, 255, 1'
+        
 
-        const backgroundBool = statement.isRegionInSet({[variables[0]]:false, [variables[1]]:false})
-        const var1Bool = statement.isRegionInSet({[variables[0]]:true, [variables[1]]:false})
-        const var2Bool = statement.isRegionInSet({[variables[0]]:false, [variables[1]]:true})
-        const intersectionBool = statement.isRegionInSet({[variables[0]]:true, [variables[1]]:true})
+        let backgroundBool = statement.isRegionInSet({[variables[0]]:false, [variables[1]]:false})
+        let var1Bool = statement.isRegionInSet({[variables[0]]:true, [variables[1]]:false})
+        let var2Bool = statement.isRegionInSet({[variables[0]]:false, [variables[1]]:true})
+        let intersectionBool = statement.isRegionInSet({[variables[0]]:true, [variables[1]]:true})
+        
+        
+        switch (variables.length) {
+                case 1:
+
+
+                        colorBackground(color(backgroundBool))
+
+                        drawCircle(34, 40, 25, color(var1Bool), 'black', 0, [...variables][0])
+                        
+                        drawCircle(34, 40, 25, 'rgba(0, 0, 0, 0)', 'black', 4)
+                        
+                        break;
+                
+                case 2:
+                        backgroundBool = statement.isRegionInSet({[variables[0]]:false, [variables[1]]:false})
+                        var1Bool = statement.isRegionInSet({[variables[0]]:true, [variables[1]]:false})
+                        var2Bool = statement.isRegionInSet({[variables[0]]:false, [variables[1]]:true})
+                        intersectionBool = statement.isRegionInSet({[variables[0]]:true, [variables[1]]:true})
+
+                        colorBackground(color(backgroundBool))
+                        
+                        drawCircle(34, 40, 25, color(var1Bool), 'black', 0, [...variables][0])
+                        drawCircle(66, 40, 25, color(var2Bool), 'black', 0, [...variables][1])
+                        
+                        drawIntersection2([34, 40, 25], [66, 40, 25], color(intersectionBool))
+                        
+                        drawCircle(34, 40, 25, 'rgba(0, 0, 0, 0)', 'black', 4)
+                        drawCircle(66, 40, 25, 'rgba(0, 0, 0, 0)', 'black', 4)
+
+                        break;
 
         
-        colorBackground(color(backgroundBool))
-        
-        drawCircle(34, 40, 25, color(var1Bool), 'black', 0, [...variables][0])
-        drawCircle(66, 40, 25, color(var2Bool), 'black', 0, [...variables][1])
-        
-        drawIntersection2([34, 40, 25], [66, 40, 25], color(intersectionBool))
-        
-        drawCircle(34, 40, 25, 'rgba(0, 0, 0, 0)', 'black', 4)
-        drawCircle(66, 40, 25, 'rgba(0, 0, 0, 0)', 'black', 4)
+                default:
+                        break;
+        }
         
         drawTitle(statement.raw)
 }
