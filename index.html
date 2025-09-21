@@ -6,27 +6,33 @@
         <title>LemmaCraft</title>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="h-screen">
+<body class="h-screen select-none" onload="init()"" >
         <div class="grid grid-cols-4 h-full content-stretch divide-x-2 divide-black">
-                <div class="">
+                <div class="overflow-y-scroll overflow-x-hidden">
                         <div class="flex divide-x-2 divide-black border-b-2 border-black">
                                 <img src="imgs/pin.png" alt=""      class="w-20 cursor-pointer p-4 bg-gray-200">
                                 <img src="imgs/plus.png" alt=""     class="w-20 cursor-pointer p-4">
                                 <img src="imgs/numbers.png" alt=""  class="w-20 cursor-pointer p-4">
                                 <img src="imgs/x.png" alt=""  class="w-20 cursor-pointer p-4">
                         </div>
+                        <div id="axiom-list" class="px-6 h-full py-6"></div>
                 </div>
-                <div class="bg-red-300 col-span-3 relative">
-                        <div class="absolute left-[50%] -translate-x-[50%] top-4 bg-white text-2xl rounded-xl px-6 py-2 border-2 border-gray-500">Goal: <span>1+1=2</span></div>
+                <div class="bg-red-300 col-span-3 relative" id="whiteboard">
+                        <div class="absolute left-[50%] -translate-x-[50%] top-4 bg-white text-2xl rounded-xl px-6 py-2 border-6 border-blue-900" id="goal-card"><span id="goal-text">1+1=2</span></div>
 
                         <!-- Tooltip -->
-                        <div class="absolute right-4 bottom-4 bg-white p-4 max-w-[40%] max-h-[60%] overflow-y-scroll">
-                                <img src="imgs/x.png" alt="" class="absolute right-4 top-4 w-6 cursor-pointer">
-                                <p class="text-xl font-bold mb-4">Tip: Lorem Ispum</p>
-                                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                <button class="w-fit mx-auto block bg-gray-700 text-white px-6 py-2 rounded cursor-pointer">Close</button>
-                        </div>
+                        <!-- <div class="absolute right-4 bottom-4 bg-white p-4 max-w-[40%] max-h-[60%] overflow-y-scroll z-10" id="tip-card">
+                                <img src="imgs/x.png" alt="" class="absolute right-4 top-4 w-6 cursor-pointer" onclick="hideTip()">
+                                <p class="text-xl font-bold mb-4">Tip: <span id="tip-title">Lorem Ispum</span></p>
+                                <p class="mb-4" id="tip-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <button class="w-fit mx-auto block bg-gray-700 text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
+                        </div> -->
                 </div>
         </div>
+
+        <script src="index.js"></script>
+        <script src="Statement.js"></script>
+        <script src="MObject.js"></script>
+        <script src="mathdata.js"></script>
 </body>
 </html>
