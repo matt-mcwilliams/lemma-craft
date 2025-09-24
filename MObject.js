@@ -10,7 +10,13 @@ class MObject {
                 this.left = undefined // First statement
                 this.right = undefined // Second statement 
 
+                this.variables = []
+
                 this.parse()
+        }
+
+        static copy(mobject) {
+                return new MObject(mobject.raw)
         }
         
         parse() {
@@ -22,12 +28,16 @@ class MObject {
                         this.raw = this.raw.slice(1, -1)
                         console.log(this.raw)
                 }
+
+
                 
-                // // 1. Create list of "chunks", chunks being either space-separated or parenthesis-encased
-
-
+                
+                
+                // 1. Create list of "chunks", chunks being either space-separated or parenthesis-encased
+                
+                
                 this.chunks = this.raw.replace('(',    ' ( ')
-                                       .replace(')',    ' ) ')
+                .replace(')',    ' ) ')
                                        .split(' ')
                                        .filter(x => x.length > 0)
 
@@ -35,7 +45,6 @@ class MObject {
                         const chunk = this.chunks[i];
                         if (chunk == '(') {
                                 if (this.chunks[i+2] == ')') {
-                                        console.log(this.chunks, 'waste')
                                         this.chunks.splice(i,3,this.chunks[i+1])
                                         i=0
                                         continue
@@ -44,18 +53,53 @@ class MObject {
                 }
 
                 this.raw = this.chunks.join(' ')
-
-
-
-
+                
+                
+                
+                
                 // console.log(this.chunks)
+                
+                
+                // 2. ID variables
+
+                let variableDefinitions
+                
+                if (this.chunks[0] == '(') {
+
+                        let colonIndex = -1
+                        
+                        let index = 0
+                        
+                        while (index < this.chunks.length) {
+                                if (this.chunks[index] == '(') {
+                                        const remaining = this.chunks.slice(index)
+                                        const parenthesisLength = getClosingParenthesis(remaining)
+                                        index += parenthesisLength
+                                } else if (this.chunks[index] == ':') {
+                                        colonIndex = index
+                                        break
+                                }
+                                index++;
+                        }
+
+                        variableDefinitions = (this.chunks.splice(0,colonIndex + 1))
+                        variableDefinitions.pop()
+
+                        console.log("VARIABLES", variableDefinitions.slice(1, -1))
+
+                        console.log(variableDefinitions.indexOf(':'))
+
+                        this.variables = variableDefinitions.slice(1, variableDefinitions.indexOf(':'))
+        
+
+                }
 
 
-
-
-
-                // 2. Find the "top-level" token/chunk
-
+                
+                                
+                
+                // 3. Find the "top-level" token/chunk
+                
                 let topLevelSymbol = undefined
                 let topLevelSymbolOrder = -1
                 let topLevelSymbolIndex = -1
@@ -72,7 +116,7 @@ class MObject {
                 // console.log('topLevelSymbol', topLevelSymbol)
 
 
-                // 3. Find the "left" and "right" statements
+                // 4. Find the "left" and "right" statements
 
                 const symbolType = SYMBOLINFO[topLevelSymbol]
                 this.symbol = topLevelSymbol
@@ -95,7 +139,7 @@ class MObject {
                 // console.log(leftRaw + '::' + rightRaw)
 
                 
-                // 4. Parse the left + right statements
+                // 5. Parse the left + right statements
                 
                 if (leftRaw.length > 0) {
                         this.left = new MObject(leftRaw.join(' '))
@@ -105,39 +149,76 @@ class MObject {
                         this.right = new MObject(rightRaw.join(' '))
                 }
 
+
+                // console.log(this)
+
         }
 
-
         reparseFromChunks() {
+                const variableChunks = [...this.variables, ':', 'nat']
+
+                if (this.variables.length > 0) {
+                        
+                        this.chunks.unshift('(', ...variableChunks, ')', ':')
+                }
+
                 this.raw = this.chunks.join(' ')
 
                 this.symbol = undefined // string symbol, such as →
                 this.left = undefined // First statement
                 this.right = undefined // Second statement 
 
+
                 this.parse()
         }
 
+        rw (mobject2, backward = false, didwork = false, start = 0) {
 
-        rw (mobject2) {
+                // console.log(this, mobject2)
+
+                // Check for variable unbounding
+
+
+                if (mobject2.chunks.length === 3 && mobject2.chunks[1] == ':') {
+
+
+                        const newVariable = mobject2.chunks[0]
+                        const replacementVariable = this.variables.shift()
+
+                        this.chunks = this.chunks.map(chunk => chunk == replacementVariable ?
+                                newVariable : chunk
+                        )
+
+                        this.reparseFromChunks()
+
+                        return true
+
+                }
+
+
+
+                // Check for equality replacment
 
                 if (mobject2.symbol !== '=') {
                         throw Error('only rw for equalities')
                 }
                 
-                const searchPattern = mobject2.left.chunks
+                const searchPattern = backward ? mobject2.right.chunks : mobject2.left.chunks
+                const replacement = backward ? mobject2.left.chunks : mobject2.right.chunks
 
                 let didRwWork = false
 
-                for (let i = 0; i < this.chunks.length; i++) {
+                for (let i = start; i < this.chunks.length; i++) {
                         const chunk = this.chunks[i];
                         
                         if (chunk == searchPattern[0]) {
                                 const target = this.chunks.slice(i, i + searchPattern.length)
-        
+                                
+                                if (target.length !== searchPattern.length) { continue }
                                 if (!target.every((targetChunk, j) => targetChunk == searchPattern[j])) { continue }
                                 
-                                this.chunks.splice(i, searchPattern.length, ...mobject2.right.chunks)
+                                this.chunks.splice(i, searchPattern.length, ...replacement)
+                                console.log(this.chunks, i)
                                 didRwWork = true
                                 break
                         }
@@ -145,30 +226,55 @@ class MObject {
 
                 if (didRwWork) { 
                         this.reparseFromChunks()
-                        this.rw(mobject2) 
-                        console.log('hello')
+                        this.rw(mobject2, backward, true, start+replacement.length+1) 
+                } else if (!backward && !didwork) {
+                        this.rw(mobject2, true, false)
                 }
 
                 return didRwWork
 
         }
 
-
         refl () {
 
                 if (this.symbol !== '=') {
-                        throw Error('only refl for equalities')
+                        alert('only refl for equalities')
+                        return false
                 }
 
                 if (this.left.raw !== this.right.raw) {
-                        throw Error("both sides don't match")
+                        alert("both sides don't match")
+                        return false
                 }
 
-                alert('Finish!')
+                return true
 
         }
 
+        static induction(window, variable) {
+                console.log(window, variable)
+                
+                const newGoal1 = this.copy(window.goal)
+                newGoal1.chunks = newGoal1.chunks.map(x => x==variable ? '0' : x)
+                newGoal1.reparseFromChunks()
 
+                const newGoal2 = this.copy(window.goal)
+                newGoal2.chunks = newGoal2.chunks.map(x => x==variable ? 'succ h' : x)
+                newGoal2.reparseFromChunks()
+
+                const newHyp1 = this.copy(window.goal)
+                newHyp1.chunks = newHyp1.chunks.map(x => x==variable ? 'h' : x)
+                newHyp1.reparseFromChunks()
+
+                const newHyp2 = new MObject('h : nat')
+
+                return {
+                        newGoal1,
+                        newGoal2,
+                        newHyp1,
+                        newHyp2,
+                }
+        }
 }
 
 
@@ -178,7 +284,7 @@ function getClosingParenthesis(string) {
         while (closeParenthesisIndex[1] > 0) {
                 closeParenthesisIndex[0] += 1
                 if (closeParenthesisIndex[0] >= string.length) {
-                        throw Error(`No closing parenthesis, ${string}`)
+                        return undefined
                 }
                 const currentCharacter = string[closeParenthesisIndex[0]]
                 if (currentCharacter == '(') {

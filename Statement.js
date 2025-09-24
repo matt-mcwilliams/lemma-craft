@@ -10,8 +10,8 @@ class Statement {
                 this.element = element
         }
 
-        copy() {
-                return new Statement(this.raw)
+        copy(newElement) {
+                return new Statement(this.raw, newElement)
         }
 
         randomPosition() {
