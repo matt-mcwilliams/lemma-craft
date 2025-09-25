@@ -7,12 +7,16 @@ let currentTip = {
 
 const axioms = [
         '0 : nat',
-        'n : nat',
-        '( a : nat ) : a + 0 = a',
-        '( a d : nat ) : a + succ ( d ) = succ ( a + d )'
+        '( n_1 : nat ) : succ n_1 : nat',
+        '( n_1 n_2 : nat ) : n_1 + n_2 : nat',
+        '( n_1 : nat ) : n_1 + 0 = n_1',
+        '( n_1 : nat ) : 0 + n_1 = n_1',
+        '( n_1 n_2 : nat ) : n_1 + ( succ ( n_2 ) ) = succ ( n_1 + n_2 )',
+        '( n_1 n_2 n_3 : nat ) : ( n_1 + n_2 ) + n_3 = n_1 + ( n_2 + n_3 )',
+        '( n_1 n_2 : nat ) : ( succ n_1 ) + n_2 = succ ( n_1 + n_2 )'
 ]
 
-let goalRaw = '0 + n = n'
+let goalRaw = '( a b : nat ) : ( succ a ) + b = succ ( a + b )'
 
 
 
@@ -45,6 +49,7 @@ document.getElementById('axiom-list').addEventListener('mouseup', () => {
 
         currentStatement.element.remove()
         windows[currentWindowIndex].statements = windows[currentWindowIndex].statements.filter(s => s.id !== currentStatement.id)
+        currentStatement.element.style.pointerEvents = 'auto';
         currentStatement = null
 })
 
@@ -54,8 +59,7 @@ document.getElementById('goal-card').addEventListener('mouseup', () => {
         if (currentStatement == null) return
         
         if (windows[currentWindowIndex].goal.rw(currentStatement.mobject)) {
-                currentStatement.randomPosition()
-                currentStatement = null
+                resetCurrentStatement()
         }
         updateGoal()
 })
@@ -77,6 +81,19 @@ document.getElementById('whiteboard').addEventListener('mouseup', () => {
         if (currentStatement == null) return
         currentStatement.element.style.pointerEvents = 'auto';
         currentStatement = null
+})
+
+
+document.getElementById('induction-button').addEventListener('mouseup', () => {
+        if (currentStatement == null) return
+        if (currentStatement.mobject.chunks.length !== 3 || currentStatement.mobject.chunks[1] !== ':') return
+
+        const variable = currentStatement.mobject.chunks[0]
+
+        windows[currentWindowIndex].statements = windows[currentWindowIndex].statements.map(statement => statement != currentStatement ? statement : null).filter(statement => statement != null)
+        currentStatement.element.remove()
+
+        performInduction(variable)
 })
 
 
@@ -108,6 +125,10 @@ function init() {
         })
 
         windows[currentWindowIndex].goal = new MObject(goalRaw)
+
+        windows[currentWindowIndex].goal.variables.forEach(variable => spawnAxiom(`${variable} : nat`))
+        windows[currentWindowIndex].goal.variables = []
+        windows[currentWindowIndex].goal.reparseFromChunks()
 
         updateGoal()
 
@@ -151,8 +172,10 @@ function spawnAxiom(axiom) {
 
         axiomBlock.addEventListener('mouseup', () => {
                 if (statement.id === currentStatement.id) { return }
-                statement.mobject.rw(currentStatement.mobject)
-                axiomBlock.textContent = statement.mobject.raw
+                if (statement.mobject.rw(currentStatement.mobject)) {
+                        axiomBlock.textContent = statement.mobject.raw
+                        currentStatement.randomPosition()
+                }
         })
 
         whiteboardEl.appendChild(axiomBlock)
@@ -177,14 +200,27 @@ function renderTip() {
 
 
 
-function performInduction() {
+function performInduction(variable) {
 
         const currentWindow = windows[currentWindowIndex]
         
-        const inductionResults = MObject.induction(currentWindow, 'n')
+        const inductionResults = MObject.induction(currentWindow, variable)
 
         const window1 = currentWindow
-        const window2 = JSON.parse(JSON.stringify(window1))
+        // Deep clone window1 except for statements, which need special handling
+        const window2 = { goal: window1.goal, statements: [...window1.statements]};
+
+        // For window1, duplicate each statement using spawnAxiom to ensure consistent creation
+        window1.statements = window1.statements.map(statement => {
+                // Use spawnAxiom to create a new statement and DOM element
+                spawnAxiom(statement.mobject.raw);
+                // The new statement is pushed to window1.statements by spawnAxiom,
+                // so we don't need to return anything here.
+                // We'll remove the old statements after this map.
+                return statement;
+        });
+        // Remove the old statements (the originals before duplication)
+        window1.statements.splice(0, window1.statements.length / 2);
 
         window1.goal = inductionResults.newGoal1
         window2.goal = inductionResults.newGoal2
@@ -197,6 +233,8 @@ function performInduction() {
         spawnAxiom(inductionResults.newHyp2.raw)
 
         currentWindowIndex -= 1
+
+        console.log(windows)
         
         cycleContext(currentWindowIndex)
 
@@ -244,4 +282,11 @@ function removeCurrentWindow() {
         } else {
                 alert('Finish!')
         }
+}
+
+
+function resetCurrentStatement() {
+        currentStatement.randomPosition()
+        currentStatement.element.style.pointerEvents = 'auto';
+        currentStatement = null
 }

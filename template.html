@@ -10,15 +10,18 @@
         <div class="grid grid-cols-4 h-full content-stretch divide-x-2 divide-black">
                 <div class="overflow-y-scroll overflow-x-hidden">
                         <div class="flex divide-x-2 divide-black border-b-2 border-black">
-                                <img src="imgs/pin.png" alt=""      class="w-20 cursor-pointer p-4 bg-gray-200">
-                                <img src="imgs/plus.png" alt=""     class="w-20 cursor-pointer p-4">
-                                <img src="imgs/numbers.png" alt=""  class="w-20 cursor-pointer p-4">
-                                <img src="imgs/x.png" alt=""  class="w-20 cursor-pointer p-4">
+                                <img src="/imgs/pin.png" alt=""      class="w-20 cursor-pointer p-4 bg-gray-200">
+                                <img src="/imgs/plus.png" alt=""     class="w-20 cursor-pointer p-4">
+                                <img src="/imgs/numbers.png" alt=""  class="w-20 cursor-pointer p-4">
+                                <img src="/imgs/x.png" alt=""  class="w-20 cursor-pointer p-4">
                         </div>
                         <div id="axiom-list" class="px-6 h-full py-6"></div>
                 </div>
                 <div class="bg-red-300 col-span-3 relative overflow-x-scroll" id="whiteboard">
-                        <div class="flex w-fit absolute left-[50%] -translate-x-[50%] top-4 bg-white text-2xl rounded-xl px-6 py-2 border-6 border-blue-900 " id="goal-card"><span id="goal-text">1+1=2</span><button class="bg-red-800 text-red-100 px-4 rounded-xl ml-4 font-mono cursor-pointer" onclick="performInduction()">i</button></div>
+                        <div class="flex w-fit absolute left-[50%] -translate-x-[50%] top-4">
+                                <div class="bg-white text-2xl rounded-xl px-6 py-2 border-6 border-blue-900 " id="goal-card"><span id="goal-text">1+1=2</span></div>
+                                <button class="bg-red-200 text-red-900 px-4 rounded-xl ml-4 border-6 border-blue-900 cursor-pointer font-mono font-bold text-xl" id="induction-button">i</button>
+                        </div>
 
                         <div class="absolute right-3 top-3 bg-red-800 text-red-100 px-3 py-2 rounded-xl cursor-pointer" onclick="cycleContext()">Goal <span id="windowIndex">1</span> / <span id="windowCount">1</span></div>
 
@@ -32,9 +35,9 @@
                 </div>
         </div>
 
-        <script src="index.js"></script>
-        <script src="Statement.js"></script>
-        <script src="MObject.js"></script>
-        <script src="mathdata.js"></script>
+        <script src="/js/index.js"></script>
+        <script src="/js/Statement.js"></script>
+        <script src="/js/MObject.js"></script>
+        <script src="/js/mathdata.js"></script>
 </body>
 </html>

@@ -179,14 +179,14 @@ class MObject {
                 // Check for variable unbounding
 
 
-                if (mobject2.chunks.length === 3 && mobject2.chunks[1] == ':') {
+                if (mobject2.chunks.length >= 3 && mobject2.chunks[mobject2.chunks.length - 2] == ':' && this.variables.length > 0) {
 
 
-                        const newVariable = mobject2.chunks[0]
+                        const newVariable = mobject2.chunks.slice(0, mobject2.chunks.length - 2)
                         const replacementVariable = this.variables.shift()
 
                         this.chunks = this.chunks.map(chunk => chunk == replacementVariable ?
-                                newVariable : chunk
+                                '( ' + newVariable.join(' ') + ' )' : chunk
                         )
 
                         this.reparseFromChunks()
@@ -259,7 +259,7 @@ class MObject {
                 newGoal1.reparseFromChunks()
 
                 const newGoal2 = this.copy(window.goal)
-                newGoal2.chunks = newGoal2.chunks.map(x => x==variable ? 'succ h' : x)
+                newGoal2.chunks = newGoal2.chunks.map(x => x==variable ? '( succ h )' : x)
                 newGoal2.reparseFromChunks()
 
                 const newHyp1 = this.copy(window.goal)
