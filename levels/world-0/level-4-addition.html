@@ -17,12 +17,12 @@
                         </div>
                         <div id="axiom-list" class="px-6 h-full py-6"></div>
                         <div class="text-black sticky bottom-0 px-4 py-2">
-                                <div class="flex justify-between gap-3"><strong class="block">{{ levelName }}</strong><div>{{ levelCode }}</div></div>
+                                <div class="flex justify-between gap-3"><strong class="block">Addition</strong><div>Level 1-4</div></div>
                                 <div class="flex jusity-stretch gap-3">
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="{{ previousLink }}">←</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="\levels\world-0\level-3-the-axioms.html">←</a>
                                         <a class="bg-gray-300 block w-full cursor-pointer text-center" href="{{ previousLink }}">🏠︎</a>
                                         <a class="bg-gray-300 block w-full cursor-pointer text-center" href="{{ previousLink }}">⟳</a>
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="{{ nextLink }}">→</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="#">→</a>
                                 </div>
                         </div>
                 </div>
@@ -46,10 +46,10 @@
 
         <script>
                 const axioms = [
-                        {{ axiomList }}
+                        '0 : nat','(n : nat) : succ n : nat','(n1 n2 : mynat) : n1 + n2 : nat','(n1 : mynat) : n1 + 0 = n1','(n1 n2 : mynat) : n1 + succ(n2) = succ (n1 + n2)'
                 ]
 
-                let goalRaw = {{ goalRaw }}
+                let goalRaw = "(a : mynat) : a + succ(0) = succ(a)"
         </script>
 
         <script src="/js/index.js"></script>

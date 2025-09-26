@@ -1,7 +1,7 @@
 let id_MObject = 0
 
 class MObject {
-        constructor(raw, type = undefined) {
+        constructor(raw, type = undefined, hypothesises = false) {
                 this.raw = raw // Raw string
                 this.chunks = []
                 this.id = id_MObject++
@@ -12,34 +12,32 @@ class MObject {
 
                 this.variables = []
 
-                this.parse()
+                this.parse(hypothesises)
         }
 
         static copy(mobject) {
                 return new MObject(mobject.raw)
         }
         
-        parse() {
+        parse(hasHypothesis) {
 
                 this.raw = this.raw.trim()
 
                 if (this.raw[0] == '(' && 
                         getClosingParenthesis(this.raw) == this.raw.length - 1) {
                         this.raw = this.raw.slice(1, -1)
-                        console.log(this.raw)
                 }
-
-
                 
                 
                 
                 // 1. Create list of "chunks", chunks being either space-separated or parenthesis-encased
                 
                 
-                this.chunks = this.raw.replace('(',    ' ( ')
-                .replace(')',    ' ) ')
-                                       .split(' ')
-                                       .filter(x => x.length > 0)
+                this.chunks = this.raw.replace(/\(/g,    ' ( ')
+                                      .replace(/\)/g,    ' ) ')
+                                      .split(' ')
+                                      .filter(x => x.length > 0)
+
 
                 for (let i = 0; i < this.chunks.length; i++) {
                         const chunk = this.chunks[i];
@@ -62,39 +60,39 @@ class MObject {
                 
                 // 2. ID variables
 
-                let variableDefinitions
-                
-                if (this.chunks[0] == '(') {
+                if (!hasHypothesis) {
 
-                        let colonIndex = -1
                         
-                        let index = 0
+                        let variableDefinitions
                         
-                        while (index < this.chunks.length) {
-                                if (this.chunks[index] == '(') {
-                                        const remaining = this.chunks.slice(index)
-                                        const parenthesisLength = getClosingParenthesis(remaining)
-                                        index += parenthesisLength
-                                } else if (this.chunks[index] == ':') {
-                                        colonIndex = index
-                                        break
+                        if (this.chunks[0] == '(') {
+                                
+                                let colonIndex = -1
+                                
+                                let index = 0
+                                
+                                while (index < this.chunks.length) {
+                                        if (this.chunks[index] == '(') {
+                                                const remaining = this.chunks.slice(index)
+                                                const parenthesisLength = getClosingParenthesis(remaining)
+                                                index += parenthesisLength
+                                        } else if (this.chunks[index] == ':') {
+                                                colonIndex = index
+                                                break
+                                        }
+                                        index++;
                                 }
-                                index++;
+                                
+                                variableDefinitions = (this.chunks.splice(0,colonIndex + 1))
+                                variableDefinitions.pop()
+                                                                                                
+                                this.variables = variableDefinitions.slice(1, variableDefinitions.indexOf(':'))
+                                
+                                
                         }
-
-                        variableDefinitions = (this.chunks.splice(0,colonIndex + 1))
-                        variableDefinitions.pop()
-
-                        console.log("VARIABLES", variableDefinitions.slice(1, -1))
-
-                        console.log(variableDefinitions.indexOf(':'))
-
-                        this.variables = variableDefinitions.slice(1, variableDefinitions.indexOf(':'))
-        
-
+                        
+                        
                 }
-
-
                 
                                 
                 
@@ -104,14 +102,18 @@ class MObject {
                 let topLevelSymbolOrder = -1
                 let topLevelSymbolIndex = -1
 
-                this.chunks.forEach((chunk, index) => {
-                        const chunkOrder = SYMBOLINFO[chunk]?.order ?? 0
+                const lastColon = this.chunks.lastIndexOf(':')
+
+                for (let index = lastColon+1; index < this.chunks.length; index++) {
+                        const chunk = this.chunks[index];
+                        const chunkOrder = SYMBOLINFO[chunk]?.order ?? 0;
                         if (chunkOrder > topLevelSymbolOrder) {
-                                topLevelSymbol = chunk
-                                topLevelSymbolOrder = chunkOrder
-                                topLevelSymbolIndex = index
+                                topLevelSymbol = chunk;
+                                topLevelSymbolOrder = chunkOrder;
+                                topLevelSymbolIndex = index;
                         }
-                })
+                }
+
 
                 // console.log('topLevelSymbol', topLevelSymbol)
 
@@ -204,7 +206,7 @@ class MObject {
                 }
                 
                 const searchPattern = backward ? mobject2.right.chunks : mobject2.left.chunks
-                const replacement = backward ? mobject2.left.chunks : mobject2.right.chunks
+                const replacement = backward ? mobject2.left.chunks : ['(', ...mobject2.right.chunks, ')']
 
                 let didRwWork = false
 
@@ -274,6 +276,24 @@ class MObject {
                         newHyp1,
                         newHyp2,
                 }
+        }
+
+
+        static identifyHypothesises(mobject) {
+                const hypothesises = []
+                for (let i = 0; i < mobject.chunks.length; i++) {
+                        const chunk = mobject.chunks[i];
+                        if (chunk == '(') {
+                                const length = getClosingParenthesis(mobject.chunks.slice(i))
+                                hypothesises.push(mobject.chunks.slice(i+1, i+length))
+                                i += length
+                        } else if (chunk == ':') {
+                                mobject.chunks.splice(0, i+1)
+                                mobject.reparseFromChunks()
+                                return hypothesises.map(h => h.join(' '))
+                        }
+                }
+                return hypothesises
         }
 }
 

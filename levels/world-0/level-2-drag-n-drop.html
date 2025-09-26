@@ -16,9 +16,14 @@
                                 <img src="/imgs/x.png" alt=""  class="w-20 cursor-pointer p-4">
                         </div>
                         <div id="axiom-list" class="px-6 h-full py-6"></div>
-                        <div class="flex text-black sticky bottom-0 justify-stretch gap-4 px-4 py-2">
-                                <a class="bg-gray-300 block w-full cursor-pointer text-center" href="\levels\world-0\level-1-the-double-click.html">← Prev</a>
-                                <a class="bg-gray-300 block w-full cursor-pointer text-center" href="#">Next →</a>
+                        <div class="text-black sticky bottom-0 px-4 py-2">
+                                <div class="flex justify-between gap-3"><strong class="block">Drag 'n Drop</strong><div>Level 1-2</div></div>
+                                <div class="flex jusity-stretch gap-3">
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="\levels\world-0\level-1-the-double-click.html">←</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="{{ previousLink }}">🏠︎</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="{{ previousLink }}">⟳</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="\levels\world-0\level-3-the-axioms.html">→</a>
+                                </div>
                         </div>
                 </div>
                 <div class="bg-red-300 col-span-3 relative overflow-x-scroll" id="whiteboard">
@@ -44,7 +49,7 @@
                         
                 ]
 
-                let goalRaw = "(x y : mynat) (h : y = x + 7) : 2 * y = 2 * (x + 7)"
+                let goalRaw = "(x y : mynat) (y = x + 7) : 2 * y = 2 * (x + 7)"
         </script>
 
         <script src="/js/index.js"></script>

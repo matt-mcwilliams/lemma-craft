@@ -107,9 +107,21 @@ function init() {
 
         })
 
-        windows[currentWindowIndex].goal = new MObject(goalRaw)
+        windows[currentWindowIndex].goal = new MObject(goalRaw, undefined, true)
+        const hypothesises = MObject.identifyHypothesises(windows[currentWindowIndex].goal)
 
-        windows[currentWindowIndex].goal.variables.forEach(variable => spawnAxiom(`${variable} : nat`))
+        hypothesises.forEach(hypothesis => {
+                if (hypothesis.endsWith('nat')) {
+                        const variables = hypothesis.split(':')[0].split(' ')
+                        variables.forEach(variable => {
+                                if (variable.length > 0) {
+                                        spawnAxiom(`${variable} : nat`)
+                                }
+                        })
+                } else {
+                        spawnAxiom(hypothesis)
+                }
+        })
         windows[currentWindowIndex].goal.variables = []
         windows[currentWindowIndex].goal.reparseFromChunks()
 
