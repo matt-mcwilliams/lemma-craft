@@ -181,18 +181,12 @@ function spawnAxiom(axiom) {
 
 
 function hideTip() {
-        currentTip.display = false
-        renderTip()
+        document.getElementById('tip-card').style.display = 'none'
 }
 
-function renderTip() {
-        document.getElementById('tip-card').style.display = currentTip.display ? 'block' : 'none'
-        
-        document.getElementById('tip-title').innerText = currentTip.title
-
-        document.getElementById('tip-body').innerText = currentTip.body
+function showTip() {
+        document.getElementById('tip-card').style.display = 'block'
 }
-
 
 
 function performInduction(variable) {
