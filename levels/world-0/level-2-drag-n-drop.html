@@ -8,7 +8,7 @@
 </head>
 <body class="h-screen select-none" onload="init()"" >
         <div class="grid grid-cols-4 h-full content-stretch divide-x-2 divide-black">
-                <div class="overflow-y-scroll overflow-x-hidden">
+                <div class="relative overflow-y-scroll overflow-x-hidden">
                         <div class="flex divide-x-2 divide-black border-b-2 border-black">
                                 <img src="/imgs/pin.png" alt=""      class="w-20 cursor-pointer p-4 bg-gray-200">
                                 <img src="/imgs/plus.png" alt=""     class="w-20 cursor-pointer p-4">
@@ -16,10 +16,14 @@
                                 <img src="/imgs/x.png" alt=""  class="w-20 cursor-pointer p-4">
                         </div>
                         <div id="axiom-list" class="px-6 h-full py-6"></div>
+                        <div class="flex text-black sticky bottom-0 justify-stretch gap-4 px-4 py-2">
+                                <a class="bg-gray-300 block w-full cursor-pointer text-center" href="\levels\world-0\level-1-the-double-click.html">← Prev</a>
+                                <a class="bg-gray-300 block w-full cursor-pointer text-center" href="#">Next →</a>
+                        </div>
                 </div>
                 <div class="bg-red-300 col-span-3 relative overflow-x-scroll" id="whiteboard">
                         <div class="flex w-fit absolute left-[50%] -translate-x-[50%] top-4">
-                                <div class="bg-white text-2xl rounded-xl px-6 py-2 border-6 border-blue-900 " id="goal-card"><span id="goal-text">1+1=2</span></div>
+                                <div class="bg-white text-2xl rounded-xl px-6 py-2 border-6 border-blue-900 cursor-pointer " id="goal-card"><span id="goal-text">1+1=2</span></div>
                                 <button class="bg-red-200 text-red-900 px-4 rounded-xl ml-4 border-6 border-blue-900 cursor-pointer font-mono font-bold text-xl" id="induction-button">i</button>
                         </div>
 
@@ -34,6 +38,14 @@
                         </div> -->
                 </div>
         </div>
+
+        <script>
+                const axioms = [
+                        
+                ]
+
+                let goalRaw = "(x y : mynat) (h : y = x + 7) : 2 * y = 2 * (x + 7)"
+        </script>
 
         <script src="/js/index.js"></script>
         <script src="/js/Statement.js"></script>

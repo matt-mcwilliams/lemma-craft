@@ -4,23 +4,6 @@ let currentTip = {
         display: true,
 }
 
-
-const axioms = [
-        '0 : nat',
-        '( n_1 : nat ) : succ n_1 : nat',
-        '( n_1 n_2 : nat ) : n_1 + n_2 : nat',
-        '( n_1 : nat ) : n_1 + 0 = n_1',
-        '( n_1 : nat ) : 0 + n_1 = n_1',
-        '( n_1 n_2 : nat ) : n_1 + ( succ ( n_2 ) ) = succ ( n_1 + n_2 )',
-        '( n_1 n_2 n_3 : nat ) : ( n_1 + n_2 ) + n_3 = n_1 + ( n_2 + n_3 )',
-        '( n_1 n_2 : nat ) : ( succ n_1 ) + n_2 = succ ( n_1 + n_2 )'
-]
-
-let goalRaw = '( a b : nat ) : ( succ a ) + b = succ ( a + b )'
-
-
-
-
 let windows = [
         {
                 statements: [],
