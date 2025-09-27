@@ -90,7 +90,7 @@ function init() {
                 
                 const axiomBlock = document.createElement('div')
 
-                axiomBlock.textContent = axiom
+                axiomBlock.innerHTML = `<strong>${axiom.name}</strong><br />${axiom.raw}`
 
                 axiomBlock.style.border = '2px solid black'
                 axiomBlock.style.borderRadius = '8px'
@@ -100,7 +100,7 @@ function init() {
                 axiomBlock.style.cursor = 'pointer'
 
                 axiomBlock.addEventListener('click', () => {
-                        spawnAxiom(axiom)
+                        spawnAxiom(axiom.raw)
                 })
 
                 axiomListEl.appendChild(axiomBlock)

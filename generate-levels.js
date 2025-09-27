@@ -40,8 +40,8 @@ const worlds = [
                                 name: 'The Axioms',
                                 urlName: 'the-axioms',
                                 newAxioms: [
-                                        '0 : nat',
-                                        '(n : nat) : succ n : nat'
+                                        { name: 'zero_is_nat', raw:'0 : nat'},
+                                        {name: 'succ_is_nat', raw: '(n : nat) : succ n : nat'}
                                 ],
                                 goal: '(a b : mynat) (succ a = b) : succ(succ(a)) = succ(b)',
                                 description: `
@@ -65,16 +65,16 @@ const worlds = [
                                 name: 'Addition',
                                 urlName: 'addition',
                                 newAxioms: [
-                                        '(n1 n2 : mynat) : n1 + n2 : nat',
-                                        '(n1 : mynat) : n1 + 0 = n1',
-                                        '(n1 n2 : mynat) : n1 + succ(n2) = succ (n1 + n2)'
+                                        {name: 'add_is_nat', raw:'(n1 n2 : mynat) : n1 + n2 : nat'},
+                                        {name: 'add_zero', raw:'(n1 : mynat) : n1 + 0 = n1'},
+                                        {name: 'add_succ', raw:'(n1 n2 : mynat) : n1 + succ(n2) = succ (n1 + n2)'}
                                 ],
                                 goal: '(a : mynat) : a + succ(0) = succ(a)',
                                 description: `
                                 Now that we have natural numbers, let's add them together! Notice three new axioms. Let's break down what they mean:
                                 <br />
                                 <br />
-                                <b>add_is_closed</b> : "(n1 n2 : mynat) : n1 + n2 : nat" — the sum of any two natural numbers is a natural number. This means that addition is closed under natural numbers.
+                                <b>add_is_nat</b> : "(n1 n2 : mynat) : n1 + n2 : nat" — the sum of any two natural numbers is a natural number. This means that addition is closed under natural numbers.
                                 <br />
                                 <br />
                                 <b>add_zero</b> : "(n1 : mynat) : n1 + 0 = n1" — the sum of a natural number and zero (notice the order — we have not proved communativity yet!) is the natural number.
@@ -153,7 +153,7 @@ worlds.forEach((world, worldIndex) => {
                 const previousLevel = levelIndex > 0 ? world.levels[levelIndex - 1] : null
                 const nextLevel = levelIndex < world.levels.length-1 ? world.levels[levelIndex + 1] : null
 
-                const axioms = axiomList.map(x => `'${x}'`).join(',')
+                const axioms = JSON.stringify(axiomList)
                 const goal = `"${level.goal}"`
                 const previousLink = previousLevel ? path.join('/' + world.path, `${'level-' + (levelIndex+0) + '-' + previousLevel.urlName}.html`) : '#';
                 const nextLink = nextLevel ? path.join('/' + world.path, `${'level-' + (levelIndex+2) + '-' + nextLevel.urlName}.html`) : '#';
