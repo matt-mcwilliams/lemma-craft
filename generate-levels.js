@@ -26,7 +26,7 @@ const worlds = [
                                 newAxioms: [],
                                 goal: '(x y : mynat) (y = x + 7) : 2 * y = 2 * (x + 7)',
                                 description: `
-                                Now the equation doesn't line up! And what's that in the middle? The definition for y, y = x + 7.
+                                Now the equation doesn't line up! And what's that in the middle? The definition for y, y = x + 7. (If you can't see it try closing this tip)
                                 <br />
                                 <br />
                                 "y = x + 7" is a hypothesis, meaning that we can assume it to be true. Notice that, in the goal, if you substitute x + 7 for y, the equation becomes exactly equal. To rewrite the equation using a hypothesis, simply drag the hypothesis onto the equation.
