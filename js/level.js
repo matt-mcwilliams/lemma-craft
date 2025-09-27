@@ -42,6 +42,7 @@ document.getElementById('goal-card').addEventListener('mouseup', () => {
         if (currentStatement == null) return
         
         if (windows[currentWindowIndex].goal.rw(currentStatement.mobject)) {
+                console.log('hello')
                 resetCurrentStatement()
         }
         updateGoal()
@@ -78,6 +79,13 @@ document.getElementById('induction-button').addEventListener('mouseup', () => {
 
         performInduction(variable)
 })
+
+
+document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+                hideTip()
+        }
+});
 
 
 

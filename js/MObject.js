@@ -50,6 +50,19 @@ class MObject {
                         }
                 }
 
+                for (let i = 0; i < this.chunks.length; i++) {
+                        const chunk1 = this.chunks[i];
+                        const chunk2 = this.chunks[i+1]
+                        if (chunk1 == '(' && chunk2 == '(') {
+                                const length1 = getClosingParenthesis(this.chunks.slice(i))
+                                const length2 = getClosingParenthesis(this.chunks.slice(i + 1))
+                                if (length1 === length2 + 2) {
+                                        console.log(length1, this.chunks.slice(i+1))
+                                        this.chunks.splice(i, length1+1, ...this.chunks.slice(i+1, i+length1))
+                                }
+                        }
+                }
+
                 this.raw = this.chunks.join(' ')
                 
                 
