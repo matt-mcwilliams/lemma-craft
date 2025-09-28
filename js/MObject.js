@@ -23,7 +23,10 @@ class MObject {
         }
 
         static copy(mobject) {
-                return new MObject(mobject.raw)
+                const newMobject = new MObject(mobject.raw)
+                newMobject.chunks = [...mobject.chunks]
+                newMobject.reparseFromChunks()
+                return newMobject
         }
         
         parse(hasHypothesis) {
@@ -125,6 +128,12 @@ class MObject {
 
                 for (let index = lastColon+1; index < this.chunks.length; index++) {
                         const chunk = this.chunks[index];
+                        
+                        if (chunk == '(') {
+                                const parenthesisLength = getClosingParenthesis(this.chunks.slice(index))
+                                index += parenthesisLength
+                        }                                
+                                
                         const chunkOrder = SYMBOLINFO[chunk]?.order ?? 0;
                         if (chunkOrder > topLevelSymbolOrder) {
                                 topLevelSymbol = chunk;
@@ -139,16 +148,18 @@ class MObject {
 
                 // 4. Find the "left" and "right" statements
 
-                const symbolType = SYMBOLINFO[topLevelSymbol]
                 this.symbol = topLevelSymbol
 
                 let leftRaw = []
                 let rightRaw = []
 
-                switch (symbolType?.type) {
-                        case 'EQUALITY':
+                switch (topLevelSymbol) {
+                        case '=':
+                        case '+':
+                        case '*':
                                 leftRaw = this.chunks.slice(0,topLevelSymbolIndex)
                                 rightRaw = this.chunks.slice(topLevelSymbolIndex+1)
+                                console.log(leftRaw, rightRaw)
                                 break;
 
 
@@ -174,6 +185,36 @@ class MObject {
 
 
                 // console.log(this)
+                let leftRawString, rightRawString
+
+                switch (topLevelSymbol) {
+                        case '=':
+                                leftRawString = this.left.raw
+                                if (this.left.symbol == this.symbol) {
+                                        leftRawString = '( ' + leftRawString + ' )'
+                                }
+
+                                rightRawString = this.right.raw
+                                if (this.right.symbol == this.symbol) {
+                                        rightRawString = '( ' + rightRawString + ' )'
+                                }
+
+                                this.raw = leftRawString + ' ' + topLevelSymbol + ' ' + rightRawString
+                                break
+                                
+                        case '+':
+                        case '*':
+                                rightRawString = this.right.raw
+                                if (this.right.symbol == this.symbol) {
+                                        rightRawString = '( ' + rightRawString + ' )'
+                                }
+
+                                this.raw = this.left.raw + ' ' + topLevelSymbol + ' ' + rightRawString
+                                break
+                
+                        default:
+                                break;
+                }
 
         }
 
@@ -351,7 +392,7 @@ class MObject {
 
                 const doesRawMatch = this.checkMatch(mobject2)
                 if (doesRawMatch) {
-                                return {raw: this.raw, variableList: doesRawMatch}
+                        return {raw: this.chunks.join(' '), variableList: doesRawMatch}
                 }
 
                 // If mobject2 is a single chunk, allow matching any single chunk in this.chunks
