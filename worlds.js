@@ -6,7 +6,7 @@ export const worlds = [
                                 name: 'The Double Click',
                                 urlName: 'the-double-click',
                                 newAxioms: [],
-                                goal: '(x y z : nat) : x * y + z = x * y + z',
+                                goal: '(x y z : nat) : ((x * y) + z) = ((x * y) + z)',
                                 description: `Welcome to LemmaCraft! Here we'll build a math system from scratch. 
                                 <br/>
                                 <br/>
@@ -20,7 +20,7 @@ export const worlds = [
                                 name: 'Drag \'n Drop',
                                 urlName: 'drag-n-drop',
                                 newAxioms: [],
-                                goal: '(x y : nat) (y = x + 7) : 2 * y = 2 * (x + 7)',
+                                goal: '(x y : nat) (y = x + 7) : (2 * y) = (2 * (x + 7))',
                                 description: `
                                 Now the equation doesn't line up! And what's that in the middle? The definition for y, y = x + 7. (If you can't see it try closing this tip)
                                 <br />
@@ -39,7 +39,7 @@ export const worlds = [
                                         { name: 'zero', raw:'0 : nat'},
                                         {name: 'succ', raw: '(n : nat) : succ n : nat'}
                                 ],
-                                goal: '(a b : nat) (succ a = b) : succ(succ(a)) = succ(b)',
+                                goal: '(a b : nat) (succ a = b) : (succ(succ(a))) = (succ(b))',
                                 description: `
                                 You may have noticed the additional hypothesises of the form "a : nat". This means "a is a natural number", i.e. 0, 1, 2, 3, etc. 
                                 <br />
@@ -63,9 +63,9 @@ export const worlds = [
                                 newAxioms: [
                                         {name: 'addition', raw:'(n1 n2 : nat) : n1 + n2 : nat'},
                                         {name: 'add_zero', raw:'(n1 : nat) : n1 + 0 = n1'},
-                                        {name: 'add_succ', raw:'(n1 n2 : nat) : n1 + (succ(n2)) = succ (n1 + n2)'}
+                                        {name: 'add_succ', raw:'(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))'}
                                 ],
-                                goal: '(a : nat) : a + (succ(0)) = succ(a)',
+                                goal: '(a : nat) : (a + (succ(0))) = (succ(a))',
                                 description: `
                                 Now that we have natural numbers, let's add them together! Notice three new axioms. Let's break down what they mean:
                                 <br />
@@ -128,7 +128,7 @@ export const worlds = [
                                 name: 'Again?',
                                 urlName: 'again',
                                 newAxioms: [],
-                                goal: '(n : nat) : 0 + n = n',
+                                goal: '(n : nat) : (0 + n) = (n)',
                                 description: `
                                 Wait — isn't this already true? No; we've been given the communative property equivalent for this, n + 0 = n. But we didn't proove the communative property yet, so how will we solve this?
                                 <br />
@@ -156,10 +156,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "zero_add",
-                                                raw: "(n1 : nat) : 0 + n1 = n1"
+                                                raw: "(n1 : nat) : (0 + n1) = (n1)"
                                         }
                                 ],
-                                goal: '(a b c : nat) : a + (b + c) = (a + b) + c',
+                                goal: '(a b c : nat) : (a + (b + c)) = ((a + b) + c)',
                                 description: `
                                 We will now prove the associative property. Notice that you now have access to the theorem you proved in the last level. Hint: try using induction on one of the variables — which one gives you an easy simplification?
                                 `
@@ -171,10 +171,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "add_assoc",
-                                                raw: "(n1 n2 n3 : nat) : n1 + (n2 + n3) = (n1 + n2) + n3"
+                                                raw: "(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)"
                                         }
                                 ],
-                                goal: '(a b : nat) : (succ a) + b = succ (a + b)',
+                                goal: '(a b : nat) : ((succ a) + b) = (succ (a + b))',
                                 description: `
                                 Next level is the boss level: communative property. We'll need this lemma before we can prove it.
                                 `
@@ -186,10 +186,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "succ_add",
-                                                raw: "(n1 n2 : nat) : (succ n1) + n2 = succ (n1 + n2)"
+                                                raw: "(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))"
                                         }
                                 ],
-                                goal: '(a b : nat) : a + b = b + a',
+                                goal: '(a b : nat) : (a + b) = (b + a)',
                                 description: `
                                 The first boss: communativity.
                                 <br />
@@ -204,7 +204,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "add_comm",
-                                                raw: "(n1 n2 : nat) : n1 + n2 = n2 + n1"
+                                                raw: "(n1 n2 : nat) : (n1 + n2) = (n2 + n1)"
                                         },
                                         
                                         {
@@ -213,10 +213,10 @@ export const worlds = [
                                         },
                                         {
                                                 name: "one_eq_succ_zero",
-                                                raw: "1 = succ 0"
+                                                raw: "(1) = (succ 0)"
                                         }
                                 ],
-                                goal: '(n : nat) : succ n = n + 1',
+                                goal: '(n : nat) : (succ n) = (n + 1)',
                                 description: `
                                 The definition of "1" has been added: 1 = succ 0. 
                                 <br />
@@ -231,10 +231,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "succ_eq_add_one",
-                                                raw: "(n1 : nat) : succ n1 = n1 + 1"
+                                                raw: "(n1 : nat) : (succ n1) = (n1 + 1)"
                                         }
                                 ],
-                                goal: '(a b c : nat) : (a + b) + c = (a + c) + b',
+                                goal: '(a b c : nat) : ((a + b) + c) = ((a + c) + b)',
                                 description: `
                                 The last theorem about addition; subtracting is such sweet sorrow.
                                 `
@@ -253,7 +253,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "add_right_comm",
-                                                raw: "(n1 n2 n3 : nat) : (n1 + n2) + n3 = (n1 + n3) + n2"
+                                                raw: "(n1 n2 n3 : nat) : ((n1 + n2) + n3) = ((n1 + n3) + n2)"
                                         },
                                         {
                                                 name: "mul",
@@ -261,14 +261,14 @@ export const worlds = [
                                         },
                                         {
                                                 name: "mul_zero",
-                                                raw: "(n1 : nat) : n1 * 0 = 0"
+                                                raw: "(n1 : nat) : (n1 * 0) = (0)"
                                         },
                                         {
                                                 name: "mul_succ",
-                                                raw: "(n1 n2 : nat) : n1 * (succ(n2)) = (n1 * n2) + n1"
+                                                raw: "(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)"
                                         }
                                 ],
-                                goal: '(m : nat) : 0 * m = 0',
+                                goal: '(m : nat) : (0 * m) = (0)',
                                 description: `
                                 Like addition, this can be proven using induction.
                                 <br/><br/>
@@ -281,10 +281,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "zero_mul",
-                                                raw: "(n1 : nat) : 0 * n1 = 0"
+                                                raw: "(n1 : nat) :( 0 * n1) = (0)"
                                         },
                                 ],
-                                goal: '(m : nat) : m * 1 = m',
+                                goal: '(m : nat) : (m * 1) = (m)',
                                 description: `
                                 Oh dear.
                                 `
@@ -295,10 +295,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "mul_one",
-                                                raw: "(n1 : nat) : n1 * 1 = n1"
+                                                raw: "(n1 : nat) : (n1 * 1) = (n1)"
                                         },
                                 ],
-                                goal: '(m : nat) : 1 * m = m',
+                                goal: '(m : nat) : (1 * m) = (m)',
                                 description: `
                                 Prove "one times" from "times one" one more times.
                                 `
@@ -309,10 +309,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "one_mul",
-                                                raw: "(n1 : nat) : 1 * n1 = n1"
+                                                raw: "(n1 : nat) : (1 * n1) = (n1)"
                                         },
                                 ],
-                                goal: '(t a b : mynat) : t * (a + b) = (t * a) + (t * b)',
+                                goal: '(t a b : mynat) : (t * (a + b)) = ((t * a) + (t * b))',
                                 description: `
                                 This is known as left distributivity (left because the "t" is on the left side of the multiplication). We'll prove right distributivity later.
                                 `

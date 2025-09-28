@@ -1,5 +1,12 @@
 let id_MObject = 0
 
+const ParChunk = {  // TODO: revert to 0, 1, and 2, respectively
+        VARIABLE: "VARIABLE",
+        SYMBOL: "SYMBOL",
+        PARENTHESIS: "PARENTHESIS",
+}
+
+
 class MObject {
         constructor(raw, type = undefined, hypothesises = false) {
                 this.raw = raw // Raw string
@@ -57,7 +64,6 @@ class MObject {
                                 const length1 = getClosingParenthesis(this.chunks.slice(i))
                                 const length2 = getClosingParenthesis(this.chunks.slice(i + 1))
                                 if (length1 === length2 + 2) {
-                                        console.log(length1, this.chunks.slice(i+1))
                                         this.chunks.splice(i, length1+1, ...this.chunks.slice(i+1, i+length1))
                                 }
                         }
@@ -158,10 +164,12 @@ class MObject {
                 
                 if (leftRaw.length > 0) {
                         this.left = new MObject(leftRaw.join(' '))
+                        this.left.variables = this.variables
                 }
                 
                 if (rightRaw.length > 0) {
                         this.right = new MObject(rightRaw.join(' '))
+                        this.right.variables = this.variables
                 }
 
 
@@ -210,40 +218,63 @@ class MObject {
 
                 }
 
-
-
+                
+                
                 // Check for equality replacment
-
+                
                 if (mobject2.symbol !== '=') {
                         throw Error('only rw for equalities')
                 }
                 
-                const searchPattern = backward ? mobject2.right.chunks : mobject2.left.chunks
-                const replacement = backward ? mobject2.left.chunks : ['(', ...mobject2.right.chunks, ')']
-
+                const searchPattern = backward ? mobject2.right : mobject2.left
+                let replacement = backward ? mobject2.left.chunks : ['(', ...mobject2.right.chunks, ')']
+                
                 let didRwWork = false
+                
+                const firstMatch = this.findFirstMatch(searchPattern)
+                
+                if (!firstMatch) {
+                        if (!backward && !didwork) {
+                                return this.rw(mobject2, true, false)
+                        } else {
+                                return false
+                        }
+                }
 
+                const exactSearchPattern = firstMatch.raw.split(' ')
+
+                for (let variable in firstMatch.variableList) {
+                        replacement = replacement.join(" ")
+                        replacement = replacement.replaceAll(variable, "( " + firstMatch.variableList[variable].join(" ") + " )")
+                        replacement = replacement.split(" ")
+                }
+
+                
                 for (let i = start; i < this.chunks.length; i++) {
                         const chunk = this.chunks[i];
                         
-                        if (chunk == searchPattern[0]) {
-                                const target = this.chunks.slice(i, i + searchPattern.length)
+                        if (chunk == exactSearchPattern[0]) {
+                                const target = this.chunks.slice(i, i + exactSearchPattern.length)
                                 
-                                if (target.length !== searchPattern.length) { continue }
-                                if (!target.every((targetChunk, j) => targetChunk == searchPattern[j])) { continue }
+                                if (target.length !== exactSearchPattern.length) { continue }
+                                if (!target.every((targetChunk, j) => targetChunk == exactSearchPattern[j])) { continue }
                                 
-                                this.chunks.splice(i, searchPattern.length, ...replacement)
-                                console.log(this.chunks, i)
+                                this.chunks.splice(i, exactSearchPattern.length, ...replacement)
                                 didRwWork = true
                                 break
                         }
                 }
+
 
                 if (didRwWork) { 
                         this.reparseFromChunks()
                         this.rw(mobject2, backward, true, start+replacement.length+1) 
                 } else if (!backward && !didwork) {
                         this.rw(mobject2, true, false)
+                }
+
+                if (!didwork) {
+                        this.reparseFromChunks()
                 }
 
                 return didRwWork
@@ -265,6 +296,87 @@ class MObject {
                 return true
 
         }
+
+
+        checkMatch(mobject2) {
+
+                // 1. Chunk into symbols and parenthesis-groups
+                const searchStringParChunks = MObject.chunkIntoParenthesisGroups(mobject2)
+                const thisParChunks = MObject.chunkIntoParenthesisGroups(this)
+
+
+                if (searchStringParChunks.length !== thisParChunks.length) return false
+
+                let variableList = {}
+
+                // 2. Check each chunk depending on its type
+                const result = searchStringParChunks.every((searchChunk, index) => {
+                        const thisChunk = thisParChunks[index]
+
+                        switch (searchChunk.type) {
+                                case ParChunk.VARIABLE:
+                                        variableList[searchChunk.chunkList[0]] = thisChunk.chunkList
+                                        return true
+                                
+                                case ParChunk.SYMBOL:
+                                        return searchChunk.chunkList[0] === thisChunk.chunkList[0]
+                                
+                                case ParChunk.PARENTHESIS:
+                                        const subSearchMobject = new MObject(searchChunk.chunkList.join(" ")) 
+                                        subSearchMobject.variables = mobject2.variables
+                                        const subThisMobject = new MObject(thisChunk.chunkList.join(" "))
+                                        subThisMobject.variables = this.variables
+
+                                        const result = subThisMobject.checkMatch(subSearchMobject)
+                                        if (result) {
+                                                variableList = { ...variableList, ...result }
+                                                return true
+                                        } else {
+                                                return false
+                                        }
+                                        
+                                default:
+                                        console.log(searchChunk.chunkList)
+                                        break;
+                        }
+                        return false
+                })
+
+                return result && variableList
+
+        }
+
+        findFirstMatch(mobject2) {
+                const thisParChunks = MObject.chunkIntoParenthesisGroups(this)
+
+                const doesRawMatch = this.checkMatch(mobject2)
+                if (doesRawMatch) {
+                                return {raw: this.raw, variableList: doesRawMatch}
+                }
+
+                // If mobject2 is a single chunk, allow matching any single chunk in this.chunks
+                if (mobject2.chunks.length === 1) {
+                        for (let i = 0; i < this.chunks.length; i++) {
+                                if (this.chunks[i] === mobject2.chunks[0]) {
+                                        return {raw: this.chunks[i], variableList: {}}
+                                }
+                        }
+                }
+
+                for (let i = 0; i < thisParChunks.length; i++) {
+                        const chunk = thisParChunks[i];
+                        if (chunk.type == ParChunk.PARENTHESIS) {
+                                const section = new MObject(chunk.chunkList.join(' '))
+                                const doesSectionMatch = section.findFirstMatch(mobject2)
+                                if (doesSectionMatch) {
+                                        return doesSectionMatch
+                                }
+                        }
+                }
+
+                return false
+        }
+
 
         static induction(window, variable) {
                 console.log(window, variable)
@@ -307,6 +419,24 @@ class MObject {
                         }
                 }
                 return hypothesises
+        }
+
+
+        static chunkIntoParenthesisGroups(mobject) {
+                const parChunks = []
+                for (let i = 0; i < mobject.chunks.length; i++) {
+                        const chunk = mobject.chunks[i];
+                        if (chunk == '(') {
+                                const chunkLength = getClosingParenthesis(mobject.chunks.slice(i))
+                                parChunks.push({type: ParChunk.PARENTHESIS, chunkList: mobject.chunks.slice(i+1, i+chunkLength)})
+                                i += chunkLength
+                        } else if (mobject.variables.includes(chunk)) {
+                                parChunks.push({type: ParChunk.VARIABLE, chunkList: [chunk]})
+                        } else {
+                                parChunks.push({type: ParChunk.SYMBOL, chunkList: [chunk]})
+                        }
+                }
+                return parChunks
         }
 }
 

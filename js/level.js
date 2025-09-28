@@ -38,11 +38,10 @@ document.getElementById('axiom-list').addEventListener('mouseup', () => {
 
 
 document.getElementById('goal-card').addEventListener('mouseup', () => {
-        console.log(currentStatement)
+        // console.log(currentStatement)
         if (currentStatement == null) return
         
         if (windows[currentWindowIndex].goal.rw(currentStatement.mobject)) {
-                console.log('hello')
                 resetCurrentStatement()
         }
         updateGoal()
