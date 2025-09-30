@@ -147,6 +147,8 @@ function updateGoal() {
 
 function spawnAxiom(axiom) {
 
+        console.log(axiom)
+
         const axiomBlock = document.createElement('div')
 
         const statement = new Statement(axiom, axiomBlock)
@@ -201,6 +203,7 @@ function performInduction(variable) {
         const currentWindow = windows[currentWindowIndex]
         
         const inductionResults = MObject.induction(currentWindow, variable)
+        console.log(inductionResults)
 
         const window1 = currentWindow
         // Deep clone window1 except for statements, which need special handling
@@ -208,15 +211,13 @@ function performInduction(variable) {
 
         // For window1, duplicate each statement using spawnAxiom to ensure consistent creation
         window1.statements = window1.statements.map(statement => {
-                // Use spawnAxiom to create a new statement and DOM element
-                spawnAxiom(statement.mobject.raw);
-                // The new statement is pushed to window1.statements by spawnAxiom,
-                // so we don't need to return anything here.
-                // We'll remove the old statements after this map.
-                return statement;
+                spawnAxiom(statement.mobject.parenthesisedRaw());
+                return -1;
         });
         // Remove the old statements (the originals before duplication)
-        window1.statements.splice(0, window1.statements.length / 2);
+        console.log(window1.statements)
+        window1.statements = window1.statements.filter(x => x !== -1);
+        console.log(window1.statements)
 
         window1.goal = inductionResults.newGoal1
         window2.goal = inductionResults.newGoal2
@@ -225,8 +226,8 @@ function performInduction(variable) {
         
         currentWindowIndex += 1 // The new hypothesises belong to the second window
         
-        spawnAxiom(inductionResults.newHyp1.raw)
-        spawnAxiom(inductionResults.newHyp2.raw)
+        spawnAxiom(inductionResults.newHyp1.parenthesisedRaw())
+        spawnAxiom(inductionResults.newHyp2.parenthesisedRaw())
 
         currentWindowIndex -= 1
 

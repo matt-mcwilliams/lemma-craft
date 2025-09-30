@@ -312,11 +312,221 @@ export const worlds = [
                                                 raw: "(n1 : nat) : (1 * n1) = (n1)"
                                         },
                                 ],
-                                goal: '(t a b : mynat) : (t * (a + b)) = ((t * a) + (t * b))',
+                                goal: '(t a b : nat) : (t * (a + b)) = ((t * a) + (t * b))',
                                 description: `
                                 This is known as left distributivity (left because the "t" is on the left side of the multiplication). We'll prove right distributivity later.
                                 `
                         },
+                        {
+                                name: 'Assoc Football',
+                                urlName: 'assoc-football',
+                                newAxioms: [
+                                        {
+                                                name: "left_distrib",
+                                                raw: "(n1 n2 n3 : nat) : (n1 * (n2 + n3)) = ((n1 * n2) + (n1 * n3))"
+                                        },
+                                ],
+                                goal: '(a b c : nat) : ((a * b) * c) = (a * (b * c))',
+                                description: `
+                                What's similar about soccer and multiplication? They're both associative! Wait, you don't understand? Like "Association Football" and "Associative Prop"— oh never mind.
+                                `
+                        },
+                        {
+                                name: 'succ_mul',
+                                urlName: 'succ-mul',
+                                newAxioms: [
+                                        {
+                                                name: "mul_assoc",
+                                                raw: "(n1 n2 n3 : nat) : ((n1 * n2) * n3) = (n1 * (n2 * n3))"
+                                        },
+                                ],
+                                goal: '(a b : nat) : ((succ a) * b) = ((a * b) + b)',
+                                description: `
+                                Levels SIX and SEVEN in this world will equip us with what we need to tackle the boss: Communativity.
+                                `
+                        },
+                        {
+                                name: 'right_distrib',
+                                urlName: 'right-distrib',
+                                newAxioms: [
+                                        {
+                                                name: "succ_mul",
+                                                raw: "(n1 n2 : nat) : ((succ n1) * n2) = ((n1 * n2) + n2)"
+                                        },
+                                ],
+                                goal: '(a b t : nat) : ((a + b) * t) = ((a * t) + (b * t))',
+                                description: `
+                                Levels SIX and SEVEN in this world will equip us with what we need to tackle the boss: Communativity.
+                                `
+                        },
+                        {
+                                name: '💀 mul_comm',
+                                urlName: 'mul-comm',
+                                newAxioms: [
+                                        {
+                                                name: "right_distrib",
+                                                raw: "(n1 n2 n3 : nat) : ((n1 + n2) * n3) = ((n1 * n3) + (n2 * n3))"
+                                        },
+                                ],
+                                goal: '(a b : nat) : (a * b) = (b * a)',
+                                description: `
+                                You should be well-prepared.
+                                `
+                        },
+                        {
+                                name: 'mul_left_comm',
+                                urlName: 'mul-left-comm',
+                                newAxioms: [
+                                        {
+                                                name: "mul_comm",
+                                                raw: "(n1 n2 : nat) : (n1 * n2) = (n2 * n1)"
+                                        },
+                                ],
+                                goal: '(a b c : nat) : (a * (b * c)) = (b * (a * c))',
+                                description: `
+                                just do it
+                                `
+                        },
+                ]
+        },
+
+        {
+                
+                path: 'levels/world-4/',
+                levels: [
+                        {
+                                name: 'zero_pow_zero',
+                                urlName: 'zero-pow-zero',
+                                newAxioms: [
+                                        {
+                                                name: "mul_comm_left",
+                                                raw: "(n1 n2 n3 : nat) : (n1 * (n2 * n3)) = (n2 * (n1 * n3))"
+                                        },
+                                        {
+                                                name: "pow",
+                                                raw: "(n1 n2 : nat) : n1 ^ n2 : nat"
+                                        },
+                                        {
+                                                name: "pow_zero",
+                                                raw: "(n1 : nat) : (n1 ^ 0) = (1)"
+                                        },
+                                        {
+                                                name: "pow_succ",
+                                                raw: "(n1 n2 : nat) : (n1 ^ (succ(n2))) = ((n1 ^ n2) * n1)"
+                                        }
+                                ],
+                                goal: '(0 ^ 0) = (1)',
+                                description: `
+                                Powers
+                                `
+                        },
+                        {
+                                name: 'zero_pow_succ',
+                                urlName: 'zero-pow-succ',
+                                newAxioms: [
+                                        {
+                                                name: "zero_pow_zero",
+                                                raw: "(0 ^ 0) = (1)"
+                                        },
+                                ],
+                                goal: '(m : mynat) : ((0) ^ (succ m)) = (0)',
+                                description: `
+                                Powers
+                                `
+                        },
+                        {
+                                name: 'pow_one',
+                                urlName: 'pow-one',
+                                newAxioms: [
+                                        {
+                                                name: "zero_pow_succ",
+                                                raw: "(n1 : mynat) : ((0) ^ (succ n1)) = (0)"
+                                        },
+                                ],
+                                goal: '(a : mynat) : (a ^ 1) = (a)',
+                                description: `
+                                Powers
+                                `
+                        },
+                        {
+                                name: 'one_pow',
+                                urlName: 'one-pow',
+                                newAxioms: [
+                                        {
+                                                name: "pow_one",
+                                                raw: "(n1 : mynat) : (n1 ^ 1) = (n1)"
+                                        },
+                                ],
+                                goal: '(m : mynat) : (1 ^ m) = (1)',
+                                description: `
+                                Powers
+                                `
+                        },
+                        {
+                                name: 'pow_add',
+                                urlName: 'pow-add',
+                                newAxioms: [
+                                        {
+                                                name: "one_pow",
+                                                raw: "(n1 : mynat) : (1 ^ n1) = (1)"
+                                        },
+                                ],
+                                goal: '(a m n : mynat) :( a ^ (m + n)) = ((a ^ m) * (a ^ n))',
+                                description: `
+                                Powers
+                                `
+                        },
+                        {
+                                name: 'mul_pow',
+                                urlName: 'mul-pow',
+                                newAxioms: [
+                                        {
+                                                name: "pow_add",
+                                                raw: "(n1 n2 n3 : mynat) :( n1 ^ (n2 + n3)) = ((n1 ^ n2) * (n1 ^ n3))"
+                                        },
+                                ],
+                                goal: '(a b n : mynat) : ((a * b) ^ n) = ((a ^ n) * (b ^ n))',
+                                description: `
+                                Powers
+                                `
+                        },
+                        {
+                                name: 'pow_pow',
+                                urlName: 'pow-pow',
+                                newAxioms: [
+                                        {
+                                                name: "mul_pow",
+                                                raw: "(n1 n2 n3 : mynat) : ((n1 * n2) ^ n3) = ((n1 ^ n3) * (n2 ^ n3))"
+                                        },
+                                ],
+                                goal: '(a m n : mynat) : ((a ^ m) ^ n) = (a ^ (m * n))',
+                                description: `
+                                Powers
+                                `
+                        },
+                        {
+                                name: 'add_squared',
+                                urlName: 'add-squared',
+                                newAxioms: [
+                                        {
+                                                name: "pow_pow",
+                                                raw: "(n1 n2 n3 : mynat) : ((n1 ^ n2) ^ n3) = (n1 ^ (n2 * n3))"
+                                        },
+                                        {
+                                                name: "two",
+                                                raw: "2 : nat"
+                                        },
+                                        {
+                                                name: "two_eq_succ_one",
+                                                raw: "(2) = (succ 1)"
+                                        },
+                                ],
+                                goal: '(a b : mynat) : ((a + b) ^ 2) = (((a ^ 2) + (b ^ 2)) + ((2 * a) * b))',
+                                description: `
+                                Powers
+                                `
+                        },
+                        
                 ]
         }
 ]

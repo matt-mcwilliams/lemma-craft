@@ -6,4 +6,5 @@ const SYMBOLINFO = {
         "=": { "order": 10 },
         "+": { "order": 9 },
         "*": { "order": 8 },
+        "^": { "order": 7 },
 } 

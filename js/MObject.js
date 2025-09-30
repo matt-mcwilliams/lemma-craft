@@ -29,6 +29,16 @@ class MObject {
                 return newMobject
         }
         
+        parenthesisedRaw() {
+                let output = ""
+                if (this.variables.length > 0) {
+                        output = `( ${this.variables.join(" ")} : nat ) : `
+                }
+                output += this.chunks.join(' ')
+                console.log(output)
+                return output
+        }
+        
         parse(hasHypothesis) {
 
                 this.raw = this.raw.trim()
@@ -135,7 +145,7 @@ class MObject {
                         }                                
                                 
                         const chunkOrder = SYMBOLINFO[chunk]?.order ?? 0;
-                        if (chunkOrder > topLevelSymbolOrder) {
+                        if (chunkOrder >= topLevelSymbolOrder) {
                                 topLevelSymbol = chunk;
                                 topLevelSymbolOrder = chunkOrder;
                                 topLevelSymbolIndex = index;
@@ -157,9 +167,9 @@ class MObject {
                         case '=':
                         case '+':
                         case '*':
+                        case '^':
                                 leftRaw = this.chunks.slice(0,topLevelSymbolIndex)
                                 rightRaw = this.chunks.slice(topLevelSymbolIndex+1)
-                                console.log(leftRaw, rightRaw)
                                 break;
 
 
@@ -187,29 +197,40 @@ class MObject {
                 // console.log(this)
                 let leftRawString, rightRawString
 
+                let variableString = ""
+                if (this.variables.length > 0) {
+                        variableString = `( ${this.variables.join(' ')} : nat ) :`
+                }
+
                 switch (topLevelSymbol) {
                         case '=':
                                 leftRawString = this.left.raw
-                                if (this.left.symbol == this.symbol) {
+                                if (SYMBOLINFO[this.left.symbol]?.order >= SYMBOLINFO[this.symbol].order) {
                                         leftRawString = '( ' + leftRawString + ' )'
                                 }
 
                                 rightRawString = this.right.raw
-                                if (this.right.symbol == this.symbol) {
+                                if (SYMBOLINFO[this.right.symbol]?.order >= SYMBOLINFO[this.symbol].order) {
                                         rightRawString = '( ' + rightRawString + ' )'
                                 }
 
-                                this.raw = leftRawString + ' ' + topLevelSymbol + ' ' + rightRawString
+                                this.raw = variableString + ' ' + leftRawString + ' ' + topLevelSymbol + ' ' + rightRawString
                                 break
                                 
                         case '+':
                         case '*':
+                        case '^':
+                                leftRawString = this.left.raw
+                                if (SYMBOLINFO[this.left.symbol]?.order > SYMBOLINFO[this.symbol].order) {
+                                        leftRawString = '( ' + leftRawString + ' )'
+                                }
+
                                 rightRawString = this.right.raw
-                                if (this.right.symbol == this.symbol) {
+                                if (SYMBOLINFO[this.right.symbol]?.order >= SYMBOLINFO[this.symbol].order) {
                                         rightRawString = '( ' + rightRawString + ' )'
                                 }
 
-                                this.raw = this.left.raw + ' ' + topLevelSymbol + ' ' + rightRawString
+                                this.raw = variableString + ' ' + leftRawString + ' ' + topLevelSymbol + ' ' + rightRawString
                                 break
                 
                         default:
@@ -238,7 +259,7 @@ class MObject {
 
         rw (mobject2, backward = false, didwork = false, start = 0) {
 
-                // console.log(this, mobject2)
+                console.log(this, mobject2)
 
                 // Check for variable unbounding
 
@@ -306,6 +327,8 @@ class MObject {
                         }
                 }
 
+                console.log(didRwWork, this)
+
 
                 if (didRwWork) { 
                         this.reparseFromChunks()
@@ -360,7 +383,7 @@ class MObject {
                                         return true
                                 
                                 case ParChunk.SYMBOL:
-                                        return searchChunk.chunkList[0] === thisChunk.chunkList[0]
+                                        return searchChunk.chunkList[0] === thisChunk.chunkList[0] && thisChunk.chunkList.length == 1
                                 
                                 case ParChunk.PARENTHESIS:
                                         const subSearchMobject = new MObject(searchChunk.chunkList.join(" ")) 
@@ -420,12 +443,12 @@ class MObject {
 
 
         static induction(window, variable) {
-                console.log(window, variable)
                 
                 const newGoal1 = this.copy(window.goal)
                 newGoal1.chunks = newGoal1.chunks.map(x => x==variable ? '0' : x)
                 newGoal1.reparseFromChunks()
 
+                
                 const newGoal2 = this.copy(window.goal)
                 newGoal2.chunks = newGoal2.chunks.map(x => x==variable ? '( succ h )' : x)
                 newGoal2.reparseFromChunks()
@@ -459,7 +482,7 @@ class MObject {
                                 return hypothesises.map(h => h.join(' '))
                         }
                 }
-                return hypothesises
+                return []
         }
 
 
