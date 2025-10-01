@@ -8,13 +8,11 @@
 </head>
 <body class="h-screen select-none" onload="init()"" >
         <div class="grid grid-cols-4 h-full content-stretch divide-x-2 divide-black">
-                <div class="relative h-screen overflow-y-none flex flex-col">
-                        <div class="flex divide-x-2 divide-black border-b-2 border-black">
-                                <img src="/imgs/pin.png" alt=""      class="w-20 cursor-pointer p-4 bg-gray-200">
-                                <img src="/imgs/plus.png" alt=""     class="w-20 cursor-pointer p-4">
-                                <img src="/imgs/numbers.png" alt=""  class="w-20 cursor-pointer p-4">
-                                <img src="/imgs/x.png" alt=""  class="w-20 cursor-pointer p-4">
-                        </div>
+                <div class="relative h-screen overflow-y-none flex flex-col pt-6">
+                        <input type="text" class="block bg-gray-100 rounded-xl border-2 border-gray-300 px-6 py-3 mx-6" 
+                                placeholder="Search for lemmas:"
+                                oninput="updateSearch(this.value)">
+
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
                         <div class="text-black sticky bottom-0 px-4 py-2 bg-white border-t-2 border-t-black outline-4 outline-white">
                                 <div class="flex justify-between gap-3"><strong class="block">{{ levelName }}</strong><div>{{ levelCode }}</div></div>

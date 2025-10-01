@@ -287,3 +287,34 @@ function resetCurrentStatement() {
         currentStatement.element.style.pointerEvents = 'auto';
         currentStatement = null
 }
+
+
+function updateSearch(searchTerm) {
+        const axiomListEl = document.getElementById('axiom-list');
+
+        [...axiomListEl.children].forEach(child => child.remove());
+
+
+        axioms.forEach((axiom) => {
+
+                if (!axiom.name.includes(searchTerm)) return
+                
+                const axiomBlock = document.createElement('div')
+
+                axiomBlock.innerHTML = `<strong>${axiom.name}</strong><br />${axiom.raw}`
+
+                axiomBlock.style.border = '2px solid black'
+                axiomBlock.style.borderRadius = '8px'
+                axiomBlock.style.maxWidth = '200px'
+                axiomBlock.style.padding = '8px 16px'
+                axiomBlock.style.marginBottom = '16px'
+                axiomBlock.style.cursor = 'pointer'
+
+                axiomBlock.addEventListener('click', () => {
+                        spawnAxiom(axiom.raw)
+                })
+
+                axiomListEl.appendChild(axiomBlock)
+
+        })
+}
