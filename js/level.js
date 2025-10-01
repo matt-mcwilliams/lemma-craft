@@ -83,6 +83,9 @@ document.getElementById('induction-button').addEventListener('mouseup', () => {
 document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
                 hideTip()
+        } else if (event.key = '/') {
+                const searchBarEl = document.getElementById('search-bar')
+                searchBarEl.focus()
         }
 });
 
@@ -90,29 +93,7 @@ document.addEventListener('keydown', (event) => {
 
 function init() {
 
-        const axiomListEl = document.getElementById('axiom-list')
-
-
-        axioms.forEach((axiom) => {
-                
-                const axiomBlock = document.createElement('div')
-
-                axiomBlock.innerHTML = `<strong>${axiom.name}</strong><br />${axiom.raw}`
-
-                axiomBlock.style.border = '2px solid black'
-                axiomBlock.style.borderRadius = '8px'
-                axiomBlock.style.maxWidth = '200px'
-                axiomBlock.style.padding = '8px 16px'
-                axiomBlock.style.marginBottom = '16px'
-                axiomBlock.style.cursor = 'pointer'
-
-                axiomBlock.addEventListener('click', () => {
-                        spawnAxiom(axiom.raw)
-                })
-
-                axiomListEl.appendChild(axiomBlock)
-
-        })
+        updateAxioms()
 
         windows[currentWindowIndex].goal = new MObject(goalRaw, undefined, true)
         const hypothesises = MObject.identifyHypothesises(windows[currentWindowIndex].goal)
@@ -289,10 +270,40 @@ function resetCurrentStatement() {
 }
 
 
-function updateSearch(searchTerm) {
+function updateAxioms(searchTerm="") {
+
+        if (searchTerm.endsWith('/')) {
+                searchTerm.length -= 1
+                const searchBarEl = document.getElementById('search-bar')
+                searchBarEl.value = [...searchBarEl.value].filter(x => x !== '/').join('')
+        }
+
         const axiomListEl = document.getElementById('axiom-list');
 
         [...axiomListEl.children].forEach(child => child.remove());
+
+        const axiomCategoryEls = {}
+
+        for (const axiom in AxiomCategory) {
+                const newEl = document.createElement('div')
+                const newElTitle = document.createElement('p')
+                newEl.appendChild(newElTitle)
+                newElTitle.innerText = [...axiom].map((a,i) => i==0 ? a.toUpperCase() : a).join('')
+                newElTitle.addEventListener('click', (event) => {
+                                if (event.target !== newElTitle) return; // Ignore clicks from child nodes
+                                [...newEl.children].forEach((child, index) => 
+                                        child.style.display = (child.style.display == 'none' || index == 0) ? 'block' : 'none')
+                })
+
+                newElTitle.style.fontWeight = 'bold'
+                newElTitle.style.margin = '0px 0px 8px'
+                newElTitle.style.cursor = 'pointer'
+
+                axiomListEl.appendChild(newEl)
+                axiomCategoryEls[AxiomCategory[axiom]] = newEl
+        }
+
+        console.log(axiomCategoryEls)
 
 
         axioms.forEach((axiom) => {
@@ -309,12 +320,13 @@ function updateSearch(searchTerm) {
                 axiomBlock.style.padding = '8px 16px'
                 axiomBlock.style.marginBottom = '16px'
                 axiomBlock.style.cursor = 'pointer'
+                axiomBlock.style.fontWeight = 'normal'
 
                 axiomBlock.addEventListener('click', () => {
                         spawnAxiom(axiom.raw)
                 })
 
-                axiomListEl.appendChild(axiomBlock)
+                axiomCategoryEls[axiom.category.toString()].appendChild(axiomBlock)
 
         })
 }

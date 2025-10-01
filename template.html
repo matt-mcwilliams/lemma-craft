@@ -11,7 +11,8 @@
                 <div class="relative h-screen overflow-y-none flex flex-col pt-6">
                         <input type="text" class="block bg-gray-100 rounded-xl border-2 border-gray-300 px-6 py-3 mx-6" 
                                 placeholder="Search for lemmas:"
-                                oninput="updateSearch(this.value)">
+                                oninput="updateAxioms(this.value)"
+                                id="search-bar">
 
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
                         <div class="text-black sticky bottom-0 px-4 py-2 bg-white border-t-2 border-t-black outline-4 outline-white">
@@ -52,6 +53,8 @@
                 const axioms = {{ axiomList }}
 
                 let goalRaw = {{ goalRaw }}
+
+                let AxiomCategory = {{ axiomCategory }}
         </script>
 
         <script src="/js/level.js"></script>

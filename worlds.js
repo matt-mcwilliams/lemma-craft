@@ -1,3 +1,11 @@
+export const AxiomCategory = {
+        numbers: 0,
+        addition: 1,
+        multiplication: 2,
+        exponents: 3,
+}
+
+
 export const worlds = [
         {
                 path: 'levels/world-1/',
@@ -36,8 +44,8 @@ export const worlds = [
                                 name: 'The Axioms',
                                 urlName: 'the-axioms',
                                 newAxioms: [
-                                        { name: 'zero', raw:'0 : nat'},
-                                        {name: 'succ', raw: '(n : nat) : succ n : nat'}
+                                        {name: 'succ', raw: '(n : nat) : succ n : nat', category: AxiomCategory.numbers},
+                                        { name: 'zero', raw:'0 : nat', category: AxiomCategory.numbers },
                                 ],
                                 goal: '(a b : nat) (succ a = b) : (succ(succ(a))) = (succ(b))',
                                 description: `
@@ -61,9 +69,9 @@ export const worlds = [
                                 name: 'Addition',
                                 urlName: 'addition',
                                 newAxioms: [
-                                        {name: 'addition', raw:'(n1 n2 : nat) : n1 + n2 : nat'},
-                                        {name: 'add_zero', raw:'(n1 : nat) : n1 + 0 = n1'},
-                                        {name: 'add_succ', raw:'(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))'}
+                                        {name: 'addition', raw:'(n1 n2 : nat) : n1 + n2 : nat', category: AxiomCategory.addition},
+                                        {name: 'add_zero', raw:'(n1 : nat) : n1 + 0 = n1', category: AxiomCategory.addition},
+                                        {name: 'add_succ', raw:'(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))', category: AxiomCategory.addition}
                                 ],
                                 goal: '(a : nat) : (a + (succ(0))) = (succ(a))',
                                 description: `
@@ -156,7 +164,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "zero_add",
-                                                raw: "(n1 : nat) : (0 + n1) = (n1)"
+                                                raw: "(n1 : nat) : (0 + n1) = (n1)", category: AxiomCategory.addition
                                         }
                                 ],
                                 goal: '(a b c : nat) : (a + (b + c)) = ((a + b) + c)',
@@ -171,7 +179,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "add_assoc",
-                                                raw: "(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)"
+                                                raw: "(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)", category: AxiomCategory.addition
                                         }
                                 ],
                                 goal: '(a b : nat) : ((succ a) + b) = (succ (a + b))',
@@ -186,7 +194,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "succ_add",
-                                                raw: "(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))"
+                                                raw: "(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))", category: AxiomCategory.addition
                                         }
                                 ],
                                 goal: '(a b : nat) : (a + b) = (b + a)',
@@ -204,16 +212,16 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "add_comm",
-                                                raw: "(n1 n2 : nat) : (n1 + n2) = (n2 + n1)"
+                                                raw: "(n1 n2 : nat) : (n1 + n2) = (n2 + n1)", category: AxiomCategory.addition
                                         },
                                         
                                         {
                                                 name: "one",
-                                                raw: "1 : nat"
+                                                raw: "1 : nat", category: AxiomCategory.numbers
                                         },
                                         {
                                                 name: "one_eq_succ_zero",
-                                                raw: "(1) = (succ 0)"
+                                                raw: "(1) = (succ 0)", category: AxiomCategory.numbers
                                         }
                                 ],
                                 goal: '(n : nat) : (succ n) = (n + 1)',
@@ -231,7 +239,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "succ_eq_add_one",
-                                                raw: "(n1 : nat) : (succ n1) = (n1 + 1)"
+                                                raw: "(n1 : nat) : (succ n1) = (n1 + 1)", category: AxiomCategory.addition
                                         }
                                 ],
                                 goal: '(a b c : nat) : ((a + b) + c) = ((a + c) + b)',
@@ -253,19 +261,19 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "add_right_comm",
-                                                raw: "(n1 n2 n3 : nat) : ((n1 + n2) + n3) = ((n1 + n3) + n2)"
+                                                raw: "(n1 n2 n3 : nat) : ((n1 + n2) + n3) = ((n1 + n3) + n2)", category: AxiomCategory.addition
                                         },
                                         {
                                                 name: "mul",
-                                                raw: "(n1 n2 : nat) : n1 * n2 : nat"
+                                                raw: "(n1 n2 : nat) : n1 * n2 : nat", category: AxiomCategory.multiplication
                                         },
                                         {
                                                 name: "mul_zero",
-                                                raw: "(n1 : nat) : (n1 * 0) = (0)"
+                                                raw: "(n1 : nat) : (n1 * 0) = (0)", category: AxiomCategory.multiplication
                                         },
                                         {
                                                 name: "mul_succ",
-                                                raw: "(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)"
+                                                raw: "(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)", category: AxiomCategory.multiplication
                                         }
                                 ],
                                 goal: '(m : nat) : (0 * m) = (0)',
@@ -281,7 +289,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "zero_mul",
-                                                raw: "(n1 : nat) :( 0 * n1) = (0)"
+                                                raw: "(n1 : nat) :( 0 * n1) = (0)", category: AxiomCategory.multiplication
                                         },
                                 ],
                                 goal: '(m : nat) : (m * 1) = (m)',
@@ -295,7 +303,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "mul_one",
-                                                raw: "(n1 : nat) : (n1 * 1) = (n1)"
+                                                raw: "(n1 : nat) : (n1 * 1) = (n1)", category: AxiomCategory.multiplication
                                         },
                                 ],
                                 goal: '(m : nat) : (1 * m) = (m)',
@@ -309,7 +317,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "one_mul",
-                                                raw: "(n1 : nat) : (1 * n1) = (n1)"
+                                                raw: "(n1 : nat) : (1 * n1) = (n1)", category: AxiomCategory.multiplication
                                         },
                                 ],
                                 goal: '(t a b : nat) : (t * (a + b)) = ((t * a) + (t * b))',
@@ -323,7 +331,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "left_distrib",
-                                                raw: "(n1 n2 n3 : nat) : (n1 * (n2 + n3)) = ((n1 * n2) + (n1 * n3))"
+                                                raw: "(n1 n2 n3 : nat) : (n1 * (n2 + n3)) = ((n1 * n2) + (n1 * n3))", category: AxiomCategory.multiplication
                                         },
                                 ],
                                 goal: '(a b c : nat) : ((a * b) * c) = (a * (b * c))',
@@ -337,7 +345,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "mul_assoc",
-                                                raw: "(n1 n2 n3 : nat) : ((n1 * n2) * n3) = (n1 * (n2 * n3))"
+                                                raw: "(n1 n2 n3 : nat) : ((n1 * n2) * n3) = (n1 * (n2 * n3))", category: AxiomCategory.multiplication
                                         },
                                 ],
                                 goal: '(a b : nat) : ((succ a) * b) = ((a * b) + b)',
@@ -351,7 +359,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "succ_mul",
-                                                raw: "(n1 n2 : nat) : ((succ n1) * n2) = ((n1 * n2) + n2)"
+                                                raw: "(n1 n2 : nat) : ((succ n1) * n2) = ((n1 * n2) + n2)", category: AxiomCategory.multiplication
                                         },
                                 ],
                                 goal: '(a b t : nat) : ((a + b) * t) = ((a * t) + (b * t))',
@@ -365,7 +373,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "right_distrib",
-                                                raw: "(n1 n2 n3 : nat) : ((n1 + n2) * n3) = ((n1 * n3) + (n2 * n3))"
+                                                raw: "(n1 n2 n3 : nat) : ((n1 + n2) * n3) = ((n1 * n3) + (n2 * n3))", category: AxiomCategory.multiplication
                                         },
                                 ],
                                 goal: '(a b : nat) : (a * b) = (b * a)',
@@ -379,7 +387,7 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "mul_comm",
-                                                raw: "(n1 n2 : nat) : (n1 * n2) = (n2 * n1)"
+                                                raw: "(n1 n2 : nat) : (n1 * n2) = (n2 * n1)", category: AxiomCategory.multiplication
                                         },
                                 ],
                                 goal: '(a b c : nat) : (a * (b * c)) = (b * (a * c))',
@@ -400,19 +408,19 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "mul_comm_left",
-                                                raw: "(n1 n2 n3 : nat) : (n1 * (n2 * n3)) = (n2 * (n1 * n3))"
+                                                raw: "(n1 n2 n3 : nat) : (n1 * (n2 * n3)) = (n2 * (n1 * n3))", category: AxiomCategory.multiplication
                                         },
                                         {
                                                 name: "pow",
-                                                raw: "(n1 n2 : nat) : n1 ^ n2 : nat"
+                                                raw: "(n1 n2 : nat) : n1 ^ n2 : nat", category: AxiomCategory.exponents
                                         },
                                         {
                                                 name: "pow_zero",
-                                                raw: "(n1 : nat) : (n1 ^ 0) = (1)"
+                                                raw: "(n1 : nat) : (n1 ^ 0) = (1)", category: AxiomCategory.exponents
                                         },
                                         {
                                                 name: "pow_succ",
-                                                raw: "(n1 n2 : nat) : (n1 ^ (succ(n2))) = ((n1 ^ n2) * n1)"
+                                                raw: "(n1 n2 : nat) : (n1 ^ (succ(n2))) = ((n1 ^ n2) * n1)", category: AxiomCategory.exponents
                                         }
                                 ],
                                 goal: '(0 ^ 0) = (1)',
@@ -426,10 +434,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "zero_pow_zero",
-                                                raw: "(0 ^ 0) = (1)"
+                                                raw: "(0 ^ 0) = (1)", category: AxiomCategory.exponents
                                         },
                                 ],
-                                goal: '(m : mynat) : ((0) ^ (succ m)) = (0)',
+                                goal: '(m : nat) : ((0) ^ (succ m)) = (0)',
                                 description: `
                                 Powers
                                 `
@@ -440,10 +448,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "zero_pow_succ",
-                                                raw: "(n1 : mynat) : ((0) ^ (succ n1)) = (0)"
+                                                raw: "(n1 : nat) : ((0) ^ (succ n1)) = (0)", category: AxiomCategory.exponents
                                         },
                                 ],
-                                goal: '(a : mynat) : (a ^ 1) = (a)',
+                                goal: '(a : nat) : (a ^ 1) = (a)',
                                 description: `
                                 Powers
                                 `
@@ -454,10 +462,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "pow_one",
-                                                raw: "(n1 : mynat) : (n1 ^ 1) = (n1)"
+                                                raw: "(n1 : nat) : (n1 ^ 1) = (n1)", category: AxiomCategory.exponents
                                         },
                                 ],
-                                goal: '(m : mynat) : (1 ^ m) = (1)',
+                                goal: '(m : nat) : (1 ^ m) = (1)',
                                 description: `
                                 Powers
                                 `
@@ -468,10 +476,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "one_pow",
-                                                raw: "(n1 : mynat) : (1 ^ n1) = (1)"
+                                                raw: "(n1 : nat) : (1 ^ n1) = (1)", category: AxiomCategory.exponents
                                         },
                                 ],
-                                goal: '(a m n : mynat) :( a ^ (m + n)) = ((a ^ m) * (a ^ n))',
+                                goal: '(a m n : nat) :( a ^ (m + n)) = ((a ^ m) * (a ^ n))',
                                 description: `
                                 Powers
                                 `
@@ -482,10 +490,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "pow_add",
-                                                raw: "(n1 n2 n3 : mynat) :( n1 ^ (n2 + n3)) = ((n1 ^ n2) * (n1 ^ n3))"
+                                                raw: "(n1 n2 n3 : nat) :( n1 ^ (n2 + n3)) = ((n1 ^ n2) * (n1 ^ n3))", category: AxiomCategory.exponents
                                         },
                                 ],
-                                goal: '(a b n : mynat) : ((a * b) ^ n) = ((a ^ n) * (b ^ n))',
+                                goal: '(a b n : nat) : ((a * b) ^ n) = ((a ^ n) * (b ^ n))',
                                 description: `
                                 Powers
                                 `
@@ -496,10 +504,10 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "mul_pow",
-                                                raw: "(n1 n2 n3 : mynat) : ((n1 * n2) ^ n3) = ((n1 ^ n3) * (n2 ^ n3))"
+                                                raw: "(n1 n2 n3 : nat) : ((n1 * n2) ^ n3) = ((n1 ^ n3) * (n2 ^ n3))", category: AxiomCategory.exponents
                                         },
                                 ],
-                                goal: '(a m n : mynat) : ((a ^ m) ^ n) = (a ^ (m * n))',
+                                goal: '(a m n : nat) : ((a ^ m) ^ n) = (a ^ (m * n))',
                                 description: `
                                 Powers
                                 `
@@ -510,18 +518,18 @@ export const worlds = [
                                 newAxioms: [
                                         {
                                                 name: "pow_pow",
-                                                raw: "(n1 n2 n3 : mynat) : ((n1 ^ n2) ^ n3) = (n1 ^ (n2 * n3))"
+                                                raw: "(n1 n2 n3 : nat) : ((n1 ^ n2) ^ n3) = (n1 ^ (n2 * n3))", category: AxiomCategory.exponents
                                         },
                                         {
                                                 name: "two",
-                                                raw: "2 : nat"
+                                                raw: "2 : nat", category: AxiomCategory.numbers
                                         },
                                         {
                                                 name: "two_eq_succ_one",
-                                                raw: "(2) = (succ 1)"
+                                                raw: "(2) = (succ 1)", category: AxiomCategory.numbers
                                         },
                                 ],
-                                goal: '(a b : mynat) : ((a + b) ^ 2) = (((a ^ 2) + (b ^ 2)) + ((2 * a) * b))',
+                                goal: '(a b : nat) : ((a + b) ^ 2) = (((a ^ 2) + (b ^ 2)) + ((2 * a) * b))',
                                 description: `
                                 Powers
                                 `

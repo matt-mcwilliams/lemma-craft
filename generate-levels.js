@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { worlds } = require('./worlds');
+const { worlds, AxiomCategory } = require('./worlds');
 
 
 const templatePath = path.join(__dirname, 'template.html');
@@ -31,6 +31,7 @@ worlds.forEach((world, worldIndex) => {
                 const nextLevel = levelIndex < world.levels.length-1 ? world.levels[levelIndex + 1] : null
 
                 const axioms = JSON.stringify(axiomList)
+                const axiomCategory = JSON.stringify(AxiomCategory)
                 const goal = `"${level.goal}"`
                 const previousLink = previousLevel ? path.join('/' + world.path, `${'level-' + (levelIndex+0) + '-' + previousLevel.urlName}.html`) : '#';
                 const nextLink = nextLevel ? path.join('/' + world.path, `${'level-' + (levelIndex+2) + '-' + nextLevel.urlName}.html`) : '#';
@@ -47,6 +48,7 @@ worlds.forEach((world, worldIndex) => {
                 templateContent = templateContent.replace('{{ levelCode }}', levelCode);
                 templateContent = templateContent.replace('{{ tipName }}', level.name);
                 templateContent = templateContent.replace('{{ tipDescription }}', level.description);
+                templateContent = templateContent.replace('{{ axiomCategory }}', axiomCategory);
 
                 fs.writeFileSync(levelPath, templateContent);
                 console.log(`Created ${levelPath}`);
