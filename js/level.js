@@ -81,12 +81,28 @@ document.getElementById('induction-button').addEventListener('mouseup', () => {
 
 
 document.addEventListener('keydown', (event) => {
+        const searchBarEl = document.getElementById('search-bar')
+        let firstAxiom = axioms.find(x => x.name.includes(searchBarEl.value))
+
         if (event.key === 'Escape') {
                 hideTip()
-        } else if (event.key = '/') {
+        } else if (event.key === '/') {
                 const searchBarEl = document.getElementById('search-bar')
+                searchBarEl.value = ""
                 searchBarEl.focus()
-        }
+        } else if (event.key === 'Enter' && event.ctrlKey) {
+
+                if (!firstAxiom) return
+
+                windows[currentWindowIndex].goal.rw(new MObject(firstAxiom.raw))
+                updateGoal()
+
+        } else if (event.key === 'Enter') {
+                if (firstAxiom) {
+                        spawnAxiom(firstAxiom.raw)
+
+                }
+        } 
 });
 
 
@@ -273,7 +289,6 @@ function resetCurrentStatement() {
 function updateAxioms(searchTerm="") {
 
         if (searchTerm.endsWith('/')) {
-                searchTerm.length -= 1
                 const searchBarEl = document.getElementById('search-bar')
                 searchBarEl.value = [...searchBarEl.value].filter(x => x !== '/').join('')
         }
