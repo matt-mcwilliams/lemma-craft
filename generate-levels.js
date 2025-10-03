@@ -40,15 +40,16 @@ worlds.forEach((world, worldIndex) => {
                 const levelPath = path.join(levelsDir, `${'level-' + (levelIndex+1) + '-' + level.urlName}.html`);
                 let templateContent = fs.readFileSync(templatePath, 'utf8');
 
-                templateContent = templateContent.replace('{{ axiomList }}', axioms);
-                templateContent = templateContent.replace('{{ goalRaw }}', goal);
-                templateContent = templateContent.replace('{{ previousLink }}', previousLink);
-                templateContent = templateContent.replace('{{ nextLink }}', nextLink);
-                templateContent = templateContent.replace('{{ levelName }}', level.name);
-                templateContent = templateContent.replace('{{ levelCode }}', levelCode);
-                templateContent = templateContent.replace('{{ tipName }}', level.name);
-                templateContent = templateContent.replace('{{ tipDescription }}', level.description);
-                templateContent = templateContent.replace('{{ axiomCategory }}', axiomCategory);
+                templateContent = templateContent.replaceAll('{{ axiomList }}', axioms);
+                templateContent = templateContent.replaceAll('{{ goalRaw }}', goal);
+                templateContent = templateContent.replaceAll('{{ previousLink }}', previousLink);
+                templateContent = templateContent.replaceAll('{{ nextLink }}', nextLink);
+                templateContent = templateContent.replaceAll('{{ levelName }}', level.name);
+                templateContent = templateContent.replaceAll('{{ levelCode }}', levelCode);
+                templateContent = templateContent.replaceAll('{{ tipName }}', level.name);
+                templateContent = templateContent.replaceAll('{{ tipDescription }}', level.description);
+                templateContent = templateContent.replaceAll('{{ axiomCategory }}', axiomCategory);
+                templateContent = templateContent.replaceAll('{{ currentLevelId }}', `"${worldIndex+1}-${levelIndex+1}"`);
 
                 fs.writeFileSync(levelPath, templateContent);
                 console.log(`Created ${levelPath}`);

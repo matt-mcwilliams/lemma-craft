@@ -49,14 +49,7 @@ document.getElementById('goal-card').addEventListener('mouseup', () => {
 
 
 document.getElementById('goal-card').addEventListener('dblclick', () => {
-        const didReflWork = windows[currentWindowIndex].goal.refl()
-
-        if (didReflWork) {
-                removeCurrentWindow()
-                cycleContext(currentWindowIndex % windows.length)
-        }
-
-        updateGoal()
+        attemptRefl()
 })
 
 
@@ -102,7 +95,10 @@ document.addEventListener('keydown', (event) => {
                         spawnAxiom(firstAxiom.raw)
 
                 }
-        } 
+        } else if (event.key === 'j' && event.ctrlKey) {
+                event.preventDefault()
+                attemptRefl()
+        }
 });
 
 
@@ -130,6 +126,7 @@ function init() {
         windows[currentWindowIndex].goal.reparseFromChunks()
 
         updateGoal()
+        updateCheck()
 
 }
 
@@ -274,7 +271,9 @@ function removeCurrentWindow() {
         if (windows.length > 0) {
                 cycleContext(currentWindowIndex % windows.length)
         } else {
-                alert('Finish!')
+                document.getElementById('level-complete').classList.remove('hidden')
+                localStorage.setItem(currentLevelId, 'complete')
+                updateCheck()
         }
 }
 
@@ -344,4 +343,27 @@ function updateAxioms(searchTerm="") {
                 axiomCategoryEls[axiom.category.toString()].appendChild(axiomBlock)
 
         })
+}
+
+
+function attemptRefl() {
+        const didReflWork = windows[currentWindowIndex].goal.refl()
+
+        if (didReflWork) {
+                removeCurrentWindow()
+                cycleContext(currentWindowIndex % windows.length)
+        }
+
+        updateGoal()
+}
+
+
+function updateCheck() {
+        if (localStorage.getItem(currentLevelId) == 'complete') {
+                if (!document.getElementById('level-name').innerText.endsWith('✅')) {
+                        document.getElementById('level-name').innerText += ' ✅'
+                }
+        } else {
+                console.log('not done')
+        }
 }

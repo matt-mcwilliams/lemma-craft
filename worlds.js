@@ -9,6 +9,7 @@ export const AxiomCategory = {
 export const worlds = [
         {
                 path: 'levels/world-1/',
+                name: 'Introduction',
                 levels: [
                         {
                                 name: 'The Double Click',
@@ -131,6 +132,7 @@ export const worlds = [
 
         {
                 path: 'levels/world-2/',
+                name: 'Addition',
                 levels: [
                         {
                                 name: 'Again?',
@@ -254,6 +256,7 @@ export const worlds = [
 
         {
                 path: 'levels/world-3/',
+                name: 'Multiplication',
                 levels: [
                         {
                                 name: 'Zero Times',
@@ -401,6 +404,7 @@ export const worlds = [
         {
                 
                 path: 'levels/world-4/',
+                name: 'Exponents',
                 levels: [
                         {
                                 name: 'zero_pow_zero',

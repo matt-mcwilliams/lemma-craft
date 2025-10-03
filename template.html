@@ -16,7 +16,7 @@
 
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
                         <div class="text-black sticky bottom-0 px-4 py-2 bg-white border-t-2 border-t-black outline-4 outline-white">
-                                <div class="flex justify-between gap-3"><strong class="block">{{ levelName }}</strong><div>{{ levelCode }}</div></div>
+                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">{{ levelName }}</strong><div>{{ levelCode }}</div></div>
                                 <div class="flex jusity-stretch gap-3">
                                         <a class="bg-gray-300 block w-full cursor-pointer text-center" href="{{ previousLink }}">←</a>
                                         <a class="bg-gray-300 block w-full cursor-pointer text-center" href="/">🏠︎</a>
@@ -33,8 +33,18 @@
 
                         <div class="absolute right-3 top-3 bg-red-800 text-red-100 px-3 py-2 rounded-xl cursor-pointer" onclick="cycleContext()">Goal <span id="windowIndex">1</span> / <span id="windowCount">1</span></div>
 
+                        <div class="bg-white rounded-lg border-4 border-blue-900 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-4 w-fit py-6 z-100 hidden" id="level-complete">
+                                <h2 class="text-xl font-bold mb-4 text-center">Level Complete!</h2>
+
+                                <div class="flex gap-4">
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" href="{{ previousLink }}">Previous Level</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" href="{{ nextLink }}">Next Level</a>
+                                </div>
+                        </div>
+
                         <!-- Tooltip -->
-                        <div class="absolute right-4 bottom-4 bg-white p-4 w-[40%] max-h-[60%] overflow-y-scroll z-20" id="tip-card">
+                        <div class="absolute right-4 bottom-4 bg-white p-4 w-[60%] max-h-[90%] overflow-y-scroll z-20 border-2 border-black" 
+                                id="tip-card">
                                 <div class="sticky top-0 flex justify-end">
                                         <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                                 </div>
@@ -55,6 +65,8 @@
                 let goalRaw = {{ goalRaw }}
 
                 let AxiomCategory = {{ axiomCategory }}
+
+                let currentLevelId = {{ currentLevelId }}
         </script>
 
         <script src="/js/level.js"></script>
