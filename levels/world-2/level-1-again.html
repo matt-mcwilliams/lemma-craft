@@ -16,12 +16,12 @@
 
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
                         <div class="text-black sticky bottom-0 px-4 py-2 bg-white border-t-2 border-t-black outline-4 outline-white">
-                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">{{ levelName }}</strong><div>{{ levelCode }}</div></div>
+                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">Again?</strong><div>Level 2-1</div></div>
                                 <div class="flex jusity-stretch gap-3">
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="{{ previousLink }}">←</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="#">←</a>
                                         <a class="bg-gray-300 block w-full cursor-pointer text-center" href="/">🏠︎</a>
                                         <a class="bg-gray-300 block w-full cursor-pointer text-center" href="">⟳</a>
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="{{ nextLink }}">→</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="\levels\world-2\level-2-association.html">→</a>
                                 </div>
                         </div>
                 </div>
@@ -37,8 +37,8 @@
                                 <h2 class="text-xl font-bold mb-4 text-center">Level Complete!</h2>
 
                                 <div class="flex gap-4">
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" href="{{ previousLink }}">Previous Level ( [ )</a>
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" href="{{ nextLink }}">Next Level ( ] )</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" href="#">Previous Level</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" href="\levels\world-2\level-2-association.html">Next Level</a>
                                 </div>
                         </div>
 
@@ -48,8 +48,26 @@
                                 <div class="sticky top-0 flex justify-end">
                                         <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                                 </div>
-                                <p class="text-xl font-bold mb-4">{{ tipName }}</span></p>
-                                <p class="mb-4" id="tip-body">{{ tipDescription }}</p>
+                                <p class="text-xl font-bold mb-4">Again?</span></p>
+                                <p class="mb-4" id="tip-body">
+                                Wait — isn't this already true? No; we've been given the communative property equivalent for this, n + 0 = n. But we didn't proove the communative property yet, so how will we solve this?
+                                <br />
+                                <br />
+                                This problem cannot be solved using only draggings and double-clicks (rewrites and reflections); we must use something called <strong>proof by induction</strong>.
+                                <br />
+                                <br />
+                                Proof by induction allows a statement to be solved given the following: 
+                                <br />
+                                - a statement regarding n is true for n = 0
+                                <br />
+                                - given that a statement regarding n is true for n then it is true for the successor of n
+                                <br />
+                                <br />
+                                If both of the above criteria are correct, then the statement about n is true for all natural numbers of n. Take a moment and think about why this makes sense — if a statement is true for zero, and, for all natural numbers (zero being one of the natural numbers) if it is true for n then it is true for the successor of n — why would all natural numbers be included in this?
+                                <br />
+                                <br />
+                                To start a proof by induction, drag "n : nat" onto the "i" icon next to the goal to begin. Notice at the top right it shows 1 / 2 now, instead of 1 / 1 as it did before. This is because there is now two goals to be proved, i.e. the two bullet points listed above. To cycle between them click on the 1 / 2; they can be solved in any order.
+                                </p>
                                 <button class="w-fit mx-auto block bg-gray-700 text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                         </div>
                         <button class="absolute right-4 bottom-4 p-4 max-w-[40%] max-h-[60%] z-10 cursor-pointer bg-gray-700 text-white font-bold rounded-xl block"
@@ -60,13 +78,13 @@
         </div>
 
         <script>
-                const axioms = {{ axiomList }}
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"addition","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1}]
 
-                let goalRaw = {{ goalRaw }}
+                let goalRaw = "(n : nat) : (0 + n) = (n)"
 
-                let AxiomCategory = {{ axiomCategory }}
+                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
 
-                let currentLevelId = {{ currentLevelId }}
+                let currentLevelId = "2-1"
         </script>
 
         <script src="/js/level.js"></script>

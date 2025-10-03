@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LemmaCraft</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="h-screen select-none" onload="init()"" >
+        <div class="grid grid-cols-4 h-full content-stretch divide-x-2 divide-black">
+                <div class="relative h-screen overflow-y-none flex flex-col pt-6">
+                        <input type="text" class="block bg-gray-100 rounded-xl border-2 border-gray-300 px-6 py-3 mx-6" 
+                                placeholder="Search for lemmas:"
+                                oninput="updateAxioms(this.value)"
+                                id="search-bar">
+
+                        <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
+                        <div class="text-black sticky bottom-0 px-4 py-2 bg-white border-t-2 border-t-black outline-4 outline-white">
+                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">Addition</strong><div>Level 1-4</div></div>
+                                <div class="flex jusity-stretch gap-3">
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="\levels\world-1\level-3-the-axioms.html">←</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="/">🏠︎</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="">⟳</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="#">→</a>
+                                </div>
+                        </div>
+                </div>
+                <div class="bg-red-300 col-span-3 relative overflow-x-scroll" id="whiteboard">
+                        <div class="flex w-[90%] absolute left-[50%] -translate-x-[50%] top-4 justify-center">
+                                <div class="bg-white text-xl rounded-xl px-6 py-2 border-6 border-blue-900 cursor-pointer " id="goal-card"><span id="goal-text">1+1=2</span></div>
+                                <button class="bg-red-200 text-red-900 px-4 rounded-xl ml-4 border-6 border-blue-900 cursor-pointer font-mono font-bold text-xl" id="induction-button">i</button>
+                        </div>
+
+                        <div class="absolute right-3 top-3 bg-red-800 text-red-100 px-3 py-2 rounded-xl cursor-pointer" onclick="cycleContext()">Goal <span id="windowIndex">1</span> / <span id="windowCount">1</span></div>
+
+                        <div class="bg-white rounded-lg border-4 border-blue-900 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-4 w-fit py-6 z-100 hidden" id="level-complete">
+                                <h2 class="text-xl font-bold mb-4 text-center">Level Complete!</h2>
+
+                                <div class="flex gap-4">
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" href="\levels\world-1\level-3-the-axioms.html">Previous Level</a>
+                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" href="#">Next Level</a>
+                                </div>
+                        </div>
+
+                        <!-- Tooltip -->
+                        <div class="absolute right-4 bottom-4 bg-white p-4 w-[60%] max-h-[90%] overflow-y-scroll z-20 border-2 border-black" 
+                                id="tip-card">
+                                <div class="sticky top-0 flex justify-end">
+                                        <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
+                                </div>
+                                <p class="text-xl font-bold mb-4">Addition</span></p>
+                                <p class="mb-4" id="tip-body">
+                                Now that we have natural numbers, let's add them together! Notice three new axioms. Let's break down what they mean:
+                                <br />
+                                <br />
+                                <b>addition</b> : "(n1 n2 : nat) : n1 + n2 : nat" — the sum of any two natural numbers is a natural number. This means that addition is closed under natural numbers.
+                                <br />
+                                <br />
+                                <b>add_zero</b> : "(n1 : nat) : n1 + 0 = n1" — the sum of a natural number and zero (notice the order — we have not proved communativity yet!) is the natural number.
+                                <br />
+                                <br />
+                                <b>add_succ</b> : "(n1 n2 : nat) : n1 + succ(n2) = succ (n1 + n2)" — to add n1 and the successor of n2 together, take the successor of n1 + n2. Let's see an example:
+                                <br />
+                                <br />
+                                2 + 2 =
+                                <br />
+                                2 + succ 1 = 
+                                <br />
+                                succ ( 2 + 1 ) =
+                                <br />
+                                succ ( 2 + succ 0 ) =
+                                <br />
+                                succ ( succ ( 2 + 0 )) = 
+                                <br />
+                                succ ( succ 2 ) = 
+                                <br />
+                                succ 3 =
+                                <br />
+                                4.
+                                <br />
+                                <br />
+                                Thus, 2 + 3 = 5. If this feels excessive, which it should, just know that we'll be proving some statements that make our life easier going forward.
+                                <br />
+                                <br />
+                                --
+                                <br />
+                                <br />
+                                Now for the level at hand:
+                                <br />
+                                <br />
+                                First, bring out the <strong>add_succ</strong> axiom by clicking on it, defining addition of successor. Because we want n1 to represent a, drag "a : nat" onto this new hypothesis. 
+                                <br />
+                                <br />
+                                > Note: "a : nat" (or the axiom you introduced) could be hiding underneath this tip card. Try clicking the "x" if you can't find it. You can always open it again later :)</>
+                                <br />
+                                <br />
+                                What do we want to represent n2? Bring it out and drag it onto the hypothesis. We now have something we can rewrite the goal with. Drag this new hypothesis onto the goal.
+                                <br />
+                                <br />
+                                Now see if you can simplify "a + 0" into just "a" — which axiom could you introduce?
+                                </p>
+                                <button class="w-fit mx-auto block bg-gray-700 text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
+                        </div>
+                        <button class="absolute right-4 bottom-4 p-4 max-w-[40%] max-h-[60%] z-10 cursor-pointer bg-gray-700 text-white font-bold rounded-xl block"
+                                onclick="showTip()">
+                                ?
+                        </button>
+                </div>
+        </div>
+
+        <script>
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"addition","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1}]
+
+                let goalRaw = "(a : nat) : (a + (succ(0))) = (succ(a))"
+
+                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
+
+                let currentLevelId = "1-4"
+        </script>
+
+        <script src="/js/level.js"></script>
+        <script src="/js/Statement.js"></script>
+        <script src="/js/MObject.js"></script>
+        <script src="/js/mathdata.js"></script>
+</body>
+</html>

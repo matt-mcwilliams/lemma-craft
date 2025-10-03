@@ -17,6 +17,10 @@ let currentStatement = null
 
 
 
+let isLevelFinished = false
+
+
+
 document.addEventListener('mousemove', (event) => {
         if (currentStatement == null) return
 
@@ -272,6 +276,7 @@ function removeCurrentWindow() {
                 cycleContext(currentWindowIndex % windows.length)
         } else {
                 document.getElementById('level-complete').classList.remove('hidden')
+                isLevelFinished = true
                 localStorage.setItem(currentLevelId, 'complete')
                 updateCheck()
         }
