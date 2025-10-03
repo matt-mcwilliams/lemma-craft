@@ -33,8 +33,8 @@ worlds.forEach((world, worldIndex) => {
                 const axioms = JSON.stringify(axiomList)
                 const axiomCategory = JSON.stringify(AxiomCategory)
                 const goal = `"${level.goal}"`
-                const previousLink = previousLevel ? path.join('/' + world.path, `${'level-' + (levelIndex+0) + '-' + previousLevel.urlName}.html`) : '#';
-                const nextLink = nextLevel ? path.join('/' + world.path, `${'level-' + (levelIndex+2) + '-' + nextLevel.urlName}.html`) : '#';
+                const previousLink = previousLevel ? path.join('.', `${'level-' + (levelIndex+0) + '-' + previousLevel.urlName}.html`) : '#';
+                const nextLink = nextLevel ? path.join('.', `${'level-' + (levelIndex+2) + '-' + nextLevel.urlName}.html`) : '#';
                 const levelCode = `Level ${worldIndex+1}-${levelIndex+1}`
 
                 const levelPath = path.join(levelsDir, `${'level-' + (levelIndex+1) + '-' + level.urlName}.html`);
