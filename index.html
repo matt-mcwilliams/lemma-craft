@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+        <!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/5880e3f55d5b7196c9f07546/script.js"></script> <!-- End cookieyes banner -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Welcome to LemmaCraft | Math Proof Game</title>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WM0NQY2HW0"></script>
+        <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-WM0NQY2HW0');
+        </script>
 </head>
 <body>
         <h1 class="text-center text-7xl pt-16 font-bold font-mono">LemmaCraft</h1>
-        <div class="grid grid-cols-4 gap-4 px-4 py-16 max-w-4xl mx-auto items-start" id="level-grid">
+        <div class="grid grid-cols-4 gap-4 px-4 pt-16 pb-8 max-w-4xl mx-auto items-start" id="level-grid">
                 <!-- Javascript injects HTML here -->
         </div>
+        <p class="text-center mb-4">© 2025 Matthew McWilliams. Report bugs or get in contact
+                <a href="./contact.html" class="text-blue-800 underline">here</a>. Or see more of my cool stuff 
+                <a href="/" class="text-blue-800 underline">here</a>.</p>
 
         <script type="module">
                 import { worlds } from "./worlds.js";

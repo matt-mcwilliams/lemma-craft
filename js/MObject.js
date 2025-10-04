@@ -100,6 +100,7 @@ class MObject {
                         if (this.chunks[0] == '(') {
                                 
                                 let colonIndex = -1
+                                let hasColon = false
                                 
                                 let index = 0
                                 
@@ -110,15 +111,21 @@ class MObject {
                                                 index += parenthesisLength
                                         } else if (this.chunks[index] == ':') {
                                                 colonIndex = index
+                                                hasColon = true
+                                                break
+                                        } else if (this.chunks[index] == ')') {
                                                 break
                                         }
                                         index++;
                                 }
+
+                                if (hasColon) {
+                                        variableDefinitions = this.chunks.splice(0,colonIndex + 1)
+                                        variableDefinitions.pop()
+                                                                                                        
+                                        this.variables = variableDefinitions.slice(1, variableDefinitions.indexOf(':'))
+                                }
                                 
-                                variableDefinitions = (this.chunks.splice(0,colonIndex + 1))
-                                variableDefinitions.pop()
-                                                                                                
-                                this.variables = variableDefinitions.slice(1, variableDefinitions.indexOf(':'))
                                 
                                 
                         }

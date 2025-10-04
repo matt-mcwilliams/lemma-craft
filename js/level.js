@@ -102,6 +102,14 @@ document.addEventListener('keydown', (event) => {
         } else if (event.key === 'j' && event.ctrlKey) {
                 event.preventDefault()
                 attemptRefl()
+        } else if (event.key === '[') {
+                event.preventDefault()
+                const linkEl = document.getElementById('prev-link')
+                linkEl.click()
+        } else if (event.key === ']') {
+                event.preventDefault()
+                const linkEl = document.getElementById('next-link')
+                linkEl.click()
         }
 });
 
@@ -377,7 +385,7 @@ function updateCheck() {
 
 function launchConfetti() {
         confetti({
-                particleCount: 100,  // Number of confetti pieces (default: 50)
+                particleCount: 200,  // Number of confetti pieces (default: 50)
                 spread: 70,          // Spread angle in degrees (default: 45)
                 origin: { y: 0.6 }   // Starting y-position (0 = top, 1 = bottom; default: 0.6)
         });
