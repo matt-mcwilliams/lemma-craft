@@ -26,7 +26,11 @@ document.addEventListener('mousemove', (event) => {
 
         currentStatement.element.style.pointerEvents = 'none';
 
-        currentStatement.element.style.left = `calc(${event.clientX + 'px'} + 18px - 25%)`;
+        console.log(tipIsHidden)
+        const whiteboardEl = document.getElementById('whiteboard');
+        const rect = whiteboardEl.getBoundingClientRect();
+        const xPercent = ((event.clientX - rect.left) / rect.width) * 100;
+        currentStatement.element.style.left = `${xPercent}%`;
         currentStatement.element.style.top = event.clientY + 'px';
 })
 
@@ -110,6 +114,9 @@ document.addEventListener('keydown', (event) => {
                 event.preventDefault()
                 const linkEl = document.getElementById('next-link')
                 linkEl.click()
+        } else if (event.key === 'h' && document.activeElement !== document.getElementById('search-bar')) {
+                event.preventDefault()
+                toggleTip()
         }
 });
 
@@ -195,12 +202,30 @@ function spawnAxiom(axiom) {
 }
 
 
+let tipIsHidden = false
+
 function hideTip() {
         document.getElementById('tip-card').style.display = 'none'
+        document.getElementById('whiteboard').style.gridColumn = `span 6 / span 6`
+        document.getElementById('help-toggle').innerText = 'Show Help'
+        
+        tipIsHidden = true
 }
 
 function showTip() {
-        document.getElementById('tip-card').style.display = 'block'
+        document.getElementById('tip-card').style.display = 'flex'
+        document.getElementById('whiteboard').style.gridColumn = `span 3 / span 3`
+        document.getElementById('help-toggle').innerText = 'Hide Help'
+        
+        tipIsHidden = false
+}
+
+function toggleTip() {
+        if (tipIsHidden) {
+                showTip()
+        } else {
+                hideTip()
+        }
 }
 
 
