@@ -27,14 +27,19 @@ worlds.forEach((world, worldIndex) => {
 
                 axiomList.push(...level.newAxioms)
 
-                const previousLevel = levelIndex > 0 ? world.levels[levelIndex - 1] : null
-                const nextLevel = levelIndex < world.levels.length-1 ? world.levels[levelIndex + 1] : null
+                const nextNewWorld = levelIndex >= world.levels.length-1
+                const prevNewWorld = levelIndex == 0
+
+                const previousLevel = prevNewWorld ? (worlds[worldIndex-1]?.levels[worlds[worldIndex-1]?.levels.length - 1] ?? null) : world.levels[levelIndex-1]
+                const nextLevel = nextNewWorld ? (worlds[worldIndex+1]?.levels[0] ?? null) : world.levels[levelIndex + 1]
 
                 const axioms = JSON.stringify(axiomList)
                 const axiomCategory = JSON.stringify(AxiomCategory)
                 const goal = `"${level.goal}"`
-                const previousLink = previousLevel ? path.join('.', `${'level-' + (levelIndex+0) + '-' + previousLevel.urlName}.html`) : '#';
-                const nextLink = nextLevel ? path.join('.', `${'level-' + (levelIndex+2) + '-' + nextLevel.urlName}.html`) : '#';
+
+                const previousLink = previousLevel ? path.join(prevNewWorld ? `../../${worlds[worldIndex-1].path}` : '.', `${'level-' + (prevNewWorld ? worlds[worldIndex-1].levels.length : levelIndex) + '-' + previousLevel.urlName}.html`) : '#';
+
+                const nextLink = nextLevel ? path.join(nextNewWorld ? `../../${worlds[worldIndex+1].path}` : '.', `${'level-' + ((levelIndex+1)%(world.levels.length)+1) + '-' + nextLevel.urlName}.html`) : '#';
                 const levelCode = `Level ${worldIndex+1}-${levelIndex+1}`
 
                 const levelPath = path.join(levelsDir, `${'level-' + (levelIndex+1) + '-' + level.urlName}.html`);
