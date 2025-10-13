@@ -9,121 +9,198 @@ export const AxiomCategory = {
 export const worlds = [
         {
                 path: 'levels/world-1/',
-                name: 'Introduction',
+                name: 'The Apprentice',
                 levels: [
                         {
-                                name: 'The Double Click',
-                                urlName: 'the-double-click',
+                                name: 'Basic Alchemy',
+                                urlName: 'basic-alchemy',
                                 newAxioms: [],
-                                goal: '(x y z : nat) : ((x * y) + z) = ((x * y) + z)',
-                                description: `Welcome to LemmaCraft! Here we'll build a math system from scratch. 
-                                <br/>
-                                <br/>
-                                You may notice that the two halves of the equation at the top (this is our goal, what we're trying to prove) are the same. Whenever this is the case, simply double-click on the goal to prove it.
-                                <br/>
-                                <br/>
-                                Most early-game goals will be solved by a double-click, and your challenge is to manipulate the equation so that both sides are *exactly* the same. For example, 1 + 2 = 2 + 1 would not work, but 1 + 2 = 1 + 2 would.`
+                                goal: '(a b c : nat) : ((a + b) + c) = ((a + b) + c)',
+                                description: `
+You wake up to find yourself in a soft bed in a lush, green village. Outside your window, you see the giant golden bell overlooking the walled-in school-town.
+
+It’s been two weeks since you began alchemy school. The school is small, with only thirty apprentices, each with a wizard they apprentice to, and one Principal known only as the Second Sage. The Second Sage is the keeper of the spell-book, the most powerful object the world knows about. Wars have been fought over this book since the beginning of time. Most of the apprentices have been here for multiple years and are waiting on the Principal's leave to graduate.
+
+But not you. Your wizard, who hasn’t shown up on time once this year, is somewhat forgetful. His last student had quit before three months had passed, and if he doesn’t begin to teach you a spell that does anything useful, you might do the same.
+
+As you arrive at the blood-red apple orchard near where you are scheduled to meet him, you try out the only spell you know: a reflection. A reflection is really simple, really. You can transform an object into another object — but only if you can prove this transformation’s Lemma.
+
+You pull down one of the apples in the tree above you and notice a dark brown spot. Fortunately, you know how to transform the apple with a reflection: the magic formula to remove a blemish is a + b + c = a + b + c. This is your goal: if you can make both sides of the goal exactly the same, you can cast the spell.
+
+This screen is where you prove the goal is exactly the same. On the left is your Lemma list. This is like your “toolbox” with some helpful tools. You received this on your first day of school but have since not needed to use it. On your right is your work bench. This is where you can manipulate these “magic formulas.” Notice that in the middle of the work bench are three draggable blocks. These are your hypothesises, and the three in this level will not be used (If you’re curious, “a : nat” means “a is a natural number,” but we won’t use these just yet).
+
+At the top of the work bench is your goal, a + b + c = a + b + c. Fortunately, both sides of the equation are exactly the same for you. You can cast a reflection by double-clicking your goal.
+
+Go ahead! Double click.
+
+`
                         },
                         
                         {
-                                name: 'Drag \'n Drop',
-                                urlName: 'drag-n-drop',
+                                name: 'A New Spell',
+                                urlName: 'a-new-spell',
                                 newAxioms: [],
                                 goal: '(x y : nat) (y = x + 7) : (2 * y) = (2 * (x + 7))',
                                 description: `
-                                Now the equation doesn't line up! And what's that in the middle? The definition for y, y = x + 7. (If you can't see it try closing this tip)
-                                <br />
-                                <br />
-                                "y = x + 7" is a hypothesis, meaning that we can assume it to be true. Notice that, in the goal, if you substitute x + 7 for y, the equation becomes exactly equal. To rewrite the equation using a hypothesis, simply drag the hypothesis onto the equation.
-                                <br />
-                                <br />
-                                This should make both sides equal and thus solvable with a double-click.
-                                `
+As you cast the reflection, the apple begins to transform. Slowly, like a block of ice melting in the sun, the spot on the apple fades into a smooth, enchanting crimson.
+
+“Hoy! Simon!” You look over your shoulder to find Magi Grambletόn, your assigned wizard, sitting on a fallen tree. He removes his pointy gray hat as he stands up. “I’ve been thinkin’: you know these basic reflection spells pretty well. Mighty fast learner. How’s about we learn a new spell?”
+
+“Yes, I’d love to. What kind of spell?” you ask. Of course you are ready for a new spell. You’ve been ready since the second day of school, after he taught you to do a reflection.
+
+“A powerful spell, a rewrite, many lemmas you can make with it. And some of these lemmas have powerful magic in them. Shall we try turning this beautiful apple into an orange now?”
+
+To perform a rewrite, use one of your hypotheses. Remember that the hypotheses are the draggable blocks in the middle of your workbench. Notice that if you substitute “x + 7” into the equation for “y”, the equation becomes symmetrical on both sides. Drag the hypothesis “y = x + 7” onto the goal and watch it transform. 
+
+Now, both sides are equal and you can cast a reflection by double-clicking on the goal.
+
+`
                         },
 
                         {
                                 name: 'The Axioms',
                                 urlName: 'the-axioms',
                                 newAxioms: [
-                                        {name: 'succ', raw: '(n : nat) : succ n : nat', category: AxiomCategory.numbers},
-                                        { name: 'zero', raw:'0 : nat', category: AxiomCategory.numbers },
+                                        {name: 'succ',     raw: '(n : nat) : succ n : nat',                             category: AxiomCategory.numbers},
+                                        {name: 'zero',     raw:'0 : nat',                                               category: AxiomCategory.numbers},
+                                        {name: 'add',      raw:'(n1 n2 : nat) : n1 + n2 : nat',                         category: AxiomCategory.addition},
+                                        {name: 'add_zero', raw:'(n1 : nat) : n1 + 0 = n1',                              category: AxiomCategory.addition},
+                                        {name: 'add_succ', raw:'(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))',  category: AxiomCategory.addition}
                                 ],
-                                goal: '(a b : nat) (succ a = b) : (succ(succ(a))) = (succ(b))',
+                                goal: '(m n : nat) : ((m + n) + 0) = (m + n)',
                                 description: `
-                                You may have noticed the additional hypothesises of the form "a : nat". This means "a is a natural number", i.e. 0, 1, 2, 3, etc. 
-                                <br />
-                                <br />
-                                Look at the left pane: notice the introduction of two axioms. Axioms are things that we will assume to be true for the entire number system. These two axioms define the natural numbers. The first axiom says "0 is a natural number" and the second axiom says "succ n is a natural number for all n". What does this mean?
-                                <br />
-                                <br />
-                                "succ n" reads "the successor of n". For example, 1 is the successor of 0, and 2 is the successor of 1. Thus, 2 = succ (succ 0). All natural numbers besides zero are a successor of some other unique natural number.
-                                <br />
-                                <br />
-                                Because 1 = succ 0, this statement could be written as: succ (succ 0) = succ 1. We will prove a more general statement in this level.
-                                <br />
-                                <br />
-                                But don't be scared by the introduction of new terminology! This goal means that if a and b are natural numbers, and succ a = b (the hypothesises), then succ (succ a) = succ b. Give it a shot!
+Drops of blood-red paint fall from the apple as it melts into a picture-perfect orange. Two months ago you would never believe your eyes at this, but ever since you’ve joined alchemy school you’ve seen dozens of such transformations.
+
+You practice more. At first, it’s just fruits that you transform, but before long you’ve made statues dance, put out a fire, and even treated a cut.
+
+After a couple of weeks with this spell, Magi Grambletόn brings five polished silver bars to your training. “These here are axioms,” he said. “With these wonderful little tools you can rewrite almost anything. Many of these to collect, there are. But these five will meet our needs for now.
+
+“Now, let me show you how to melt the bark off this log. This is important in the wild, you know, if you need to make a fire.”
+
+You put the silver bars in your toolbox and begin to de-bark the log.
+
+An axiom in math is something we assume to be true but can’t necessarily prove. For example, we must assume that adding zero to a number keeps it the same. Think of it as part of the definition of addition. Notice the axioms appearing in your toolbox on the left pane. You have five axioms, all dealing with either natural numbers or addition. Recall that natural numbers are all integers greater than or equal to 0:
+
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, …
+
+Here is a short description of all the axioms:
+
+zero: This axiom ( 0 : nat ) says that zero is a natural number. If you ever need to substitute 0 in to represent a natural number, use this.
+
+succ: succ (short for successor) says that the successor of a natural number is a natural number. Thus, for any natural number n1, the successor of n1 (denoted succ n1) is a natural number. For example, the successor of 0 is 1: succ 0 = 1 (this is the definition of “1”). Thus, 1 is a natural number.
+
+All natural numbers can be defined as either zero or the successor of another natural number. For example 10 is the successor of 9, 3 is the successor of 2, and 0 is a natural number by definition.
+
+add: The sum of two natural numbers is a natural number. For example, 2 and 3 are both natural numbers, and 2 + 3 = 5. Thus, 5 is a natural number.
+
+add_zero: Adding zero to a number keeps it the same. For example, 4 + 0 = 4.
+
+add_succ: This is the most “complicated” of them all — it’s a recursive definition for addition. We’ll discuss this axiom in detail in the next level.
+
+To use an axiom, click on it on the left to bring it onto the workbench. For example, this level has the following goal:
+
+m + n + 0 = m + n
+
+Note that this math system treats “m + n + 0” as “(m + n) + 0”.
+
+Adding zero to a natural number (m + n is a natural number because m and n are natural numbers) is equivalent to just that natural number. So, click on add_zero. The following hypothesis is added to the workbench:
+
+(n1 : nat) : n1 + 0 = n1
+
+This means that for any natural number n1, n1 + 0 = n1. Thus we can substitute anything for n1 and the statement would be true — for instance, we could substitute “m + n” for n1 because “m + n” is a natural number. The interpreter can guess at what you want to substitute when you drag the hypothesis onto the goal.
+
+Go for it, drag this add_zero hypothesis onto your goal.
+                                
                                 `
                         },
-
+                        
                         {
-                                name: 'Addition',
-                                urlName: 'addition',
+                                name: 'Now We\'re Adding',
+                                urlName: 'now-were-adding',
                                 newAxioms: [
-                                        {name: 'addition', raw:'(n1 n2 : nat) : n1 + n2 : nat', category: AxiomCategory.addition},
-                                        {name: 'add_zero', raw:'(n1 : nat) : n1 + 0 = n1', category: AxiomCategory.addition},
-                                        {name: 'add_succ', raw:'(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))', category: AxiomCategory.addition}
+                                        {name: 'one', raw:'1 : nat',  category: AxiomCategory.numbers},
+                                        {name: 'one_eq_succ_zero', raw:'(1) = (succ 0)',  category: AxiomCategory.numbers},
+                                        {name: 'two', raw:'2 : nat',  category: AxiomCategory.numbers},
+                                        {name: 'two_eq_succ_zero', raw:'(2) = (succ 1)',  category: AxiomCategory.numbers},
                                 ],
-                                goal: '(a : nat) : (a + (succ(0))) = (succ(a))',
+                                goal: '(1 + 1) = (2)',
                                 description: `
-                                Now that we have natural numbers, let's add them together! Notice three new axioms. Let's break down what they mean:
-                                <br />
-                                <br />
-                                <b>addition</b> : "(n1 n2 : nat) : n1 + n2 : nat" — the sum of any two natural numbers is a natural number. This means that addition is closed under natural numbers.
-                                <br />
-                                <br />
-                                <b>add_zero</b> : "(n1 : nat) : n1 + 0 = n1" — the sum of a natural number and zero (notice the order — we have not proved communativity yet!) is the natural number.
-                                <br />
-                                <br />
-                                <b>add_succ</b> : "(n1 n2 : nat) : n1 + succ(n2) = succ (n1 + n2)" — to add n1 and the successor of n2 together, take the successor of n1 + n2. Let's see an example:
-                                <br />
-                                <br />
-                                2 + 2 =
-                                <br />
-                                2 + succ 1 = 
-                                <br />
-                                succ ( 2 + 1 ) =
-                                <br />
-                                succ ( 2 + succ 0 ) =
-                                <br />
-                                succ ( succ ( 2 + 0 )) = 
-                                <br />
-                                succ ( succ 2 ) = 
-                                <br />
-                                succ 3 =
-                                <br />
-                                4.
-                                <br />
-                                <br />
-                                Thus, 2 + 3 = 5. If this feels excessive, which it should, just know that we'll be proving some statements that make our life easier going forward.
-                                <br />
-                                <br />
-                                --
-                                <br />
-                                <br />
-                                Now for the level at hand:
-                                <br />
-                                <br />
-                                First, bring out the <strong>add_succ</strong> axiom by clicking on it, defining addition of successor. Because we want n1 to represent a, drag "a : nat" onto this new hypothesis. 
-                                <br />
-                                <br />
-                                > Note: "a : nat" (or the axiom you introduced) could be hiding underneath this tip card. Try clicking the "x" if you can't find it. You can always open it again later :)</>
-                                <br />
-                                <br />
-                                What do we want to represent n2? Bring it out and drag it onto the hypothesis. We now have something we can rewrite the goal with. Drag this new hypothesis onto the goal.
-                                <br />
-                                <br />
-                                Now see if you can simplify "a + 0" into just "a" — which axiom could you introduce?
+Sure enough, the bark dissolves into the wood. Magi Grambletόn, impressed, says aloud, “I thought it would take weeks to learn this. Nothin’ left for today's session I guess.”
+
+You exhale in disappointment: disappointment in your assigned wizard, in your snail’s pace lessons, and most of all, in your unsatisfied desire for greatness. It has now been two months since you’ve started learning alchemy, and you feel miles behind everyone else.
+
+Walking back to the center village, pondering on your life, you hear the golden bell start ringing. At first you think it’s the dinner bell, but the bell doesn’t make the jingle you love hearing. Then you imagine a ceremony, perhaps someone had finally graduated, but in your time the only ceremony at the school was planned for weeks and you would have heard about it.
+
+The bell continues to ring. You have a growing feeling that something has gone terribly wrong. You start to run. You’re a couple of miles away from the village but you hardly notice the distance. Within a couple of minutes you arrive at the large black door at the entrance to the town. 
+
+The door is shut, which is rather odd for this time of day. But what’s even more strange is that it won’t open. In fact, your given key won’t open it, which you discover after you fail to unlock it. No, something far worse has happened: a sealing spell was cast on the door, which you discern after trying to cast a spell to break the door.
+
+To open it, you’ll need to use a counter-spell, something you’ve only seen a glimpse of in books. 
+
+You vaguely recall a counter-spell cast from the lemma “1 + 1 = 2,” but don’t recollect whether that is the correct one. You decide to give it a shot.
+
+To prove this lemma, you’ll need to make use of a few new axioms that define 1 and 2:
+
+one, two: These two axioms introduce the natural numbers 1 and 2. 
+
+one_eq_succ_zero, two_eq_succ_one: These two axioms define 1 and 2 as the successors of their previous numbers.
+
+This theorem requires the use of the add_succ axiom. This defines addition for all numbers other than zero, and it does so recursively. Recursively means that you may need to apply it a number of times to add some numbers. To use add_succ, you must have something of the form “a + succ b.” Then, you can cast a rewrite and change it to the form “succ a + b.” While this isn’t immediately helpful, eventually you can rewrite this expression into “succ m + 0” and use add_zero to simplify to “succ m.”
+
+For example, to solve 0 + 2 with this definition of addition, one would proceed as follows:
+
+0 + 2
+0 + succ 1 ← apply definition of 2 as the successor of 1
+succ ( 0 + 1 ) ← apply add_succ
+succ ( 0 + succ 0 ) ← apply definition of 1 as the successor of 0
+succ ( succ ( 0 + 0 ) ) ← apply add_succ
+succ ( succ 0 ) ← apply add_zero
+succ 1 ← apply definition of 1 as successor of 0
+2 ← apply definition of 2 as successor of 1
+
+Thus, 0 + 2 = 2.
+
+                                `
+                        },
+                        
+                        {
+                                name: 'A Dark Day',
+                                urlName: 'a-dark-day',
+                                newAxioms: [],
+                                goal: '(n : nat) : (0 + n) = (n)',
+                                description: `
+The spell works, and the door opens. A sudden horror overtakes you, as if the sealing spell on the door had masked some form of evil inside the village.
+
+You notice hundreds of small footprints stampeding across the town. These are not human footprints, nor animal footprints, but something in between. You’ve heard stories of dwarves, goblins, and even conscious animals, but have never seen anything of the sort before.
+
+Suddenly, a flash of light and a thunderous boom rock the complex. It came from the library, residence of the Second Sage, and appeared as if lightning struck the ground without a streaking flash from the sky. Running towards the library, you see a horrible sight. A wizard, Magi Crageona, lies on the floor unconscious, and his pupil Charlie lies next to him. Sharp arrows with silver polished heads and green shafts decorate their bodies. You put your ear to their chests, but hear no heartbeat.
+
+These were the first dead bodies you’ve seen in your life. As you fight back tears, a spirit of vengeance overtakes you. You follow the footprints to the library and stumble past the body of the ugliest creature you’ve ever seen. It was a goblin, for it had pale green skin, pointy ears, and skin drier than a raisin. Of course it was a goblin; you’ve heard of goblin raids (though you’ve never seen one), and the curses that they left on the ransacked villages as they left.
+
+The library was engulfed in darkness; even though the sun shone on it, it seems that darkness shone out of the ground and veiled the building from the sun. You’ve never seen something like this before — you begin to shiver in the cold void around the library.
+
+The Second Sage walks out of the open-doored building, coughing, and you notice that his once-vibrant eyes have become gray.
+
+“Principle, what has happened?” you ask aloud. You bow in respect but he doesn’t notice you, for he has been blinded.
+
+“My child,” he says, coughing. “We’ve been ambushed. Goblins, many goblins. They took *chough* the spell-book. It is a dark day.” Suddenly he collapses to the floor. “I don’t expect myself to live *cough* *cough* much longer. Before I go, I have one spell I want to teach you. A spell of Induction. With this you can cast powerful spells. Try *cough* casting the spell *cough* 0 + n = n.” With this, he teaches you how to perform an Induction.
+
+To perform an induction, first decide what variable you would like to induct on. In this case, there is only one variable, “n”. To perform induction on “n” first select the definition of n (“n : nat”) and drag it over the “i” that’s to the right of the goal.
+
+After performing the induction, notice at the bottom right of the workbench “Goal 1/1” has changed to “Goal 1/2". This is because an induction creates two goals (If you want to toggle between the goals you can click on this button).
+
+Recall that all natural numbers are either zero or the successor of another natural number. Thus, if we can prove that a statement is true for zero, and if we can prove that is true for the successor of zero, and the successor of that number, and so on, then the statement is true for all natural numbers.
+
+First, we must prove that “0 + n = n” is true when n equals zero. Thus we need to prove 0 + 0 = 0. We already know that for any natural number a, a + 0 = a, so we can use add_zero to prove this step. This is the first goal — go ahead and use add_zero to prove 0 + 0 = 0.
+
+Now, there is one goal left, and we need to prove that “0 + succ h = succ h,” given that “h” is an arbitrary natural number and that “0 + h = h”. Remember, all natural numbers are either zero or a successor of another natural number. So if we can prove a statement is true for zero, and that a statement is true for the following natural number given that it is true for one natural number, we will eventually prove it for all natural numbers. 
+
+For example, to prove 0 + 3 = 3, we would assume 0 + 2 = 2 and prove 0 + succ 2 = succ 2 (this is easier than 0 + 3 because we know how to do add_succ). We would prove 0 + 2 = 2 by assuming 0 + 1 = 1, and we could prove this assumption that 0 + 1 = 1 by assuming 0 + 0 = 0. However, we’ve already proven that 0 + 0 = 0, so it follows that 0 + 1 = 1, 0 + 2 = 2, 0 + 3 = 3, and so on for all natural numbers.
+
+Therefore, if we can prove 0 + succ h = succ h for any arbitrary h, given that 0 + h = h, as we do in this second goal, we complete the proof that 0 + n = n for any arbitrary n.
+
+Go ahead! Use add_succ to prove this. By proving both steps of the goal you prove 0 + n = n.
+
                                 `
                         }
                 ]

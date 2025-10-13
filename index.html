@@ -29,8 +29,20 @@
 
                 gtag('config', 'G-WM0NQY2HW0');
         </script>
+
+        <style type="text/tailwindcss">
+                
+                @theme {
+                        --color-soft-white: #f5f5f5;
+                        --color-teal: #26A69A;
+                        --color-light-gray: #B0BEC5;
+                        --color-bright-yellow: #FFCA28;
+                        --color-dark-gray: #37474F;
+                }
+
+        </style>
 </head>
-<body>
+<body class="bg-soft-white">
         <h1 class="text-center text-7xl pt-16 font-bold font-mono">LemmaCraft</h1>
         <div class="grid grid-cols-4 gap-4 px-4 pt-16 pb-8 max-w-4xl mx-auto items-start" id="level-grid">
                 <!-- Javascript injects HTML here -->
@@ -54,7 +66,7 @@
                         
                         const linkBlockEl = document.createElement('a')
                         linkBlockEl.href = `${world.path}level-1-${world.levels[0].urlName}.html`
-                        linkBlockEl.classList.add("block", levelComplete ? "bg-green-300" : (currentlyUp ? "bg-blue-300" : "bg-gray-300"), "text-center", "py-12" ,"rounded-xl", "hover:-translate-y-2")
+                        linkBlockEl.classList.add("block", levelComplete ? "bg-teal" : (currentlyUp ? "bg-teal" : "bg-light-gray"), "text-center", "py-12" ,"rounded-xl", "hover:-translate-y-2")
                         linkBlockEl.innerHTML = `
                         <strong>World ${worldIndex+1}</strong>
                         <p>${world.name}</p>

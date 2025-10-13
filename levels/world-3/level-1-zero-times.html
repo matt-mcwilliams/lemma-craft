@@ -30,68 +30,77 @@
 
                 gtag('config', 'G-WM0NQY2HW0');
         </script>
+
+        <style type="text/tailwindcss">
+                
+                @theme {
+                        --color-soft-white: #f5f5f5;
+                        --color-teal: #26A69A;
+                        --color-light-gray: #B0BEC5;
+                        --color-bright-yellow: #FFCA28;
+                        --color-dark-gray: #37474F;
+                }
+
+        </style>
 </head>
-<body class="h-screen select-none" onload="init()"" >
+<body class="h-screen select-none" onload="init()" >
         <div class="grid grid-cols-8 h-full content-stretch divide-x-2 divide-black">
-                <div class="relative h-screen overflow-y-none flex flex-col pt-6 col-span-2">
-                        <input type="text" class="block bg-gray-100 rounded-xl border-2 border-gray-300 px-6 py-3 mx-6" 
+                <div class="relative h-screen bg-soft-white overflow-y-none flex flex-col pt-6 col-span-2">
+                        <h1 class="px-6 text-2xl font-bold mb-2">LemmaCraft</h1>
+                        <input type="text" class="block bg-light-gray rounded-xl border-2 border-dark-gray px-6 py-3 mx-6" 
                                 placeholder="Search for lemmas:"
                                 oninput="updateAxioms(this.value)"
                                 id="search-bar">
 
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
-                        <div class="text-black sticky bottom-0 px-4 py-2 bg-white border-t-2 border-t-black outline-t-4 outline-t-white">
+                        <div class="text-black sticky bottom-0 px-4 py-2 bg-soft-white border-t-2 border-t-dark-gray outline-t-4 outline-t-white">
                                 <div class="flex justify-between gap-3"><strong class="block" id="level-name">Zero Times</strong><div>Level 3-1</div></div>
                                 <div class="flex jusity-stretch gap-3">
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="..\..\levels\world-2\level-6-on-your-right.html">←</a>
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="../../index.html">🏠︎</a>
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="">⟳</a>
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="level-2-times-one.html">→</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="..\..\levels\world-2\level-6-on-your-right.html">←</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="../../index.html">🏠︎</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="">⟳</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-2-times-one.html">→</a>
                                 </div>
                         </div>
                 </div>
-                <div class="bg-white col-span-3 p-4 overflow-y-scroll flex flex-col justify-between"  
+                <div class="bg-soft-white col-span-3 p-4 overflow-y-scroll flex flex-col justify-between"  
                         id="tip-card">
                         <div>
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
                                 <p class="text-xl font-bold mb-4">Zero Times</span></p>
-                                <p class="mb-4" id="tip-body">
-                                Like addition, this can be proven using induction.
-                                <br/><br/>
-                                Notice that there are three new theorems defining multiplication at the bottom. Like addition, multiplication is defined recursively.
-                                </p>
+                                <p class="mb-4" id="tip-body"><br/>                                Like addition, this can be proven using induction.<br/>                                <br/><br/><br/>                                Notice that there are three new theorems defining multiplication at the bottom. Like addition, multiplication is defined recursively.<br/>                                </p>
                         </div>
-                        <button class="bottom-6 w-full mx-6 mx-auto block bg-gray-700 text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
+                        <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
-                <div class="bg-red-300 col-span-3 relative overflow-x-scroll" id="whiteboard">
+                <div class="bg-light-gray col-span-3 relative overflow-x-scroll" id="whiteboard">
                         <div class="flex w-[90%] absolute left-[50%] -translate-x-[50%] top-4 justify-center">
-                                <div class="bg-white text-xl rounded-xl px-6 py-2 border-6 border-blue-900 cursor-pointer " id="goal-card"><span id="goal-text">1+1=2</span></div>
-                                <button class="bg-red-200 text-red-900 px-4 rounded-xl ml-4 border-6 border-blue-900 cursor-pointer font-mono font-bold text-xl" id="induction-button">i</button>
+                                <div class="bg-soft-white text-xl rounded-xl px-6 py-2 border-6 border-dark-gray cursor-pointer " id="goal-card"><span id="goal-text">1+1=2</span></div>
+                                <button class="bg-soft-white text-dark-gray px-4 rounded-xl ml-4 border-6 border-dark-gray cursor-pointer font-mono font-bold text-xl" id="induction-button">i</button>
                         </div>
 
-                        <div class="absolute right-3 top-3 bg-red-800 text-red-100 px-3 py-2 rounded-xl cursor-pointer" onclick="cycleContext()">Goal <span id="windowIndex">1</span> / <span id="windowCount">1</span></div>
+                        <div class="absolute right-3 bottom-3 bg-dark-gray text-soft-white font-bold px-3 py-2 rounded-xl cursor-pointer" onclick="cycleContext()">Goal <span id="windowIndex">1</span> / <span id="windowCount">1</span></div>
 
-                        <div class="bg-white rounded-lg border-4 border-blue-900 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-4 w-fit py-6 z-100 hidden" id="level-complete">
+                        <div class="bg-soft-white rounded-lg border-4 border-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-4 w-fit py-6 z-100 hidden" id="level-complete">
                                 <h2 class="text-xl font-bold mb-4 text-center">Level Complete!</h2>
 
                                 <div class="flex gap-4">
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="..\..\levels\world-2\level-6-on-your-right.html">Previous Level ( [ )</a>
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-2-times-one.html">Next Level ( ] )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="..\..\levels\world-2\level-6-on-your-right.html">Previous Level ( [ )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-2-times-one.html">Next Level ( ] )</a>
                                 </div>
                         </div>
 
-                        <button class="absolute left-0 bottom-0 p-2 pr-4 max-w-[40%] max-h-[60%] z-10 cursor-pointer bg-gray-700 text-white text-sm rounded-tr-xl block"
+                        <button class="absolute left-0 bottom-0 p-2 pr-4 max-w-[40%] max-h-[60%] z-10 cursor-pointer bg-dark-gray text-white text-sm rounded-tr-xl block"
                                 id = "help-toggle"
                                 onclick="toggleTip()">
-                                hide help
+                                Hide Help
                         </button>
                 </div>
         </div>
 
         <script>
-                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"addition","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"succ_eq_add_one","raw":"(n1 : nat) : (succ n1) = (n1 + 1)","category":1},{"name":"add_right_comm","raw":"(n1 n2 n3 : nat) : ((n1 + n2) + n3) = ((n1 + n3) + n2)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2}]
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"succ_eq_add_one","raw":"(n1 : nat) : (succ n1) = (n1 + 1)","category":1},{"name":"add_right_comm","raw":"(n1 n2 n3 : nat) : ((n1 + n2) + n3) = ((n1 + n3) + n2)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2}]
 
                 let goalRaw = "(m : nat) : (0 * m) = (0)"
 

@@ -52,7 +52,7 @@ worlds.forEach((world, worldIndex) => {
                 templateContent = templateContent.replaceAll('{{ levelName }}', level.name);
                 templateContent = templateContent.replaceAll('{{ levelCode }}', levelCode);
                 templateContent = templateContent.replaceAll('{{ tipName }}', level.name);
-                templateContent = templateContent.replaceAll('{{ tipDescription }}', level.description);
+                templateContent = templateContent.replaceAll('{{ tipDescription }}', level.description.replaceAll('\n', '<br/>'));
                 templateContent = templateContent.replaceAll('{{ axiomCategory }}', axiomCategory);
                 templateContent = templateContent.replaceAll('{{ currentLevelId }}', `"${worldIndex+1}-${levelIndex+1}"`);
 

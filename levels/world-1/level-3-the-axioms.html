@@ -30,80 +30,79 @@
 
                 gtag('config', 'G-WM0NQY2HW0');
         </script>
+
+        <style type="text/tailwindcss">
+                
+                @theme {
+                        --color-soft-white: #f5f5f5;
+                        --color-teal: #26A69A;
+                        --color-light-gray: #B0BEC5;
+                        --color-bright-yellow: #FFCA28;
+                        --color-dark-gray: #37474F;
+                }
+
+        </style>
 </head>
-<body class="h-screen select-none" onload="init()"" >
+<body class="h-screen select-none" onload="init()" >
         <div class="grid grid-cols-8 h-full content-stretch divide-x-2 divide-black">
-                <div class="relative h-screen overflow-y-none flex flex-col pt-6 col-span-2">
-                        <input type="text" class="block bg-gray-100 rounded-xl border-2 border-gray-300 px-6 py-3 mx-6" 
+                <div class="relative h-screen bg-soft-white overflow-y-none flex flex-col pt-6 col-span-2">
+                        <h1 class="px-6 text-2xl font-bold mb-2">LemmaCraft</h1>
+                        <input type="text" class="block bg-light-gray rounded-xl border-2 border-dark-gray px-6 py-3 mx-6" 
                                 placeholder="Search for lemmas:"
                                 oninput="updateAxioms(this.value)"
                                 id="search-bar">
 
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
-                        <div class="text-black sticky bottom-0 px-4 py-2 bg-white border-t-2 border-t-black outline-t-4 outline-t-white">
+                        <div class="text-black sticky bottom-0 px-4 py-2 bg-soft-white border-t-2 border-t-dark-gray outline-t-4 outline-t-white">
                                 <div class="flex justify-between gap-3"><strong class="block" id="level-name">The Axioms</strong><div>Level 1-3</div></div>
                                 <div class="flex jusity-stretch gap-3">
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="level-2-drag-n-drop.html">←</a>
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="../../index.html">🏠︎</a>
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="">⟳</a>
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center" href="level-4-addition.html">→</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-2-a-new-spell.html">←</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="../../index.html">🏠︎</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="">⟳</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-4-now-were-adding.html">→</a>
                                 </div>
                         </div>
                 </div>
-                <div class="bg-white col-span-3 p-4 overflow-y-scroll flex flex-col justify-between"  
+                <div class="bg-soft-white col-span-3 p-4 overflow-y-scroll flex flex-col justify-between"  
                         id="tip-card">
                         <div>
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
                                 <p class="text-xl font-bold mb-4">The Axioms</span></p>
-                                <p class="mb-4" id="tip-body">
-                                You may have noticed the additional hypothesises of the form "a : nat". This means "a is a natural number", i.e. 0, 1, 2, 3, etc. 
-                                <br />
-                                <br />
-                                Look at the left pane: notice the introduction of two axioms. Axioms are things that we will assume to be true for the entire number system. These two axioms define the natural numbers. The first axiom says "0 is a natural number" and the second axiom says "succ n is a natural number for all n". What does this mean?
-                                <br />
-                                <br />
-                                "succ n" reads "the successor of n". For example, 1 is the successor of 0, and 2 is the successor of 1. Thus, 2 = succ (succ 0). All natural numbers besides zero are a successor of some other unique natural number.
-                                <br />
-                                <br />
-                                Because 1 = succ 0, this statement could be written as: succ (succ 0) = succ 1. We will prove a more general statement in this level.
-                                <br />
-                                <br />
-                                But don't be scared by the introduction of new terminology! This goal means that if a and b are natural numbers, and succ a = b (the hypothesises), then succ (succ a) = succ b. Give it a shot!
-                                </p>
+                                <p class="mb-4" id="tip-body"><br/>Drops of blood-red paint fall from the apple as it melts into a picture-perfect orange. Two months ago you would never believe your eyes at this, but ever since you’ve joined alchemy school you’ve seen dozens of such transformations.<br/><br/>You practice more. At first, it’s just fruits that you transform, but before long you’ve made statues dance, put out a fire, and even treated a cut.<br/><br/>After a couple of weeks with this spell, Magi Grambletόn brings five polished silver bars to your training. “These here are axioms,” he said. “With these wonderful little tools you can rewrite almost anything. Many of these to collect, there are. But these five will meet our needs for now.<br/><br/>“Now, let me show you how to melt the bark off this log. This is important in the wild, you know, if you need to make a fire.”<br/><br/>You put the silver bars in your toolbox and begin to de-bark the log.<br/><br/>An axiom in math is something we assume to be true but can’t necessarily prove. For example, we must assume that adding zero to a number keeps it the same. Think of it as part of the definition of addition. Notice the axioms appearing in your toolbox on the left pane. You have five axioms, all dealing with either natural numbers or addition. Recall that natural numbers are all integers greater than or equal to 0:<br/><br/>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, …<br/><br/>Here is a short description of all the axioms:<br/><br/>zero: This axiom ( 0 : nat ) says that zero is a natural number. If you ever need to substitute 0 in to represent a natural number, use this.<br/><br/>succ: succ (short for successor) says that the successor of a natural number is a natural number. Thus, for any natural number n1, the successor of n1 (denoted succ n1) is a natural number. For example, the successor of 0 is 1: succ 0 = 1 (this is the definition of “1”). Thus, 1 is a natural number.<br/><br/>All natural numbers can be defined as either zero or the successor of another natural number. For example 10 is the successor of 9, 3 is the successor of 2, and 0 is a natural number by definition.<br/><br/>add: The sum of two natural numbers is a natural number. For example, 2 and 3 are both natural numbers, and 2 + 3 = 5. Thus, 5 is a natural number.<br/><br/>add_zero: Adding zero to a number keeps it the same. For example, 4 + 0 = 4.<br/><br/>add_succ: This is the most “complicated” of them all — it’s a recursive definition for addition. We’ll discuss this axiom in detail in the next level.<br/><br/>To use an axiom, click on it on the left to bring it onto the workbench. For example, this level has the following goal:<br/><br/>m + n + 0 = m + n<br/><br/>Note that this math system treats “m + n + 0” as “(m + n) + 0”.<br/><br/>Adding zero to a natural number (m + n is a natural number because m and n are natural numbers) is equivalent to just that natural number. So, click on add_zero. The following hypothesis is added to the workbench:<br/><br/>(n1 : nat) : n1 + 0 = n1<br/><br/>This means that for any natural number n1, n1 + 0 = n1. Thus we can substitute anything for n1 and the statement would be true — for instance, we could substitute “m + n” for n1 because “m + n” is a natural number. The interpreter can guess at what you want to substitute when you drag the hypothesis onto the goal.<br/><br/>Go for it, drag this add_zero hypothesis onto your goal.<br/>                                <br/>                                </p>
                         </div>
-                        <button class="bottom-6 w-full mx-6 mx-auto block bg-gray-700 text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
+                        <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
-                <div class="bg-red-300 col-span-3 relative overflow-x-scroll" id="whiteboard">
+                <div class="bg-light-gray col-span-3 relative overflow-x-scroll" id="whiteboard">
                         <div class="flex w-[90%] absolute left-[50%] -translate-x-[50%] top-4 justify-center">
-                                <div class="bg-white text-xl rounded-xl px-6 py-2 border-6 border-blue-900 cursor-pointer " id="goal-card"><span id="goal-text">1+1=2</span></div>
-                                <button class="bg-red-200 text-red-900 px-4 rounded-xl ml-4 border-6 border-blue-900 cursor-pointer font-mono font-bold text-xl" id="induction-button">i</button>
+                                <div class="bg-soft-white text-xl rounded-xl px-6 py-2 border-6 border-dark-gray cursor-pointer " id="goal-card"><span id="goal-text">1+1=2</span></div>
+                                <button class="bg-soft-white text-dark-gray px-4 rounded-xl ml-4 border-6 border-dark-gray cursor-pointer font-mono font-bold text-xl" id="induction-button">i</button>
                         </div>
 
-                        <div class="absolute right-3 top-3 bg-red-800 text-red-100 px-3 py-2 rounded-xl cursor-pointer" onclick="cycleContext()">Goal <span id="windowIndex">1</span> / <span id="windowCount">1</span></div>
+                        <div class="absolute right-3 bottom-3 bg-dark-gray text-soft-white font-bold px-3 py-2 rounded-xl cursor-pointer" onclick="cycleContext()">Goal <span id="windowIndex">1</span> / <span id="windowCount">1</span></div>
 
-                        <div class="bg-white rounded-lg border-4 border-blue-900 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-4 w-fit py-6 z-100 hidden" id="level-complete">
+                        <div class="bg-soft-white rounded-lg border-4 border-dark-gray absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-4 w-fit py-6 z-100 hidden" id="level-complete">
                                 <h2 class="text-xl font-bold mb-4 text-center">Level Complete!</h2>
 
                                 <div class="flex gap-4">
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="level-2-drag-n-drop.html">Previous Level ( [ )</a>
-                                        <a class="bg-gray-300 block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-4-addition.html">Next Level ( ] )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="level-2-a-new-spell.html">Previous Level ( [ )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-4-now-were-adding.html">Next Level ( ] )</a>
                                 </div>
                         </div>
 
-                        <button class="absolute left-0 bottom-0 p-2 pr-4 max-w-[40%] max-h-[60%] z-10 cursor-pointer bg-gray-700 text-white text-sm rounded-tr-xl block"
+                        <button class="absolute left-0 bottom-0 p-2 pr-4 max-w-[40%] max-h-[60%] z-10 cursor-pointer bg-dark-gray text-white text-sm rounded-tr-xl block"
                                 id = "help-toggle"
                                 onclick="toggleTip()">
-                                hide help
+                                Hide Help
                         </button>
                 </div>
         </div>
 
         <script>
-                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0}]
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1}]
 
-                let goalRaw = "(a b : nat) (succ a = b) : (succ(succ(a))) = (succ(b))"
+                let goalRaw = "(m n : nat) : ((m + n) + 0) = (m + n)"
 
                 let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
 

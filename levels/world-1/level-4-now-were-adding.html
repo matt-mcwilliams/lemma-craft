@@ -54,12 +54,12 @@
 
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
                         <div class="text-black sticky bottom-0 px-4 py-2 bg-soft-white border-t-2 border-t-dark-gray outline-t-4 outline-t-white">
-                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">zero_pow_zero</strong><div>Level 4-1</div></div>
+                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">Now We're Adding</strong><div>Level 1-4</div></div>
                                 <div class="flex jusity-stretch gap-3">
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="..\..\levels\world-3\level-9-mul-left-comm.html">←</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-3-the-axioms.html">←</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="../../index.html">🏠︎</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="">⟳</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-2-zero-pow-succ.html">→</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-5-a-dark-day.html">→</a>
                                 </div>
                         </div>
                 </div>
@@ -69,8 +69,8 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                <p class="text-xl font-bold mb-4">zero_pow_zero</span></p>
-                                <p class="mb-4" id="tip-body"><br/>                                Powers<br/>                                </p>
+                                <p class="text-xl font-bold mb-4">Now We're Adding</span></p>
+                                <p class="mb-4" id="tip-body"><br/>Sure enough, the bark dissolves into the wood. Magi Grambletόn, impressed, says aloud, “I thought it would take weeks to learn this. Nothin’ left for today's session I guess.”<br/><br/>You exhale in disappointment: disappointment in your assigned wizard, in your snail’s pace lessons, and most of all, in your unsatisfied desire for greatness. It has now been two months since you’ve started learning alchemy, and you feel miles behind everyone else.<br/><br/>Walking back to the center village, pondering on your life, you hear the golden bell start ringing. At first you think it’s the dinner bell, but the bell doesn’t make the jingle you love hearing. Then you imagine a ceremony, perhaps someone had finally graduated, but in your time the only ceremony at the school was planned for weeks and you would have heard about it.<br/><br/>The bell continues to ring. You have a growing feeling that something has gone terribly wrong. You start to run. You’re a couple of miles away from the village but you hardly notice the distance. Within a couple of minutes you arrive at the large black door at the entrance to the town. <br/><br/>The door is shut, which is rather odd for this time of day. But what’s even more strange is that it won’t open. In fact, your given key won’t open it, which you discover after you fail to unlock it. No, something far worse has happened: a sealing spell was cast on the door, which you discern after trying to cast a spell to break the door.<br/><br/>To open it, you’ll need to use a counter-spell, something you’ve only seen a glimpse of in books. <br/><br/>You vaguely recall a counter-spell cast from the lemma “1 + 1 = 2,” but don’t recollect whether that is the correct one. You decide to give it a shot.<br/><br/>To prove this lemma, you’ll need to make use of a few new axioms that define 1 and 2:<br/><br/>one, two: These two axioms introduce the natural numbers 1 and 2. <br/><br/>one_eq_succ_zero, two_eq_succ_one: These two axioms define 1 and 2 as the successors of their previous numbers.<br/><br/>This theorem requires the use of the add_succ axiom. This defines addition for all numbers other than zero, and it does so recursively. Recursively means that you may need to apply it a number of times to add some numbers. To use add_succ, you must have something of the form “a + succ b.” Then, you can cast a rewrite and change it to the form “succ a + b.” While this isn’t immediately helpful, eventually you can rewrite this expression into “succ m + 0” and use add_zero to simplify to “succ m.”<br/><br/>For example, to solve 0 + 2 with this definition of addition, one would proceed as follows:<br/><br/>0 + 2<br/>0 + succ 1 ← apply definition of 2 as the successor of 1<br/>succ ( 0 + 1 ) ← apply add_succ<br/>succ ( 0 + succ 0 ) ← apply definition of 1 as the successor of 0<br/>succ ( succ ( 0 + 0 ) ) ← apply add_succ<br/>succ ( succ 0 ) ← apply add_zero<br/>succ 1 ← apply definition of 1 as successor of 0<br/>2 ← apply definition of 2 as successor of 1<br/><br/>Thus, 0 + 2 = 2.<br/><br/>                                </p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
@@ -86,8 +86,8 @@
                                 <h2 class="text-xl font-bold mb-4 text-center">Level Complete!</h2>
 
                                 <div class="flex gap-4">
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="..\..\levels\world-3\level-9-mul-left-comm.html">Previous Level ( [ )</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-2-zero-pow-succ.html">Next Level ( ] )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="level-3-the-axioms.html">Previous Level ( [ )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-5-a-dark-day.html">Next Level ( ] )</a>
                                 </div>
                         </div>
 
@@ -100,13 +100,13 @@
         </div>
 
         <script>
-                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"succ_eq_add_one","raw":"(n1 : nat) : (succ n1) = (n1 + 1)","category":1},{"name":"add_right_comm","raw":"(n1 n2 n3 : nat) : ((n1 + n2) + n3) = ((n1 + n3) + n2)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2},{"name":"mul_one","raw":"(n1 : nat) : (n1 * 1) = (n1)","category":2},{"name":"one_mul","raw":"(n1 : nat) : (1 * n1) = (n1)","category":2},{"name":"left_distrib","raw":"(n1 n2 n3 : nat) : (n1 * (n2 + n3)) = ((n1 * n2) + (n1 * n3))","category":2},{"name":"mul_assoc","raw":"(n1 n2 n3 : nat) : ((n1 * n2) * n3) = (n1 * (n2 * n3))","category":2},{"name":"succ_mul","raw":"(n1 n2 : nat) : ((succ n1) * n2) = ((n1 * n2) + n2)","category":2},{"name":"right_distrib","raw":"(n1 n2 n3 : nat) : ((n1 + n2) * n3) = ((n1 * n3) + (n2 * n3))","category":2},{"name":"mul_comm","raw":"(n1 n2 : nat) : (n1 * n2) = (n2 * n1)","category":2},{"name":"mul_comm_left","raw":"(n1 n2 n3 : nat) : (n1 * (n2 * n3)) = (n2 * (n1 * n3))","category":2},{"name":"pow","raw":"(n1 n2 : nat) : n1 ^ n2 : nat","category":3},{"name":"pow_zero","raw":"(n1 : nat) : (n1 ^ 0) = (1)","category":3},{"name":"pow_succ","raw":"(n1 n2 : nat) : (n1 ^ (succ(n2))) = ((n1 ^ n2) * n1)","category":3}]
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0}]
 
-                let goalRaw = "(0 ^ 0) = (1)"
+                let goalRaw = "(1 + 1) = (2)"
 
                 let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
 
-                let currentLevelId = "4-1"
+                let currentLevelId = "1-4"
         </script>
 
         <script src="../../js/level.js"></script>
