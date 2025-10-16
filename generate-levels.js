@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const { worlds, AxiomCategory } = require('./worlds');
+const { chapters, AxiomCategory } = require('./worlds');
 
 
 const templatePath = path.join(__dirname, 'template.html');
@@ -15,7 +15,7 @@ if (fs.existsSync(levelsRoot)) {
 }
 
 
-worlds.forEach((world, worldIndex) => {
+chapters.forEach((world, worldIndex) => {
 
         const levelsDir = path.join(__dirname, world.path);
         
@@ -30,16 +30,16 @@ worlds.forEach((world, worldIndex) => {
                 const nextNewWorld = levelIndex >= world.levels.length-1
                 const prevNewWorld = levelIndex == 0
 
-                const previousLevel = prevNewWorld ? (worlds[worldIndex-1]?.levels[worlds[worldIndex-1]?.levels.length - 1] ?? null) : world.levels[levelIndex-1]
-                const nextLevel = nextNewWorld ? (worlds[worldIndex+1]?.levels[0] ?? null) : world.levels[levelIndex + 1]
+                const previousLevel = prevNewWorld ? (chapters[worldIndex-1]?.levels[chapters[worldIndex-1]?.levels.length - 1] ?? null) : world.levels[levelIndex-1]
+                const nextLevel = nextNewWorld ? (chapters[worldIndex+1]?.levels[0] ?? null) : world.levels[levelIndex + 1]
 
                 const axioms = JSON.stringify(axiomList)
                 const axiomCategory = JSON.stringify(AxiomCategory)
                 const goal = `"${level.goal}"`
 
-                const previousLink = previousLevel ? path.join(prevNewWorld ? `../../${worlds[worldIndex-1].path}` : '.', `${'level-' + (prevNewWorld ? worlds[worldIndex-1].levels.length : levelIndex) + '-' + previousLevel.urlName}.html`) : '#';
+                const previousLink = previousLevel ? path.join(prevNewWorld ? `../../${chapters[worldIndex-1].path}` : '.', `${'level-' + (prevNewWorld ? chapters[worldIndex-1].levels.length : levelIndex) + '-' + previousLevel.urlName}.html`) : '#';
 
-                const nextLink = nextLevel ? path.join(nextNewWorld ? `../../${worlds[worldIndex+1].path}` : '.', `${'level-' + ((levelIndex+1)%(world.levels.length)+1) + '-' + nextLevel.urlName}.html`) : '#';
+                const nextLink = nextLevel ? path.join(nextNewWorld ? `../../${chapters[worldIndex+1].path}` : '.', `${'level-' + ((levelIndex+1)%(world.levels.length)+1) + '-' + nextLevel.urlName}.html`) : '#';
                 const levelCode = `Level ${worldIndex+1}-${levelIndex+1}`
 
                 const levelPath = path.join(levelsDir, `${'level-' + (levelIndex+1) + '-' + level.urlName}.html`);

@@ -54,12 +54,12 @@
 
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
                         <div class="text-black sticky bottom-0 px-4 py-2 bg-soft-white border-t-2 border-t-dark-gray outline-t-4 outline-t-white">
-                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">zero_pow_zero</strong><div>Level 4-1</div></div>
+                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">pow_pow</strong><div>Level 4-7</div></div>
                                 <div class="flex jusity-stretch gap-3">
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="..\..\levels\world-3\level-9-mul-left-comm.html">←</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-6-mul-pow.html">←</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="../../index.html">🏠︎</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="">⟳</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-2-zero-pow-succ.html">→</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-8-add-squared.html">→</a>
                                 </div>
                         </div>
                 </div>
@@ -69,7 +69,7 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                <p class="text-xl font-bold mb-4">zero_pow_zero</span></p>
+                                <p class="text-xl font-bold mb-4">pow_pow</span></p>
                                 <p class="mb-4" id="tip-body"><br/>                                Powers<br/>                                </p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
@@ -86,8 +86,8 @@
                                 <h2 class="text-xl font-bold mb-4 text-center">Level Complete!</h2>
 
                                 <div class="flex gap-4">
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="..\..\levels\world-3\level-9-mul-left-comm.html">Previous Level ( [ )</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-2-zero-pow-succ.html">Next Level ( ] )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="level-6-mul-pow.html">Previous Level ( [ )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-8-add-squared.html">Next Level ( ] )</a>
                                 </div>
                         </div>
 
@@ -100,13 +100,13 @@
         </div>
 
         <script>
-                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"succ_eq_add_one","raw":"(n1 : nat) : (succ n1) = (n1 + 1)","category":1},{"name":"add_right_comm","raw":"(n1 n2 n3 : nat) : ((n1 + n2) + n3) = ((n1 + n3) + n2)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2},{"name":"mul_one","raw":"(n1 : nat) : (n1 * 1) = (n1)","category":2},{"name":"one_mul","raw":"(n1 : nat) : (1 * n1) = (n1)","category":2},{"name":"left_distrib","raw":"(n1 n2 n3 : nat) : (n1 * (n2 + n3)) = ((n1 * n2) + (n1 * n3))","category":2},{"name":"mul_assoc","raw":"(n1 n2 n3 : nat) : ((n1 * n2) * n3) = (n1 * (n2 * n3))","category":2},{"name":"succ_mul","raw":"(n1 n2 : nat) : ((succ n1) * n2) = ((n1 * n2) + n2)","category":2},{"name":"right_distrib","raw":"(n1 n2 n3 : nat) : ((n1 + n2) * n3) = ((n1 * n3) + (n2 * n3))","category":2},{"name":"mul_comm","raw":"(n1 n2 : nat) : (n1 * n2) = (n2 * n1)","category":2},{"name":"mul_comm_left","raw":"(n1 n2 n3 : nat) : (n1 * (n2 * n3)) = (n2 * (n1 * n3))","category":2},{"name":"pow","raw":"(n1 n2 : nat) : n1 ^ n2 : nat","category":3},{"name":"pow_zero","raw":"(n1 : nat) : (n1 ^ 0) = (1)","category":3},{"name":"pow_succ","raw":"(n1 n2 : nat) : (n1 ^ (succ(n2))) = ((n1 ^ n2) * n1)","category":3}]
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"add_right_comm","raw":"(n1 n2 n3 : nat) : ((n1 + n2) + n3) = ((n1 + n3) + n2)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2},{"name":"mul_one","raw":"(n1 : nat) : (n1 * 1) = (n1)","category":2},{"name":"one_mul","raw":"(n1 : nat) : (1 * n1) = (n1)","category":2},{"name":"left_distrib","raw":"(n1 n2 n3 : nat) : (n1 * (n2 + n3)) = ((n1 * n2) + (n1 * n3))","category":2},{"name":"mul_assoc","raw":"(n1 n2 n3 : nat) : ((n1 * n2) * n3) = (n1 * (n2 * n3))","category":2},{"name":"succ_mul","raw":"(n1 n2 : nat) : ((succ n1) * n2) = ((n1 * n2) + n2)","category":2},{"name":"right_distrib","raw":"(n1 n2 n3 : nat) : ((n1 + n2) * n3) = ((n1 * n3) + (n2 * n3))","category":2},{"name":"mul_comm","raw":"(n1 n2 : nat) : (n1 * n2) = (n2 * n1)","category":2},{"name":"mul_comm_left","raw":"(n1 n2 n3 : nat) : (n1 * (n2 * n3)) = (n2 * (n1 * n3))","category":2},{"name":"pow","raw":"(n1 n2 : nat) : n1 ^ n2 : nat","category":3},{"name":"pow_zero","raw":"(n1 : nat) : (n1 ^ 0) = (1)","category":3},{"name":"pow_succ","raw":"(n1 n2 : nat) : (n1 ^ (succ(n2))) = ((n1 ^ n2) * n1)","category":3},{"name":"zero_pow_zero","raw":"(0 ^ 0) = (1)","category":3},{"name":"zero_pow_succ","raw":"(n1 : nat) : ((0) ^ (succ n1)) = (0)","category":3},{"name":"pow_one","raw":"(n1 : nat) : (n1 ^ 1) = (n1)","category":3},{"name":"one_pow","raw":"(n1 : nat) : (1 ^ n1) = (1)","category":3},{"name":"pow_add","raw":"(n1 n2 n3 : nat) :( n1 ^ (n2 + n3)) = ((n1 ^ n2) * (n1 ^ n3))","category":3},{"name":"mul_pow","raw":"(n1 n2 n3 : nat) : ((n1 * n2) ^ n3) = ((n1 ^ n3) * (n2 ^ n3))","category":3}]
 
-                let goalRaw = "(0 ^ 0) = (1)"
+                let goalRaw = "(a m n : nat) : ((a ^ m) ^ n) = (a ^ (m * n))"
 
                 let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
 
-                let currentLevelId = "4-1"
+                let currentLevelId = "4-7"
         </script>
 
         <script src="../../js/level.js"></script>

@@ -241,14 +241,11 @@ function performInduction(variable) {
         const window2 = { goal: window1.goal, statements: [...window1.statements]};
 
         // For window1, duplicate each statement using spawnAxiom to ensure consistent creation
-        window1.statements = window1.statements.map(statement => {
-                spawnAxiom(statement.mobject.parenthesisedRaw());
-                return -1;
-        });
-        // Remove the old statements (the originals before duplication)
-        console.log(window1.statements)
-        window1.statements = window1.statements.filter(x => x !== -1);
-        console.log(window1.statements)
+        const oldStatements = [...window1.statements]
+        window1.statements = []
+        oldStatements.forEach(statement => {
+                spawnAxiom(statement.mobject.parenthesisedRaw())
+        })
 
         window1.goal = inductionResults.newGoal1
         window2.goal = inductionResults.newGoal2

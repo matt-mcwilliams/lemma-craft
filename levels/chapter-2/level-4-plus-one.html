@@ -54,12 +54,12 @@
 
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
                         <div class="text-black sticky bottom-0 px-4 py-2 bg-soft-white border-t-2 border-t-dark-gray outline-t-4 outline-t-white">
-                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">Again?</strong><div>Level 2-1</div></div>
+                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">Plus One</strong><div>Level 2-4</div></div>
                                 <div class="flex jusity-stretch gap-3">
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="..\..\levels\world-1\level-5-a-dark-day.html">←</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-3-add-comm.html">←</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="../../index.html">🏠︎</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="">⟳</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-2-association.html">→</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="..\..\levels\world-3\level-1-zero-times.html">→</a>
                                 </div>
                         </div>
                 </div>
@@ -69,8 +69,8 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                <p class="text-xl font-bold mb-4">Again?</span></p>
-                                <p class="mb-4" id="tip-body"><br/>                                Wait — isn't this already true? No; we've been given the communative property equivalent for this, n + 0 = n. But we didn't proove the communative property yet, so how will we solve this?<br/>                                <br /><br/>                                <br /><br/>                                This problem cannot be solved using only draggings and double-clicks (rewrites and reflections); we must use something called <strong>proof by induction</strong>.<br/>                                <br /><br/>                                <br /><br/>                                Proof by induction allows a statement to be solved given the following: <br/>                                <br /><br/>                                - a statement regarding n is true for n = 0<br/>                                <br /><br/>                                - given that a statement regarding n is true for n then it is true for the successor of n<br/>                                <br /><br/>                                <br /><br/>                                If both of the above criteria are correct, then the statement about n is true for all natural numbers of n. Take a moment and think about why this makes sense — if a statement is true for zero, and, for all natural numbers (zero being one of the natural numbers) if it is true for n then it is true for the successor of n — why would all natural numbers be included in this?<br/>                                <br /><br/>                                <br /><br/>                                To start a proof by induction, drag "n : nat" onto the "i" icon next to the goal to begin. Notice at the top right it shows 1 / 2 now, instead of 1 / 1 as it did before. This is because there is now two goals to be proved, i.e. the two bullet points listed above. To cycle between them click on the 1 / 2; they can be solved in any order.<br/>                                </p>
+                                <p class="text-xl font-bold mb-4">Plus One</span></p>
+                                <p class="mb-4" id="tip-body"><br/>                                </p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
@@ -86,8 +86,8 @@
                                 <h2 class="text-xl font-bold mb-4 text-center">Level Complete!</h2>
 
                                 <div class="flex gap-4">
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="..\..\levels\world-1\level-5-a-dark-day.html">Previous Level ( [ )</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-2-association.html">Next Level ( ] )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="level-3-add-comm.html">Previous Level ( [ )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="..\..\levels\world-3\level-1-zero-times.html">Next Level ( ] )</a>
                                 </div>
                         </div>
 
@@ -100,13 +100,13 @@
         </div>
 
         <script>
-                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0}]
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0}]
 
-                let goalRaw = "(n : nat) : (0 + n) = (n)"
+                let goalRaw = "(n : nat) : (succ n) = (n + 1)"
 
                 let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
 
-                let currentLevelId = "2-1"
+                let currentLevelId = "2-4"
         </script>
 
         <script src="../../js/level.js"></script>

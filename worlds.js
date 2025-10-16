@@ -6,9 +6,9 @@ export const AxiomCategory = {
 }
 
 
-export const worlds = [
+export const chapters = [
         {
-                path: 'levels/world-1/',
+                path: 'levels/chapter-1/',
                 name: 'The Apprentice',
                 levels: [
                         {
@@ -208,38 +208,12 @@ Go ahead! Use add_succ to prove this. By proving both steps of the goal you prov
 
 
         {
-                path: 'levels/world-2/',
-                name: 'Addition',
+                path: 'levels/chapter-2/',
+                name: 'Goblin Hunting',
                 levels: [
                         {
-                                name: 'Again?',
-                                urlName: 'again',
-                                newAxioms: [],
-                                goal: '(n : nat) : (0 + n) = (n)',
-                                description: `
-                                Wait — isn't this already true? No; we've been given the communative property equivalent for this, n + 0 = n. But we didn't proove the communative property yet, so how will we solve this?
-                                <br />
-                                <br />
-                                This problem cannot be solved using only draggings and double-clicks (rewrites and reflections); we must use something called <strong>proof by induction</strong>.
-                                <br />
-                                <br />
-                                Proof by induction allows a statement to be solved given the following: 
-                                <br />
-                                - a statement regarding n is true for n = 0
-                                <br />
-                                - given that a statement regarding n is true for n then it is true for the successor of n
-                                <br />
-                                <br />
-                                If both of the above criteria are correct, then the statement about n is true for all natural numbers of n. Take a moment and think about why this makes sense — if a statement is true for zero, and, for all natural numbers (zero being one of the natural numbers) if it is true for n then it is true for the successor of n — why would all natural numbers be included in this?
-                                <br />
-                                <br />
-                                To start a proof by induction, drag "n : nat" onto the "i" icon next to the goal to begin. Notice at the top right it shows 1 / 2 now, instead of 1 / 1 as it did before. This is because there is now two goals to be proved, i.e. the two bullet points listed above. To cycle between them click on the 1 / 2; they can be solved in any order.
-                                `
-                        },
-
-                        {
-                                name: 'Association',
-                                urlName: 'association',
+                                name: 'The Sage Dies',
+                                urlName: 'the-sage-dies',
                                 newAxioms: [
                                         {
                                                 name: "zero_add",
@@ -248,13 +222,24 @@ Go ahead! Use add_succ to prove this. By proving both steps of the goal you prov
                                 ],
                                 goal: '(a b c : nat) : (a + (b + c)) = ((a + b) + c)',
                                 description: `
-                                We will now prove the associative property. Notice that you now have access to the theorem you proved in the last level. Hint: try using induction on one of the variables — which one gives you an easy simplification?
+A cloud of mist steams out of the ground, making a soft fizzle, and as it dissipates a thick leather-encased book with thin, golden pages appears in its place. The book is titled <em>Principia Mathematica</em>, and the first page in the book is titled “zero_add,” followed by instructions to prove the previous lemma.
+
+“Complete the book,” the sage whispers frailly, softly gripping your hand. “Complete the book, and reclaim the artifact. You must not fail; the fate of the Earth… the fate of the stars… and the fate of the cosmos… doomed with the powers contained in that book. And Simon… you are… chosen… for…” His breath stops. He lets go of your hand. The Second Sage has died.
+
+“Chosen for what? Chosen for what? Don’t leave me!” you cry out. A lone tear falls onto his gray hand. You’ll never admit to it, but that night you shed many tears. But not now. Now you must follow the goblins.
+
+You begin to run. Vengeance floods through your blood, and your feet fly over the wall, through the forest, and to the river. When you arrive at the river, you find the bridge freshly destroyed and footprints on the other side. You conclude that the goblins are at fault, grit your teeth, and look for something to bridge across with. You walk over to take a look at a log lying nearby, but as you set your new spell book down to gauge its weight, you notice a crimson red bookmark marking one of its pages. That bookmark was not there before, so you open up to the page it marked. On the bookmark, a message reads, “This is a magic bookmark. Heed its instructions.” The bookmark was signed <em>The Second Sage</em>. 
+
+The page has a beautifully written script with a heading that reads “add_assoc”. Underneath it is a lemma, much like zero_add, which reads “(a b c : nat) : a + ( b + c ) = a + b + c”. There is no proof of the lemma, and you infer that you must prove this lemma and cast its spell.
+
+This lemma teaches you the associative property of addition. To get started, perform induction on one of the variables. Which variable do you think will be easiest to induct on? Remember, your current axioms allow you to operate on the rightmost variable most easily (for instance, a + succ b is easier than succ a + b, at least for now. Also, notice that your previous lemma, because it appeared in this magic book, is available in your toolbox along with your axioms (“zero_add”).
+
                                 `
                         },
 
                         {
-                                name: 'Succ Add',
-                                urlName: 'succ-add',
+                                name: 'Map to the Island',
+                                urlName: 'map-to-the-island',
                                 newAxioms: [
                                         {
                                                 name: "add_assoc",
@@ -263,7 +248,22 @@ Go ahead! Use add_succ to prove this. By proving both steps of the goal you prov
                                 ],
                                 goal: '(a b : nat) : ((succ a) + b) = (succ (a + b))',
                                 description: `
-                                Next level is the boss level: communative property. We'll need this lemma before we can prove it.
+As you finish the spell, something wonderful happens. The water in front of you starts to bubble, and suddenly dries up, leaving a gravel floor for you to traverse. As you walk through the river with a wall of water on both sides, you can’t help yourself from opening your mouth in wonder. A large orange fish swims even with you, followed by a smaller blue one, and by the time you cross the river more than a dozen colorful river-fish accompany you on either side. It warms your heart, even if just for the moment.
+
+But you cross the river, the water floods back into its place, and the moment ends. You journey to the port-city of Addithia, where you hope to gather more information about the goblins. You are still following the path of footprints, but they grow fainter and fainter as the ground you run on becomes less muddy and more dry. You arrive at Addithia as the sun meets the horizon and the sky begins to darken. You can no longer see any footprints but to the north, beyond the well-kept wooden docks, you see a ship setting sail with the goblin’s signature sword-handle proudly displayed on its sail. Here you sleep for the night and prepare for the following day’s journey.
+
+In the morning, you inquire the local villagers about the goblin’s destination. One of them claimed to have heard of a “Goblin Island,” but could not recall any other details. Another said they’ve once seen a map to the Goblins, but couldn’t remember where they saw it. Finally, they met a sailor with graying golden hair and a large frame who vaguely said, “Aye. I lived there once.” After saying this he looked down back at his rope and tied a knot in it.
+
+“Can you show me the way?” you ask, hopeful that this stranger was telling the truth. “They took something immensely potent from my village—a spell book—and they could do great evil with the powers contained in that book.”
+
+“I escaped Goblin Island with my ship when I was a young child. There was a map inside of the boat, painted on a beautiful piece of parchment, but it was since destroyed in a fire. I have no intention of returning.”
+
+“Well… I might be able to do something about that map.” You hope that your magic bookmark can save you from this situation.
+
+He (skeptically) lays the parchment in front of you, and you see the strokes of ink decorate what once was a burnt map. You open your own spell book and find the bookmark in a new place. 
+
+The lemma is titled “add_succ” and it teaches you an important prerequisite to commutative property, which is a very powerful spell. Prove “add_succ”, cast the spell, and restore the map!
+
                                 `
                         },
 
@@ -305,25 +305,6 @@ Go ahead! Use add_succ to prove this. By proving both steps of the goal you prov
                                 ],
                                 goal: '(n : nat) : (succ n) = (n + 1)',
                                 description: `
-                                The definition of "1" has been added: 1 = succ 0. 
-                                <br />
-                                <br />
-                                There are 2 more levels to provide us with some useful theorems for the multiplication world. 1 will become very important in the multiplication world, so it's important to be comfortable with it.
-                                `
-                        },
-
-                        {
-                                name: 'On Your Right',
-                                urlName: 'on-your-right',
-                                newAxioms: [
-                                        {
-                                                name: "succ_eq_add_one",
-                                                raw: "(n1 : nat) : (succ n1) = (n1 + 1)", category: AxiomCategory.addition
-                                        }
-                                ],
-                                goal: '(a b c : nat) : ((a + b) + c) = ((a + c) + b)',
-                                description: `
-                                The last theorem about addition; subtracting is such sweet sorrow.
                                 `
                         },
 
@@ -444,7 +425,7 @@ Go ahead! Use add_succ to prove this. By proving both steps of the goal you prov
                                 ],
                                 goal: '(a b t : nat) : ((a + b) * t) = ((a * t) + (b * t))',
                                 description: `
-                                Levels SIX and SEVEN in this world will equip us with what we need to tackle the boss: Communativity.
+                                Levels SIX and SEVEN in this chapter will equip us with what we need to tackle the boss: Communativity.
                                 `
                         },
                         {
@@ -480,7 +461,7 @@ Go ahead! Use add_succ to prove this. By proving both steps of the goal you prov
 
         {
                 
-                path: 'levels/world-4/',
+                path: 'levels/chapter-4/',
                 name: 'Exponents',
                 levels: [
                         {

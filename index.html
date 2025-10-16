@@ -52,13 +52,13 @@
                 <a href="/" class="text-blue-800 underline">here</a>.</p>
 
         <script type="module">
-                import { worlds } from "./worlds.js";
+                import { chapters } from "./worlds.js";
 
                 const levelGridEl = document.getElementById('level-grid')
 
                 let currentlyUp = true
 
-                worlds.forEach((world, worldIndex) => {
+                chapters.forEach((world, worldIndex) => {
                         
                         const levelComplete = world.levels.every((level, levelIndex) => localStorage.getItem(`${worldIndex+1}-${levelIndex+1}`) === 'complete')
                         
