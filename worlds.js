@@ -268,8 +268,8 @@ The lemma is titled “add_succ” and it teaches you an important prerequisite 
                         },
 
                         {
-                                name: '💀 Add Comm',
-                                urlName: 'add-comm',
+                                name: 'The Wind Obeys',
+                                urlName: 'the-wind-obeys',
                                 newAxioms: [
                                         {
                                                 name: "succ_add",
@@ -278,10 +278,22 @@ The lemma is titled “add_succ” and it teaches you an important prerequisite 
                                 ],
                                 goal: '(a b : nat) : (a + b) = (b + a)',
                                 description: `
-                                The first boss: communativity.
-                                <br />
-                                <br />
-                                You should be well prepared, my friend.
+Sure as day, the map begins to foam over, resulting in a beautiful, detailed map with tight coastlines, beautiful script, and careful paints. The map shows the east coast of the continent Nicholea, and includes a dot marking the village you reside in now, Addithia. The ocean, blue, vast, and empty, spans for a hundred miles to the east until a large green island marked with a sword handle and a skull, labeled “Goblin Island.”
+
+“There lie the bones of my parents and my brother.” As the sailor said this he took a step back and bit on his lip.
+
+“Will you take me there? And avenge your family? The fate of all Nicholea may lie on this quest.”
+
+He paused for a moment. “Aye. I will. We’ll leave with the evening wind. Blood will be shed in the name of my father.”
+
+That evening, you board Gale’s ship—you learned his name from the shopkeeper of the town—and you stare off into the empty ocean. Two dozen sailors, soldiers, and farmers accompany you, but you doubt that that will be enough to overtake the goblins. After all, two dozen wizards was not enough to stop the goblins. But you remind yourself: it isn’t necessary to defeat the goblins, but to find the spell-book and bring it back (or destroy it).
+
+Gale comes down from the upper deck. “We have no wind with us tonight, and this is not a rowing boat. We must hold it until the morning, unless your magic can do anything about it.”
+
+Indeed, controlling the wind is a difficult spell to cast, but it is an important spell. The magical bookmark opens to a new page, this page marked with a small star at the bottom right to signal its importance.
+
+In this lemma, “add_comm”, you prove the commutative property of addition. This is one of the most important lemmas of addition. You should be well prepared to handle this proof!
+
                                 `
                         },
 
