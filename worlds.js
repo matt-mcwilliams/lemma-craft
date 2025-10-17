@@ -268,8 +268,8 @@ The lemma is titled “add_succ” and it teaches you an important prerequisite 
                         },
 
                         {
-                                name: 'The Wind Obeys',
-                                urlName: 'the-wind-obeys',
+                                name: 'Gale\'s Awakening',
+                                urlName: 'gales-awakening',
                                 newAxioms: [
                                         {
                                                 name: "succ_add",
@@ -298,25 +298,40 @@ In this lemma, “add_comm”, you prove the commutative property of addition. T
                         },
 
                         {
-                                name: 'Plus One',
-                                urlName: 'plus-one',
+                                name: 'The Wind Obeys',
+                                urlName: 'the-wind-obeys',
                                 newAxioms: [
                                         {
                                                 name: "add_comm",
                                                 raw: "(n1 n2 : nat) : (n1 + n2) = (n2 + n1)", category: AxiomCategory.addition
                                         },
-                                        
-                                        {
-                                                name: "one",
-                                                raw: "1 : nat", category: AxiomCategory.numbers
-                                        },
-                                        {
-                                                name: "one_eq_succ_zero",
-                                                raw: "(1) = (succ 0)", category: AxiomCategory.numbers
-                                        }
                                 ],
                                 goal: '(n : nat) : (succ n) = (n + 1)',
                                 description: `
+A song bird flies overhead, alone, whistling a lovely tune as it travels east. Suddenly a small flock of seagulls follow it, and before you know it, hundreds of birds, all flying east, fill the sky. A small breeze comes from the west and you think you hear a song playing in the wind. The wind picks up, and Gale, surprised at your ability to actually command the wind, hangs his mouth open in wonder. “That settles it,” he says. “We leave tonight!”
+
+Gale commands of the crewmates to open the sail, and you begin your voyage. The journey is not long, and you expect to only be on the water for one night and one day. For the night, the sky remains clear, and the full moon shines upon your deck.
+
+As the sun rises the following morning, you can see the island growing in the distance. The island is circular and has a diameter of about 2 miles. There is a large distinguishing mountain in the center of it with smaller hills shielding it. As you get closer, Gale points to one of the hills. “That’s where my family once lived. We didn’t even know about the goblins, but one night, while I was away tending the sheep, I heard bells ringing and immediately ran home. Three lifeless bodies lay on the floor.” You think back to the goblin raid of your own school village. Gale continues, “We’ll sail to land near my old home. But Simon, if you have any more magic in you, cast a cloaking spell upon this ship so that we may dock undisturbed.”
+
+You open your spell book and find the bookmark.
+
+This lemma is called “add_one” and creates a shorthand for the addition of one. You do not need to use induction on this level. Begin by applying “one_eq_succ_zero” and simplifying from there. In general, whenever you have a non-zero number in the goal, it is best to start by applying the definition of that number and simplifying from there.
+
+Now that you’ve built up a stack of lemmas, it may be tedious to search through them and keyboard shortcuts become very helpful:
+
+To quickly navigate to the search bar, type “ / ”. Then, search for the lemma you want to introduce. 
+
+When the lemma you want to introduce is at the top of the search, press enter to move it onto the workbench. 
+
+If you don’t want to bring it onto the workbench but immediately want to do a rewrite on the goal, press ctrl + enter and the goal will be rewritten. 
+
+Once both sides of the equation are the same, press ctrl + j to reflect (same as double clicking on the goal). 
+
+To move between levels, use the square brackets to move to the previous ( “[” ) and next ( “]” ) levels.
+
+Try solving this level without using your mouse at all. Getting comfortable with keyboard shortcuts will be more and more helpful as the number of lemmas in your book increases.
+
                                 `
                         },
 
