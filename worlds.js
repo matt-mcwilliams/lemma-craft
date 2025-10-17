@@ -340,16 +340,16 @@ Try solving this level without using your mouse at all. Getting comfortable with
 
 
         {
-                path: 'levels/world-3/',
-                name: 'Multiplication',
+                path: 'levels/chapter-3/',
+                name: 'The Cave under the Mountain',
                 levels: [
                         {
                                 name: 'Zero Times',
                                 urlName: 'zero-times',
                                 newAxioms: [
                                         {
-                                                name: "add_right_comm",
-                                                raw: "(n1 n2 n3 : nat) : ((n1 + n2) + n3) = ((n1 + n3) + n2)", category: AxiomCategory.addition
+                                                name: "add_one",
+                                                raw: "(n1 : nat) : (succ n1) = (n1 + 1)", category: AxiomCategory.addition
                                         },
                                         {
                                                 name: "mul",
@@ -366,9 +366,27 @@ Try solving this level without using your mouse at all. Getting comfortable with
                                 ],
                                 goal: '(m : nat) : (0 * m) = (0)',
                                 description: `
-                                Like addition, this can be proven using induction.
-                                <br/><br/>
-                                Notice that there are three new theorems defining multiplication at the bottom. Like addition, multiplication is defined recursively.
+As long as you stay on the ship, you are undetectable by the goblins. You can see your crew and you can see the ship, but goblin-targeted magic veils you and the ship from their sight.
+
+You anchor out two hundred yards from the island and take the ship’s row boats to the shore. While walking on the beach, you find three axioms, as silver and smooth as the ones you received at the academy, lying on the ground. You take them and put them into your bag. Then, you hike up the hill and look around. Gale claims that his family lived underground in this hill, but he cannot find the door to enter. Gale looks at you and says, “I intend to visit my home while I’m here. The door was once here—I think—but has since been destroyed. Can you do something about it?”
+
+You open your spell-book and begin to cast the spell. 
+
+The three new axioms define multiplication recursively:
+
+<strong>mul:</strong> The multiplication of two natural numbers is another natural number.
+
+<strong>mul_zero:</strong> The multiplication of any natural number by zero is zero.
+
+<strong>mul_succ:</strong> This axiom defines multiplication of any non-zero number: Any non-zero number can be written as “succ b” for some number b, thus mul_succ defines multiplication for any natural numbers a and b: a * succ b = a * b + a. You can intuit why this is true by imagining it written like this:
+
+a * succ b 
+= a * ( b + 1 ) 
+= a * b + a * 1 
+= a * b + a
+
+To prove this lemma, zero_mul, begin by applying induction on <em>m</em> by dragging “m : nat” onto the “i” next to the goal.
+
                                 `
                         },
                         {
