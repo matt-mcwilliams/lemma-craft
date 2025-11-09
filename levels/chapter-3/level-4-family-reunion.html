@@ -54,12 +54,12 @@
 
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
                         <div class="text-black sticky bottom-0 px-4 py-2 bg-soft-white border-t-2 border-t-dark-gray outline-t-4 outline-t-white">
-                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">One (More) Times</strong><div>Level 3-3</div></div>
+                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">Family Reunion</strong><div>Level 3-4</div></div>
                                 <div class="flex jusity-stretch gap-3">
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-2-times-one.html">←</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-3-its-a-tomb.html">←</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="../../index.html">🏠︎</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="">⟳</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-4-distribute.html">→</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-5-assoc-football.html">→</a>
                                 </div>
                         </div>
                 </div>
@@ -69,8 +69,8 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                <p class="text-xl font-bold mb-4">One (More) Times</span></p>
-                                <p class="mb-4" id="tip-body"><br/>                                Prove "one times" from "times one" one more times.<br/>                                </p>
+                                <p class="text-xl font-bold mb-4">Family Reunion</span></p>
+                                <p class="mb-4" id="tip-body"><br/>The cave begins to shake. You made a big mistake. Why wouldn’t you listen to the bookmark? Is Gale’s wishes more important than your life? You start running out the cave, but when you turn around, Gale is hanging back, and on one knee he kneels next to his kin’s soulless bodies. The bodies, each nearly as dry as a skeleton, begin to animate. The largest body, probably Gale’s father, lifts his hand to Gale’s face to wipe away his tears. You leave the room before you can see anything else.<br/><br/>The entrance of the cave collapses as you sprint out of the cave, leaving a mess of rubble. You cannot enter the cave. Gale is now trapped, and you will never see him again. You instruct the sailors, who have been anxiously waiting outside of the cave, to make camp; tonight you will mourn Gale’s loss. Though he is not dead, you fear going back into the cave. Something about the cave seems dark, like a night that won’t end, and you interpret that as a warning to avoid the cave.<br/><br/>Cast this lemma’s spell to make food for the camp. This lemma is the distributive property, and it is one of the most important lemmas in multiplication. More specifically, this is known as left distributivity (called left_distrib) because the “t” is on the left side of the multiplication symbol. We will prove right distributivity later.<br/><br/>                                </p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
@@ -86,8 +86,8 @@
                                 <h2 class="text-xl font-bold mb-4 text-center">Level Complete!</h2>
 
                                 <div class="flex gap-4">
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="level-2-times-one.html">Previous Level ( [ )</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-4-distribute.html">Next Level ( ] )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="level-3-its-a-tomb.html">Previous Level ( [ )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-5-assoc-football.html">Next Level ( ] )</a>
                                 </div>
                         </div>
 
@@ -100,13 +100,13 @@
         </div>
 
         <script>
-                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (succ n1) = (n1 + 1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2},{"name":"mul_one","raw":"(n1 : nat) : (n1 * 1) = (n1)","category":2}]
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (succ n1) = (n1 + 1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2},{"name":"mul_one","raw":"(n1 : nat) : (n1 * 1) = (n1)","category":2},{"name":"one_mul","raw":"(n1 : nat) : (1 * n1) = (n1)","category":2}]
 
-                let goalRaw = "(m : nat) : (1 * m) = (m)"
+                let goalRaw = "(t a b : nat) : (t * (a + b)) = ((t * a) + (t * b))"
 
                 let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
 
-                let currentLevelId = "3-3"
+                let currentLevelId = "3-4"
         </script>
 
         <script src="../../js/level.js"></script>

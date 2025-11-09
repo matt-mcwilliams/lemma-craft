@@ -44,7 +44,7 @@
 </head>
 <body class="bg-soft-white">
         <h1 class="text-center text-7xl pt-16 font-bold font-mono">LemmaCraft</h1>
-        <div class="grid grid-cols-4 gap-4 px-4 pt-16 pb-8 max-w-4xl mx-auto items-start" id="level-grid">
+        <div class="grid grid-cols-4 gap-x-4 px-4 pt-16 pb-8 max-w-4xl mx-auto items-stretch" id="level-grid">
                 <!-- Javascript injects HTML here -->
         </div>
         <p class="text-center mb-4">© 2025 Matthew McWilliams. Report bugs or get in contact
@@ -66,32 +66,32 @@
                         
                         const linkBlockEl = document.createElement('a')
                         linkBlockEl.href = `${world.path}level-1-${world.levels[0].urlName}.html`
-                        linkBlockEl.classList.add("block", levelComplete ? "bg-teal" : (currentlyUp ? "bg-teal" : "bg-light-gray"), "text-center", "py-12" ,"rounded-xl", "hover:-translate-y-2")
+                        linkBlockEl.classList.add("block", levelComplete ? "bg-teal" : (currentlyUp ? "bg-teal" : "bg-light-gray"), "text-center", "py-12" ,"rounded-xl", "hover:-translate-y-2", 'h-full')
                         linkBlockEl.innerHTML = `
                         <strong>World ${worldIndex+1}</strong>
                         <p>${world.name}</p>
                         `
                         worldEl.append(linkBlockEl)
+                        levelGridEl.appendChild(worldEl)
                         
                         const levelListEl = document.createElement('ol')
-                        levelListEl.classList.add('list-decimal', 'ml-10', 'mt-4')
+                        levelListEl.classList.add('list-decimal', 'ml-10', 'mt-4', 'row-start-2')
                         world.levels.forEach((level, levelIndex) => {
                                 const levelComplete = localStorage.getItem(`${worldIndex+1}-${levelIndex+1}`) === 'complete'
                                 
                                 const liEl = document.createElement('li')
                                 liEl.classList.add('mb-2', 'pl-3')
-
+                                
                                 const aEl = document.createElement('a')
                                 aEl.href = `${world.path}level-${levelIndex+1}-${world.levels[levelIndex].urlName}.html`
-                                aEl.innerText = level.name + (levelComplete ? '  ✅' : '') 
+                                aEl.innerText = (levelComplete ? '✅  ' : '') + level.name
                                 aEl.classList.add('underline')
-
+                                
                                 liEl.append(aEl)
                                 levelListEl.append(liEl)
                         })
-                        worldEl.append(levelListEl)                                
+                        levelGridEl.appendChild(levelListEl)
                                 
-                        levelGridEl.appendChild(worldEl)
                         currentlyUp &=levelComplete
                 })
                 

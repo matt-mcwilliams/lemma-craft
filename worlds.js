@@ -344,8 +344,8 @@ Try solving this level without using your mouse at all. Getting comfortable with
                 name: 'The Cave under the Mountain',
                 levels: [
                         {
-                                name: 'Zero Times',
-                                urlName: 'zero-times',
+                                name: 'A Sealed Door',
+                                urlName: 'a-sealed-door',
                                 newAxioms: [
                                         {
                                                 name: "add_one",
@@ -390,8 +390,8 @@ To prove this lemma, zero_mul, begin by applying induction on <em>m</em> by drag
                                 `
                         },
                         {
-                                name: 'Times One',
-                                urlName: 'times-one',
+                                name: 'This Is No Home.',
+                                urlName: 'this-is-no-home',
                                 newAxioms: [
                                         {
                                                 name: "zero_mul",
@@ -400,12 +400,17 @@ To prove this lemma, zero_mul, begin by applying induction on <em>m</em> by drag
                                 ],
                                 goal: '(m : nat) : (m * 1) = (m)',
                                 description: `
-                                Oh dear.
+As you say the final words of the spell, the ground shakes, and a hole opens in the hill right where Gale remembered. Gale brings his hand up to his mouth, pondering silently in awe of your magic. He leads the way into the hill, and you follow. As you enter the opening, you hear strange voices whispering to you. You cannot make out what they are saying, but you do hear the words “run away.” Just your imagination, you decide.
+
+Darkness envelopes you as you walk through the cave. You turn around, looking for the sunlight, but a dark cloud shields any light from the outside. Turning around, you continue forward, looking for Gale, and you trip on a step, face-planting into the cold stone floor. As you get up, you reach for your spell-book and open to the bookmark, a soft glow emits from the letters in the spell-book, illuminating instructions in the book and a new lemma to prove. The bookmark’s text has changed; it now reads “Where there is light there can be no darkness.”
+
+This lemma is called “mul_one” and is the identity property of multiplication. You close your eyes and begin to work the lemma. Note that an induction is not necessary for this lemma’s proof. How can you rewrite to enable a “mul_succ” rewrite?
+
                                 `
                         },
                         {
-                                name: 'One (More) Times',
-                                urlName: 'one-more-times',
+                                name: 'It\'s a Tomb!',
+                                urlName: 'its-a-tomb',
                                 newAxioms: [
                                         {
                                                 name: "mul_one",
@@ -414,12 +419,22 @@ To prove this lemma, zero_mul, begin by applying induction on <em>m</em> by drag
                                 ],
                                 goal: '(m : nat) : (1 * m) = (m)',
                                 description: `
-                                Prove "one times" from "times one" one more times.
+Luminescent flowers bloom above your head and a hissing sound fills the cave, like hot water mixing with oil. The dark fog dissipates until it is nearly gone, and the sun fills the cave with a warm light. You call out for Gale but hear no response.
+
+You venture further into the tomb, exploring the detailed engravings that were carefully cut into the stone walls of the tomb. A faded green paint can be seen highlighting parts of the wall, and you suspect that the wall tells a story. Indeed, the engravings depict a goblin army on a large sailboat, landing on an island, and a human family hiding underground. The engravings were in fact telling the story of this island, and someone from Gale’s family was responsible for their creation. As you come to the end of the hallway, an engraving catches your eye. This one has the most detail and shows three people, one smaller than the other two, embracing, with tears running down their neck. Meanwhile, the cave’s opening was covered by dirt, and a young boy stood outside, crying against the sealed entrance. This young boy was Gale.
+
+You take a step back, breathing heavy, and call out for Gale one more time. This time you hear a solemn response: “Come here.” You follow the voice, which leads you into a corridor darkened by fog. A single white flower hanging from the ceiling highlights the end of it, and the bodies of three dead people lay on the floor in the light. You bump into Gale’s large frame, unable to see it in the dark. “Can you, wizard, bring them back?” He turns to face you. Tears are running down his face. “Is there power in you to raise them?” 
+
+You open your book, but a feeling of guilt runs over you. Are you allowed to do this? You shake your head and find the bookmark. The message on the bookmark has changed again. “Power over life and death is not to be reckoned with.” Your breath quickens.
+
+“Please?” Gale asks, looking you in the eyes. You have to make a choice. You feel Gale’s sincerity as you weigh your options.
+
+Guilt overtakes you; you begin to cast the spell.
                                 `
                         },
                         {
-                                name: 'Distribute',
-                                urlName: 'distribute',
+                                name: 'Family Reunion',
+                                urlName: 'family-reunion',
                                 newAxioms: [
                                         {
                                                 name: "one_mul",
@@ -428,7 +443,12 @@ To prove this lemma, zero_mul, begin by applying induction on <em>m</em> by drag
                                 ],
                                 goal: '(t a b : nat) : (t * (a + b)) = ((t * a) + (t * b))',
                                 description: `
-                                This is known as left distributivity (left because the "t" is on the left side of the multiplication). We'll prove right distributivity later.
+The cave begins to shake. You made a big mistake. Why wouldn’t you listen to the bookmark? Is Gale’s wishes more important than your life? You start running out the cave, but when you turn around, Gale is hanging back, and on one knee he kneels next to his kin’s soulless bodies. The bodies, each nearly as dry as a skeleton, begin to animate. The largest body, probably Gale’s father, lifts his hand to Gale’s face to wipe away his tears. You leave the room before you can see anything else.
+
+The entrance of the cave collapses as you sprint out of the cave, leaving a mess of rubble. You cannot enter the cave. Gale is now trapped, and you will never see him again. You instruct the sailors, who have been anxiously waiting outside of the cave, to make camp; tonight you will mourn Gale’s loss. Though he is not dead, you fear going back into the cave. Something about the cave seems dark, like a night that won’t end, and you interpret that as a warning to avoid the cave.
+
+Cast this lemma’s spell to make food for the camp. This lemma is the distributive property, and it is one of the most important lemmas in multiplication. More specifically, this is known as left distributivity (called left_distrib) because the “t” is on the left side of the multiplication symbol. We will prove right distributivity later.
+
                                 `
                         },
                         {
