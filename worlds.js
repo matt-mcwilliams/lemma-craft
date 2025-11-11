@@ -452,8 +452,8 @@ Cast this lemma’s spell to make food for the camp. This lemma is the distribut
                                 `
                         },
                         {
-                                name: 'Assoc Football',
-                                urlName: 'assoc-football',
+                                name: 'Terrible Thunder',
+                                urlName: 'terrible-thunder',
                                 newAxioms: [
                                         {
                                                 name: "left_distrib",
@@ -462,12 +462,18 @@ Cast this lemma’s spell to make food for the camp. This lemma is the distribut
                                 ],
                                 goal: '(a b c : nat) : ((a * b) * c) = (a * (b * c))',
                                 description: `
-                                What's similar about soccer and multiplication? They're both associative! Wait, you don't understand? Like "Association Football" and "Associative Prop"— oh never mind.
+The next morning, before the sun rose and while the sky was still dark, you and your companions set off for the mountain. The mountain was no more than ten miles away, but you want to get an early start and delay your confrontation no more. Last night you grieved for Gale and his family; today you must avenge him. As you draw nearer to the mountain, your path loses its lush green cheer and everything becomes dry and lifeless. This affects your company; by the time you arrive at the footsteps of the mountain and the slope steepens, the soldiers and sailors following you are disheartened; several of them are shaking, worried for their sake.
+
+Abruptly, a voice not unlike a goblin’s booms from the top of the mountain, cackling mischievously. The voice was unnaturally loud and deep; like thunder it sounded yet no lightning could be seen. Following it, words, still thundering and terrible, were cast across from the sky.  The words sounded like magic that you recognized yet couldn’t put a finger on it. Dark storm clouds begin to collect near the top of the mountain’s snowy peak.
+
+The words, carried by thunder, grow louder as you draw nearer to the top of the mountain. The voice suddenly grew angry and shouted something in a foreign language. The voice shakes the rocky surface you walk on, and lightning strikes the peak of the mountain as if commanded by some evil magic. Snow from the top of the mountain collects into an unnaturally large snowball, more than forty feet across, which rolls down the hill directly at you with a frightening speed. To its left and right piles of snow follow it in an avalanche.
+
+Depleted of options, you open your spellbook to the bookmark, and desperately hope to prove the lemma in time. This lemma is the associative property of multiplication, mul_assoc, and it is essential to manipulating complex equations involving multiplication.
                                 `
                         },
                         {
-                                name: 'succ_mul',
-                                urlName: 'succ-mul',
+                                name: 'The Sun Rises',
+                                urlName: 'the-sun-rises',
                                 newAxioms: [
                                         {
                                                 name: "mul_assoc",
@@ -476,7 +482,15 @@ Cast this lemma’s spell to make food for the camp. This lemma is the distribut
                                 ],
                                 goal: '(a b : nat) : ((succ a) * b) = ((a * b) + b)',
                                 description: `
-                                Levels SIX and SEVEN in this world will equip us with what we need to tackle the boss: Communativity.
+Just in time, you finish the spell. The snowball is not twenty meters from crushing you and your entire crew, leaving the world unaware of and unprotected from the dangers of the goblin king and the spellbook. The sun rises, peaking over the mountain top, as if all time slowed down except for the rising of the sun, and the sun penetrates the dark clouds in a blinding flash of light. The snowball melts quickly, and for a moment the clouds intensify the sunlight into a sharp beam, like a glass lens used to concentrate sunlight onto kindlewood. Several of your companions fall backward as the remaining water washes over them, but quickly stand up uninjured and shocked from the control over nature your spellbook has.
+
+You continue to march up the slopes of the mountain, and every step seems to give new life to your strength. Since the sun climbed over the mountain, the journey has been getting warmer, and now the weather was pleasantly mild. The voice in the air has stopped. There were no more clouds masking the sky. You and your company no longer feel like you are marching to your death. 
+
+Later, when you are within a hundred meters of the cave, one of your crewmates, Andrew, asks aloud, “So what are we to do when we arrive? I suspect a fisherman’s harpoon won’t be of much use against the godlike magic we are up against. Perhaps your little spellbook can give us something to work with?”
+
+You open up your spellbook to the bookmark, and the bookmark reads, “They have shown themselves worthy.” 
+
+The lemma for this is called succ_mul, and it is necessary for proving multiplicative commutativity.
                                 `
                         },
                         {
