@@ -341,7 +341,7 @@ Try solving this level without using your mouse at all. Getting comfortable with
 
         {
                 path: 'levels/chapter-3/',
-                name: 'The Cave under the Mountain',
+                name: 'The Cave and the Mountain',
                 levels: [
                         {
                                 name: 'A Sealed Door',
@@ -494,8 +494,8 @@ The lemma for this is called succ_mul, and it is necessary for proving multiplic
                                 `
                         },
                         {
-                                name: 'right_distrib',
-                                urlName: 'right-distrib',
+                                name: 'In the Hall of the Goblin King',
+                                urlName: 'in-the-hall-of-the-goblin-king',
                                 newAxioms: [
                                         {
                                                 name: "succ_mul",
@@ -504,12 +504,18 @@ The lemma for this is called succ_mul, and it is necessary for proving multiplic
                                 ],
                                 goal: '(a b t : nat) : ((a + b) * t) = ((a * t) + (b * t))',
                                 description: `
-                                Levels SIX and SEVEN in this chapter will equip us with what we need to tackle the boss: Communativity.
+The fishermen's gear, which is slung over the sailors’ backs, slowly melts into bright swords, shining with a silver luster uncharacteristic of man-made weaponry. They all emit a faint yellow glow, the bright magic within them struggling to be contained, and your company no longer looks like the poor, unconfident sailors you left off with; an outsider might think they were nobility leading an army into battle. Indeed, the soldiers look stronger, bigger, and more confident, as if gripping the swords gave them an unnatural presence that could make even the most fearless goblins cower at their sight.
+
+You stride into the front door of the enemy, which is no more than a treasure stash carved into the heights of a mountain, and the goblin king sits on his large golden throne, apparently oblivious to your arrival. His left hand holds the spellbook, which he is violently studying, and his right holds a beautiful white staff capped with a glowing green stone. He has a large, muscular frame and as pleasant of a face as one can find in a goblin. 
+
+Without a moment's hesitation, you open your spellbook. The bookmark reads, “A passionate underdog rooted in purpose will never meet an obstacle too strong to overcome. Act quickly.”
+
+This lemma, right_distrib, is exactly what it sounds like: distributivity where the number being distributed (t) is on the right side of the equation.
                                 `
                         },
                         {
-                                name: '💀 mul_comm',
-                                urlName: 'mul-comm',
+                                name: 'Darkness Unleashed',
+                                urlName: 'darkness-unleashed',
                                 newAxioms: [
                                         {
                                                 name: "right_distrib",
@@ -518,12 +524,16 @@ The lemma for this is called succ_mul, and it is necessary for proving multiplic
                                 ],
                                 goal: '(a b : nat) : (a * b) = (b * a)',
                                 description: `
-                                You should be well-prepared.
+The hair on your arm stands up, and blue electrical sparks rise out of the coins piled underneath the goblin king. The spell you cast was a lightning spell, apparently, and lightning was soon to strike your enemy. But the goblin king had other plans. Still looking down at the spellbook, he begins to smirk, and a feeling of failure overtakes you. He lifts his staff, and lightning from the cave ceiling comes down thunderously but is absorbed into the staff. He points his staff in your direction, and the lightning strikes the entrance to the cave, causing a rockslide to block the only way out. The room darkens, and the only source of light is the four torches burning on either side of his golden throne.
+
+The goblin king closes his spellbook, and looks down upon you. His blood red eyes meet your gaze and he says, with the same thunderous voice that was in the air earlier, “You’re late.” With this, he smiles and begins to cackle a terrible, deep laugh. He knocks the bottom of his staff on the floor, and several things happen at once: a bright yellow portal opens next to the goblin king’s throne, and he walks through it, leaving the room; the ground begins to shake, and several of your companions fall to the floor; and dozens of pairs of glowing red eyes appear across the chamber, the eyes of wolves hungry for a snack. The wolves growl and step into the dim light, showing sharp teeth and large grey-brown coats of fur. 
+
+The magic bookmark marks a lemma for the commutative property of multiplication (“mul_comm”), one of the most powerful and important lemmas in multiplication. You begin to cast the spell without any delay.
                                 `
                         },
                         {
-                                name: 'mul_left_comm',
-                                urlName: 'mul-left-comm',
+                                name: 'A Spell of Confidence',
+                                urlName: 'a-spell-of-confidence',
                                 newAxioms: [
                                         {
                                                 name: "mul_comm",
@@ -532,7 +542,15 @@ The lemma for this is called succ_mul, and it is necessary for proving multiplic
                                 ],
                                 goal: '(a b c : nat) : (a * (b * c)) = (b * (a * c))',
                                 description: `
-                                just do it
+While you are casting the spell, one of the wolves leaps in your direction, and sprints through the darkness. You don’t know it, but this wolf is targeting you; it somehow knows that you are capable of its defeat. You say the final words of the spell and expect something to happen, but nothing does. Nothing happens to stop the hungry wolf from reaching its prey. You tear up and step back, expecting this to be the end, but your companions step forward. Wielding the magical swords, they fearlessly stand ready; with one heavy stroke of the sword, one of your companions, Yogu, slays the beast.
+
+The death of this wolf only enraged the others. All of the other beasts growl, and just moments after killing the first wolf, two dozen wolves are charging in your direction. But your companions, as if guided by a spell of confidence, don’t even flinch. One by one, they slay the encroaching wolves, the magical swords shining brighter with every swing. All of the wolves are soon lying lifelessly on the ground. After finishing with the wolves, your companions all shake their heads in unison and look confused. “Did I just do that?” one of them asks. “I felt as if some spirit overtook me, a spirit of fighting and of vengeance. But…” He looks at you. “Did you do this?”
+
+You’ll never know for sure, but you suspect your spell had something to do with it. You respond, “I… I think so, yes. But for now we must look to the future. How are we going to escape?”
+
+“I was hoping to ask you,” one of your companions says. “Can’t you make a portal like that ugly goblin did?”
+
+You open your spellbook to the bookmark, and begin to cast the spell. This lemma, mul_left_comm, is useful for simplifying equations. You do not need to perform an induction to prove it. This is the last lemma about multiplication.
                                 `
                         },
                 ]

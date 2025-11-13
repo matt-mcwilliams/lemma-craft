@@ -69,7 +69,7 @@
                         linkBlockEl.classList.add("block", levelComplete ? "bg-teal" : (currentlyUp ? "bg-teal" : "bg-light-gray"), "text-center", "py-12" ,"rounded-xl", "hover:-translate-y-2", 'h-full')
                         linkBlockEl.innerHTML = `
                         <strong>World ${worldIndex+1}</strong>
-                        <p>${world.name}</p>
+                        <p class="px-6">${world.name}</p>
                         `
                         worldEl.append(linkBlockEl)
                         levelGridEl.appendChild(worldEl)
