@@ -562,8 +562,8 @@ You open your spellbook to the bookmark, and begin to cast the spell. This lemma
                 name: 'Exponents',
                 levels: [
                         {
-                                name: 'zero_pow_zero',
-                                urlName: 'zero-pow-zero',
+                                name: 'The Path is Hidden',
+                                urlName: 'the-path-is-hidden',
                                 newAxioms: [
                                         {
                                                 name: "mul_comm_left",
@@ -584,12 +584,31 @@ You open your spellbook to the bookmark, and begin to cast the spell. This lemma
                                 ],
                                 goal: '(0 ^ 0) = (1)',
                                 description: `
-                                Powers
+A portal much like the one the goblin king used opens next to you. The light from it nearly blinds you, but you can faintly make out the other side. There is a clearing in a forest with tall grass and a small pond not too far from you. You look to your companions on either side and watch as they enter the portal, one by one, until you are the only one left. You take a deep breath and step forward into the portal. It takes your eyes a minute to adjust to the sun, but once you do, you realize that this meadow is near your alchemy school’s village. 
+
+You lead the group, pointing in the direction of the village, but after venturing through the forest you find yourself back in the same meadow. You do not remember the way to the village. One of the sailors offers to guide us back to his port-village, but after describing the path he realizes that he has forgotten which way to go. Devoid of other options, you open your spellbook and hope for some luck.
+
+Three new axioms have been added, definitions of exponentiation:
+
+pow — when you raise one natural number to the power of another, the result is a natural number.
+
+pow_zero — raising any number to the zeroth power is one.
+
+pow_succ — to raise any number a to the successor of another number b, raise a to the b-th power and multiply by a. This defines exponentiation recursively much like addition and multiplication are defined. For example:
+
+3 ^ 2 
+= 3 ^ ( succ 1 ) 
+= 3 ^ 1 * 3 = 3 ^ ( succ 0 ) * 3 
+= ( 3 ^ 0 ) * 3 * 3 
+= 1 * 3 * 3 
+= 9
+
+The lemma for this level, zero_pow_zero, is fairly straightforward. Note: Mathematicians working outside of the set of natural numbers will tell you this statement is incorrect because 0^0 is undefined, but the axioms we are using define this to be true.
                                 `
                         },
                         {
-                                name: 'zero_pow_succ',
-                                urlName: 'zero-pow-succ',
+                                name: 'No Place Like Home',
+                                urlName: 'no-place-like-home',
                                 newAxioms: [
                                         {
                                                 name: "zero_pow_zero",
@@ -598,12 +617,19 @@ You open your spellbook to the bookmark, and begin to cast the spell. This lemma
                                 ],
                                 goal: '(m : nat) : ((0) ^ (succ m)) = (0)',
                                 description: `
-                                Powers
-                                `
+You finish the spell and become hyperalert to your surroundings as you wait for a response. Maybe the clouds are floating in the correct direction? Or perhaps you need to look at the fish decorating the pond? As you wait for some sort of sign, fifteen seconds pass, then a minute, and then five minutes. Your companions offer suggestions: try the spell again, let’s walk around the woods, and one of them thinks they might remember the way to their home. Just as you are about to cave into one of their requests, a familiar sound pierces nature’s silence: the golden bell of your school. The bell’s enchanting ring fills the atmosphere and imbues hope and joy into your company. The sound is coming from the north, so you and your companions hike through the woods in that direction.
+
+After about five minutes, you exit the forest and enter another clearing, and looking over the tree line reveals the bell-tower, proudly shining against the dusky dawn. You lead your company into the walls of the village and a familiar face sits near the entrance. “Magi Grambletόn!” you exclaim. As you run up to and embrace your teacher, you recall how peaceful this town was, and you realize that you shouldn’t have acted so impatiently in the months you stayed here.
+
+“It’s been quite a while, now hasn’t it?” he says. You share your story: how you found the Second Sage dying; the magic book and bookmark he gave you; the port-city and Gale’s family; setting sail and commanding the wind; and climbing the mountain. You realize just how much has happened to you, and you cannot accept that it has been only three days since Magi Grambletόn taught you the rewrite spell in the apple orchard.
+
+As the rest of your company is introducing themselves to the wizards, a strange bird with black feathers and a long beak perches on the ground in front of you. It looks directly into your eyes and coughs. You squat down to look at it, and it hobbles over to you, still coughing, as if it were trying to tell you something but couldn’t. It starts to poke its beak at you, and you jump back, but after realizing it didn’t intend to hurt you, you notice that it was poking at your spellbook resting in the sack draped across your shoulder. You take out the spellbook and open it to the bookmark, and the bird looks at you and motions with its beak towards the book. The bird obviously wants you to cast a spell, so you look down and begin to prove the lemma and cast the spell.
+
+This lemma is straightforward and proves that 0 ^ n = 0 for all n > 0 — we know that this is false when n = 0 because of the previous lemma; this lemma proves it true for all others because all natural numbers are either 0 or the successor of another natural number.                                 `
                         },
                         {
-                                name: 'pow_one',
-                                urlName: 'pow-one',
+                                name: 'Impending Doom',
+                                urlName: 'impending-doom',
                                 newAxioms: [
                                         {
                                                 name: "zero_pow_succ",
@@ -612,12 +638,21 @@ You open your spellbook to the bookmark, and begin to cast the spell. This lemma
                                 ],
                                 goal: '(a : nat) : (a ^ 1) = (a)',
                                 description: `
-                                Powers
+The bird’s coughing gets worse, and the bird begins to choke on something. When you finish casting the spell, however, the bird spits out a rock stuck in its throat. And then something weird happens: the bird begins to speak.
+
+“Oh, my apologies. I’ve been choking on that rock all day. Oh my — is something wrong?” He looks up at you confused, and you realize that that’s probably because you are looking at him confused. “Dear me, you’ve never seen a talking bird I suppose. Well, no time for that. I was flying through the mountains up north, and there I heard a speech that sounded like thunder ringing through the air. Out of curiosity I followed the voice, and a great goblin was standing high on a hill commanding an army, some two thousand soldiers at least. Truth be told I didn’t realize the leader was a goblin at first, I thought it was a great king, until I saw the army. Now I didn’t get too close, but the army, at the leader’s command, began to march south, instructed to siege this town and pillage anything in their path. Now they’re still some distance away, but you have hardly enough time to do anything—”
+
+“Is there time to get to the port-city of Addithia?” You cut to the point. “Can we make it?”
+
+“Oh, dear me, not on foot. Maybe as the bird flies, yes, or as the horse runs, but there’s no way you’d make it before every villager is slayed — oh, how tragic our circumstances are. Certain doom for us all!”
+
+You look around at your companions and wizards. “Do any of y’all have a horse?” They look at one another, but none of them do. If you are going to survive the siege, you reason, then you need all the help you can get. There’s not enough hands here to protect the entire perimeter, even with the magical powers of the wizards, so you must seek out help. The nearest town was Addithia, and if you have any hope of surviving this battle you know you must hurry. You open your spellbook to a lemma titled “pow_one” and hope that this next spell could bring fortune.
+
                                 `
                         },
                         {
-                                name: 'one_pow',
-                                urlName: 'one-pow',
+                                name: 'Village Rescue',
+                                urlName: 'village-rescue',
                                 newAxioms: [
                                         {
                                                 name: "pow_one",
@@ -626,12 +661,21 @@ You open your spellbook to the bookmark, and begin to cast the spell. This lemma
                                 ],
                                 goal: '(m : nat) : (1 ^ m) = (1)',
                                 description: `
-                                Powers
+A horse neighs outside of the village entrance. You smile, and some of the most experienced wizards among you were surprised. “Only the Second Sage, with his spell book, was capable of such unpracticed and impromptu spells,” one of them says. “You’ve got quite a future ahead of you, kid.”
+
+“Only if I live to see it,” you reply, and run out the gate to find a beautiful brown horse with a dark mane as pure and smooth as silk. The horse squats down for you as you approach it. You jump on its back, and, seeming to know exactly where to go, the horse immediately begins to run down the north path. The horse cut through the forest vegetation like a sharp knife cutting through soft meat. About halfway to Addithia, just after the horse leapt gravity-defyingly over the river in a single smooth jump, something wonderful happens: dozens of horses, maybe even a hundred, all saddled, join you from either side and run with you. They form a line with you leading from the front, for the path is no more than three widths of horse across.
+
+You arrive at Addithia and run around, shouting for everyone. As each person exits their homes and prepares to leave, they find that they are each given a horse, which trots up and squats down for them to ride on. After everyone is saddled and you are preparing to leave, you hear a horn in the distance accompanied by a slow beat of drums. The goblin army was nearing. The villagers look at one another, frightened. The horn blows again, and this time, dark clouds accompany it and block the sun, darkening the sky. One of the children screams and several others begin to sob with their mothers, who themselves are struggling to stay calm. Even the horses begin to get restless.
+
+You must do something about these clouds, or else you won’t be able to leave. You pull out your spellbook to the bookmark and wish for a solution. 
+
+This lemma is called “one_pow” and proves that one raised to any power is one.
+
                                 `
                         },
                         {
-                                name: 'pow_add',
-                                urlName: 'pow-add',
+                                name: 'The Final Stand',
+                                urlName: 'the-final-stand',
                                 newAxioms: [
                                         {
                                                 name: "one_pow",
@@ -640,12 +684,18 @@ You open your spellbook to the bookmark, and begin to cast the spell. This lemma
                                 ],
                                 goal: '(a m n : nat) :( a ^ (m + n)) = ((a ^ m) * (a ^ n))',
                                 description: `
-                                Powers
+As you finish the spell, the clouds disperse, carried by a strong westward wind. The sun shines, and the goblin horns and drums cannot be heard anymore. The villagers look at you with amazement. You call them all together, and begin to lead them through the forest path. Most of the villagers had never seen a horse before, but these horses were incredibly natural to ride and gave no difficulties to any of their riders. 
+
+You arrive in the village, and all of the women and children retreat into the library. About a hundred men are left, plus twenty-nine wizards and their apprentices. Each person takes a place on the wall and you hold your breath as you look out into the stillness of nature and imagine an army of repulsive goblins laying siege. The forest, which sits some thirty meters away, is unusually quiet. You, standing ready with Magi Grambletόn, begin to shake nervously, but your instructor’s steady hand calms you down as he rests it on your shoulder. 
+
+Finally, a goblin horn sounds faintly in the distance, and you turn to the north to see torches burning brightly behind the treeline. Storm clouds blacken the dark sky and hide the moon’s light as the army approaches. The goblin army marches out of the trees, stopping just out of bowshot distance, and blows their horns loudly. They surround the village from all sides. Rain begins to fall from the sky. After this brief halt, the goblins, shouting hideously, begin to charge the village. Armed with nothing but your spellbook, you prepare yourself for battle. The men who stand on the wall fire arrows down at the intruding goblin army. Most of the arrows miss their targets, but about a dozen goblins are killed in the initial barrage of arrows.
+
+You open your spellbook to the bookmark and begin to cast a spell. This lemma, “pow_add,” is equivalent to the distributive property of multiplication.
                                 `
                         },
                         {
-                                name: 'mul_pow',
-                                urlName: 'mul-pow',
+                                name: 'Retreat',
+                                urlName: 'retreat',
                                 newAxioms: [
                                         {
                                                 name: "pow_add",
@@ -654,7 +704,15 @@ You open your spellbook to the bookmark, and begin to cast the spell. This lemma
                                 ],
                                 goal: '(a b n : nat) : ((a * b) ^ n) = ((a ^ n) * (b ^ n))',
                                 description: `
-                                Powers
+Suddenly, lightning strikes down from the sky and strikes a large tree in the middle of the goblin army. The tree falls, and its large shadow of branched limbs crushes dozens of goblins. After falling, it begins to roll to the forest and another fifty goblins at least are flattened under its weight, until the tree comes to a rest at the tree line. 
+
+“Hoy! Not bad!” Magi Grambletόn says. “Watch this, if you will.” With this, he brought his hands together into a ball, and pushed out as if throwing something at the approaching army. A fire breaks out among the ranks of the goblins, burning a few of them to a crisp, but the fire is quickly extinguished by the rain. Around the walls of the village, wizards and apprentices alike are bringing ruin down upon the goblin army. Meanwhile, the men are showering arrows down upon the enemies, slaying dozens. 
+
+But your upper hand is short-lived. A goblin horn blows, and all of the goblins retreat out of bowshot range. Large catapults are pushed out of the forest, each loaded with large spherical rocks. The horn is blown again, and all of the catapults are launched concurrently. The giant stones fly through the air like meteors raining down from the heavens. As they land, they explode like fireworks. The first stone lands in the middle of the village meeting space, destroying a statue but taking no lives. The next hits part of the western wall, killing two wizards and their apprentices, as well as five men, and that piece of the wall collapses into a pile of rubble. One by one, the stones land in fiery eruptions across the village, taking out the cafeteria, then the sleeping quarters, and then the lecture halls. Much of the northern wall is destroyed. Only the library, by chance or some spell of protection, remains unscathed by the hellish explosions.
+
+The horn is blown a third time. The goblin army charges forward, this time without walls blocking their path. You look around at the remaining soldiers, wizards, and apprentices. So few of them remain! One of the wizards on the southern wall finally yells, “Retreat! Retreat to the library!” The library is on the southern wall and has a basement that connects to a cave system. The women and children were hiding in there, and it acted as a place for injured soldiers to retreat to. You and Magi Grambletόn climb down the wall and run to the library, where you join the rest of the soldiers.
+
+After everyone gets in, you slam the door and hope to cast a sealing spell on the door. You open your book and begin to prove the lemma, which is titled “mul_pow.”
                                 `
                         },
                         {
