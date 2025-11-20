@@ -710,14 +710,14 @@ Suddenly, lightning strikes down from the sky and strikes a large tree in the mi
 
 But your upper hand is short-lived. A goblin horn blows, and all of the goblins retreat out of bowshot range. Large catapults are pushed out of the forest, each loaded with large spherical rocks. The horn is blown again, and all of the catapults are launched concurrently. The giant stones fly through the air like meteors raining down from the heavens. As they land, they explode like fireworks. The first stone lands in the middle of the village meeting space, destroying a statue but taking no lives. The next hits part of the western wall, killing two wizards and their apprentices, as well as five men, and that piece of the wall collapses into a pile of rubble. One by one, the stones land in fiery eruptions across the village, taking out the cafeteria, then the sleeping quarters, and then the lecture halls. Much of the northern wall is destroyed. Only the library, by chance or some spell of protection, remains unscathed by the hellish explosions.
 
-The horn is blown a third time. The goblin army charges forward, this time without walls blocking their path. You look around at the remaining soldiers, wizards, and apprentices. So few of them remain! One of the wizards on the southern wall finally yells, “Retreat! Retreat to the library!” The library is on the southern wall and has a basement that connects to a cave system. The women and children were hiding in there, and it acted as a place for injured soldiers to retreat to. You and Magi Grambletόn climb down the wall and run to the library, where you join the rest of the soldiers.
+The horn is blown a third time. The goblin army charges forward, this time without walls blocking their path. You look around at the remaining soldiers, wizards, and apprentices. So few of them remain! One of the wizards (you believe it's Magi Somerio) on the southern wall finally yells, “Retreat! Retreat to the library!” The library is on the eastern wall, just underneath you, and has a basement that connects to a cave system. The women and children were hiding in there, and it served as a place for injured soldiers to retreat to. You and Magi Grambletόn climb down the wall and run to the library, where you join the rest of the soldiers.
 
 After everyone gets in, you slam the door and hope to cast a sealing spell on the door. You open your book and begin to prove the lemma, which is titled “mul_pow.”
                                 `
                         },
                         {
-                                name: 'pow_pow',
-                                urlName: 'pow-pow',
+                                name: 'Certain Doom',
+                                urlName: 'certain-doom',
                                 newAxioms: [
                                         {
                                                 name: "mul_pow",
@@ -726,7 +726,25 @@ After everyone gets in, you slam the door and hope to cast a sealing spell on th
                                 ],
                                 goal: '(a m n : nat) : ((a ^ m) ^ n) = (a ^ (m * n))',
                                 description: `
-                                Powers
+The door of the library, which was made of wood, hardens into stone and melts into its surroundings, creating an unbreakable seal on the library. You turn around and look at your company. Only around ten wizards and ten apprentices remain, along with about thirty men. 
+
+“What now?” One of the apprentices asks. “Do we retreat into the caves to live out the rest of our lives? As far as I can tell there is no way out of the cave.”
+
+You suggest opening a portal to escape. Some of the men agree with you, but the wizards think that to be cowardly. “For then we’d only delay defeat. If we cannot win here I doubt we stand a chance anywhere else. Then the goblin king would have nothing standing in its way to rule over all the free world.”
+
+Another wizard speaks. “It is only a matter of time before the goblin king himself marches up to our door and breaks the sealing spell. We must make a choice. Retreat and spare our lives, but leave the world under the rule of the goblin king? Or fight to our certain doom, but with one last hope of sparing the world?”
+
+Many voices begin to argue all at once. Some say retreat into the caves as you stand a better chance fighting there anyways. Others say take the portal and leave. One voice rises above all the others: “Hoy! Ride out and fight! Fight! Folly it is to think we can defeat the goblin king from a cave!” You look over, and to your surprise, that voice is Magi Grambletόn. After further deliberation, a consensus is reached: everyone will ride out on the horses except for you. You will stand back, just outside the cave, awaiting the goblin king, and cast a spell with him off guard to seek his defeat. 
+
+Everyone climbs onto their horses, a fiery determination set in their eyes. Magi Somerio, the tallest and wisest of the wizards, valiantly shouts, “Let us meet this moment not cowering with fear but proud to be the last defenders of the free world. Courage! Courage! For as soon as we give in to cowardice the enemy has already won. Let us ride now! Ride for victory! Ride for freedom! Ride!”
+
+The sealing spell breaks, and the stone door on the library explodes into small pieces. Everyone charges forward, led by Magi Somerio, shouting “Ride!” in unison. All of the riders exit the cave resolutely determined to slay goblins and thinking little of their own lives. As they charged, the goblins fled, cowering with fear. The sun, which was covered by the dark blanket of storm clouds, penetrates through the clouds and casts a blinding ray of light behind the riders, light so bright that many of the goblins fell over as they were running away. 
+
+On the other side of the village, the goblin king enters through the western wall. Staff in hand, he points at several of your riders, commanding lightning to strike and kill them. Then, he grasps his staff with both hands and thrusts it into the earth, causing the world to shake violently. A hill begins to grow around the staff, which is implanted in the ground. The hill grows to about fifty meters tall, and the goblin king removes his staff from the earth. He then begins to wave it around in a circle, and the clouds begin to spiral in the sky around the library. The spiraling clouds begin to form a tornado that starts to come down to touch ground on top of the library. Now might be your only chance. 
+
+You open your spellbook to the bookmark and begin to cast the spell. You are shaking under the weight of this pressure; you’ve been thinking about this moment all day: the moment when the fate of the free world rests on your shoulders. A tear runs down your cheek. 
+
+This lemma, pow_pow, is the culmination of all of exponentiation. Act quickly before you run out of time, lose your chance, and lose your life.
                                 `
                         },
                         {
