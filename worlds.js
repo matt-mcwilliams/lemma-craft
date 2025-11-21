@@ -748,25 +748,42 @@ This lemma, pow_pow, is the culmination of all of exponentiation. Act quickly be
                                 `
                         },
                         {
-                                name: 'add_squared',
-                                urlName: 'add-squared',
-                                newAxioms: [
-                                        {
-                                                name: "pow_pow",
-                                                raw: "(n1 n2 n3 : nat) : ((n1 ^ n2) ^ n3) = (n1 ^ (n2 * n3))", category: AxiomCategory.exponents
-                                        },
-                                        {
-                                                name: "two",
-                                                raw: "2 : nat", category: AxiomCategory.numbers
-                                        },
-                                        {
-                                                name: "two_eq_succ_one",
-                                                raw: "(2) = (succ 1)", category: AxiomCategory.numbers
-                                        },
-                                ],
+                                name: 'The Third Sage',
+                                urlName: 'the-third-sage',
+                                newAxioms: [],
                                 goal: '(a b : nat) : ((a + b) ^ 2) = (((a ^ 2) + (b ^ 2)) + ((2 * a) * b))',
                                 description: `
-                                Powers
+The tornado slowly lowers from the sky. As you finish the spell, the bottom of the hill which the goblin king made hardens into stone. The stone slowly spreads upwards from the ground. You look back at the tornado, lowering towards the library, then back at the stone, expanding upwards to the goblin king. It’s a cruel race of fate; you start to shake anxiously since all you can do is wait to see what happens. The stone growing on the hill is approaching the goblin king, but the tornado tears the roof off the library first. The roof is absorbed into the tornado and carried high into the air, and the goblin king laughs a terrible laugh. “Too little too late!” he yells tauntingly from the sky. “This is the end!”
+
+Moments away from destruction, you reflect on your time here at alchemy school. Although short-lived, you were able to experience a timeless adventure. Now the top story is pried from the library. You wipe tears from your face. “This is the end indeed,” you tell yourself. “The end of the world. All ‘cuz of me.” You fall prostrate onto the ground and begin to cry into the earth. If only you’d finished that last spell faster, or finished this all the first time you encountered the goblin king. 
+
+But then a loud, deep, terrible cry of defeat thunders from above. You look up, and the goblin king’s legs are turning to stone. He was not expecting this at all. As he looks down at his feet, he stops waving his staff, and the tornado begins to recede back into the sky. “Hear this!” he yells; his final words. “A far more terrifying creature is coming! I am but a taste of his power! I am only mortal! You will cower! You will cower under the reign of Surro the Deceiver!" With this, his face hardens and grays, cementing into stone. The spellbook and his staff also harden into stone.
+
+The clouds dissipate from the sky, and the sun shines warmly. It’s over. The battle. The adventure. All of it. Soon everything will be back in its place, and everything will be made good again. You gather all of the men from the battle. Some forty remain, including about six wizards and seven apprentices. Many have died in the battle. But the world is freed from the clutch of evil. 
+
+That night you have a great banquet, celebrating the lives and sacrifices of the triumphant dead. Magi Grambletόn leads a toast for the lost soldiers, and everyone remembers them. Many of the women and children who have lost fathers and brothers abstain from any celebration as they mourn their departed family. 
+
+After the banquet, Magi Somerio approaches you. “You did remarkably well for someone so young,” he says. “Leadership like that is not common. And that spellbook you have seems to have found a great master. As you know, the Second Sage has died and we no longer have a principal leading us all. So — and this is after much deliberation and thought — I think it would be prudent for you to begin training as a candidate for the Third Sage. It will not be easy and you will regret your commitment for many years. But I think that this will be fruitful. Are you interested in training?” 
+
+“I… I don’t know,” you say solemnly. “This has been beyond my dreams for many years, but I don’t know if I can manage another difficult adventure. My last adventure was hard.”
+
+“Of course, of course. It will be extremely difficult; far worse than anything you’ve been through already. But by your fruits you will bring much good to the world. And there’s not much better of a way to spend your life than that, is there? Regardless, you don’t have to decide right now. Sleep soundly, knowing that you’ve already done much service to the world. Good night!”
+
+You walk away towards the tent pitched over your destroyed hut’s remains. After about two minutes, you turn around. You will prepare to become the Third Sage. You will give your life to this calling. You run back down the path, towards Magi Somerio, and catch up to him.
+
+“I’ll do it,” you say confidently. “I’ll train to become the Third Sage.”
+
+“Oh, young apprentice. I am proud to have worked in your presence. But there’s nothing left for us to do tonight. If you keep this decision then come meet me in the western meadows tomorrow and I will give further instruction. And bring your spellbook.”
+
+The next morning, after breakfast, you find Magi Somerio in the meadow sitting on a fallen tree, pondering. Before you say anything, he speaks. “This is your last chance to change your mind. Are you sure of your choice?”
+
+“Certain,” you assert. “Certain as I’ll ever be.”
+
+“Ok. Open your spellbook and heed its instructions,” the old wizard says. “These are the instructions in the library’s law book for finding a new sage. Though, I suppose your spellbook isn’t exactly the same as the last one… I think that shouldn’t matter, if you truly are destined to become the next sage. Anyways, the spell should make some kind of compass to lead you to your training grounds. Go ahead, whenever you’re ready.”
+
+You open the spellbook to the bookmark and look up into the distance. The world is quiet, peaceful, happy. 
+
+Calmly, you start to cast the spell. The lemma for this spell is titled add_squared and concludes the lemmas for exponentiation. 
                                 `
                         },
                         
