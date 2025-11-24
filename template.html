@@ -69,8 +69,14 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                <p class="text-xl font-bold mb-4">{{ tipName }}</span></p>
-                                <p class="mb-4" id="tip-body">{{ tipDescription }}</p>
+                                
+                                <h3 class="text-lg font-semibold text-center">{{ levelName }}</h3>
+                                <p class="mb-4" id="tip-body">{{ story }}</p>
+                                <br />
+                                <hr id="separator" />
+                                <br />
+                                <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">{{ lemmaName }}</h3>
+                                <p id="help" class="mb-4" id="tip-body">{{ help }}</p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
@@ -100,13 +106,21 @@
         </div>
 
         <script>
-                const axioms = {{ axiomList }}
+                const axioms = {{ axiomList }};
 
-                let goalRaw = {{ goalRaw }}
+                let goalRaw = {{ goalRaw }};
 
-                let AxiomCategory = {{ axiomCategory }}
+                let AxiomCategory = {{ axiomCategory }};
 
-                let currentLevelId = {{ currentLevelId }}
+                let currentLevelId = {{ currentLevelId }};
+
+                let helpStr = "{{ help }}";
+
+                if (helpStr.length <= 2) {
+                        document.getElementById('separator').style.display = 'none'
+                        document.getElementById('help').style.display = 'none'
+                        document.getElementById('lemmaName').style.display = 'none'
+                }
         </script>
 
         <script src="../../js/level.js"></script>

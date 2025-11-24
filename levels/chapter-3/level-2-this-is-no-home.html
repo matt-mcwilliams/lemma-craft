@@ -69,8 +69,14 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                <p class="text-xl font-bold mb-4">This Is No Home.</span></p>
-                                <p class="mb-4" id="tip-body"><br/>As you say the final words of the spell, the ground shakes, and a hole opens in the hill right where Gale remembered. Gale brings his hand up to his mouth, pondering silently in awe of your magic. He leads the way into the hill, and you follow. As you enter the opening, you hear strange voices whispering to you. You cannot make out what they are saying, but you do hear the words “run away.” Just your imagination, you decide.<br/><br/>Darkness envelopes you as you walk through the cave. You turn around, looking for the sunlight, but a dark cloud shields any light from the outside. Turning around, you continue forward, looking for Gale, and you trip on a step, face-planting into the cold stone floor. As you get up, you reach for your spell-book and open to the bookmark, a soft glow emits from the letters in the spell-book, illuminating instructions in the book and a new lemma to prove. The bookmark’s text has changed; it now reads “Where there is light there can be no darkness.”<br/><br/>This lemma is called “mul_one” and is the identity property of multiplication. You close your eyes and begin to work the lemma. Note that an induction is not necessary for this lemma’s proof. How can you rewrite to enable a “mul_succ” rewrite?<br/><br/>                                </p>
+                                
+                                <h3 class="text-lg font-semibold text-center">This Is No Home.</h3>
+                                <p class="mb-4" id="tip-body">As you say the final words of the spell, the ground shakes, and a hole opens in the hill exactly where Gale remembered. Gale brings his hand up to his mouth, pondering silently in awe of your magic. He leads the way into the hill, and you follow. Everyone else chooses to stay outside. As you enter the opening, you hear strange voices whispering to you. You cannot make out most of what they are saying, but you do hear the words “run away.” You begin to shake nervously.<br/><br/>A cold darkness envelopes you as you walk through the cave. You turn around, looking for the sunlight, but a dark cloud shields any light from the outside. You continue forward, looking for Gale, and you trip on something you cannot see, face-planting into the cold stone floor. As you get up, you reach for your spell-book and open to the bookmark. A soft glow emits from the letters in the spell-book, illuminating instructions in the book and a new lemma to prove. The bookmark’s text has changed; it now reads “Where there is light there can be no darkness.”<br/><br/>This lemma is called “mul_one” and is the identity property of multiplication. You close your eyes and begin to work the lemma.</p>
+                                <br />
+                                <hr id="separator" />
+                                <br />
+                                <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">mul_one</h3>
+                                <p id="help" class="mb-4" id="tip-body"></p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
@@ -100,13 +106,21 @@
         </div>
 
         <script>
-                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (succ n1) = (n1 + 1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2}]
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (n1 + 1) = (succ n1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2}];
 
-                let goalRaw = "(m : nat) : (m * 1) = (m)"
+                let goalRaw = "(m : nat) : (m * 1) = (m)";
 
-                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
+                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3};
 
-                let currentLevelId = "3-2"
+                let currentLevelId = "3-2";
+
+                let helpStr = "";
+
+                if (helpStr.length <= 2) {
+                        document.getElementById('separator').style.display = 'none'
+                        document.getElementById('help').style.display = 'none'
+                        document.getElementById('lemmaName').style.display = 'none'
+                }
         </script>
 
         <script src="../../js/level.js"></script>

@@ -69,8 +69,14 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                <p class="text-xl font-bold mb-4">Basic Alchemy</span></p>
-                                <p class="mb-4" id="tip-body"><br/>You wake up to find yourself in a soft bed in a lush, green village. Outside your window, you see the giant golden bell overlooking the walled-in school-town.<br/><br/>It’s been two weeks since you began alchemy school. The school is small, with only thirty apprentices, each with a wizard they apprentice to, and one Principal known only as the Second Sage. The Second Sage is the keeper of the spell-book, the most powerful object the world knows about. Wars have been fought over this book since the beginning of time. Most of the apprentices have been here for multiple years and are waiting on the Principal's leave to graduate.<br/><br/>But not you. Your wizard, who hasn’t shown up on time once this year, is somewhat forgetful. His last student had quit before three months had passed, and if he doesn’t begin to teach you a spell that does anything useful, you might do the same.<br/><br/>As you arrive at the blood-red apple orchard near where you are scheduled to meet him, you try out the only spell you know: a reflection. A reflection is really simple, really. You can transform an object into another object — but only if you can prove this transformation’s Lemma.<br/><br/>You pull down one of the apples in the tree above you and notice a dark brown spot. Fortunately, you know how to transform the apple with a reflection: the magic formula to remove a blemish is a + b + c = a + b + c. This is your goal: if you can make both sides of the goal exactly the same, you can cast the spell.<br/><br/>This screen is where you prove the goal is exactly the same. On the left is your Lemma list. This is like your “toolbox” with some helpful tools. You received this on your first day of school but have since not needed to use it. On your right is your work bench. This is where you can manipulate these “magic formulas.” Notice that in the middle of the work bench are three draggable blocks. These are your hypothesises, and the three in this level will not be used (If you’re curious, “a : nat” means “a is a natural number,” but we won’t use these just yet).<br/><br/>At the top of the work bench is your goal, a + b + c = a + b + c. Fortunately, both sides of the equation are exactly the same for you. You can cast a reflection by double-clicking your goal.<br/><br/>Go ahead! Double click.<br/><br/></p>
+                                
+                                <h3 class="text-lg font-semibold text-center">Basic Alchemy</h3>
+                                <p class="mb-4" id="tip-body">You wake up to find yourself in a soft bed in a lush, green village. Outside your window, you see the giant golden bell overlooking the walled-in school-town.<br/><br/>It’s been two weeks since you began alchemy school. The school is small, with only thirty students each apprenticed to a wizard, and one Principal known only as the Second Sage. The Second Sage is the keeper of the spell-book, the most powerful object in the world. Wars have been fought over this book since the beginning of time. <br/><br/>Most of the apprentices have been here for multiple years and are waiting on the Principal's leave to graduate. They’ve learned beautiful, powerful spells. But not you. Your wizard, who hasn’t shown up on time once this year, is somewhat forgetful. His last student quit before three months had passed, and if he doesn’t soon teach you a spell that does anything useful, you might do the same.<br/><br/>As you arrive at the blood-red apple orchard  where you are scheduled to meet him, you try out the only spell you know: a reflection. A reflection is really, really simple. You can transform an object into another object — but only if you can prove this transformation’s Lemma.<br/><br/>You pull down one of the apples in the tree above you and notice a dark brown spot. Fortunately, you know how to transform the apple with a reflection: the magic formula to remove a blemish is “a + b + c = a + b + c”. To cast the spell, you must prove the lemma.</p>
+                                <br />
+                                <hr id="separator" />
+                                <br />
+                                <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">reflection</h3>
+                                <p id="help" class="mb-4" id="tip-body">Welcome to LemmaCraft! Every level will be focused on proving one lemma. To do this, we will set the lemma to be our goal and manipulate the goal until we’ve proven the lemma. “a + b + c = a + b + c” is this level’s lemma and goal: if you can make both sides of the goal exactly the same, you prove the lemma; meaning that if you can show that “a + b + c” is indeed the same thing as “a + b + c” then you can confidently say that “a + b + c = a + b + c”. This might seem obvious, but in the future both sides of the lemma will not be the same, and you’ll have to manipulate the equation to show that the lemma is true.<br/><br/>This screen is where you prove the goal is exactly the same. On the left is your Lemma list. This is like your “toolbox” with some helpful tools. On your right is your work bench. This is where you can manipulate these magic formulas. Notice that in the middle of the work bench are three draggable blocks. These are your hypotheses, and the three in this level will not be used (If you’re curious, “a : nat” means “a is a natural number,” but we won’t use these just yet).<br/><br/>At the top of the work bench is your goal, “a + b + c = a + b + c”. Fortunately, both sides of the equation are exactly the same. You can cast a reflection by double-clicking the goal.<br/><br/>Go ahead! Double click.</p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
@@ -100,13 +106,21 @@
         </div>
 
         <script>
-                const axioms = []
+                const axioms = [];
 
-                let goalRaw = "(a b c : nat) : ((a + b) + c) = ((a + b) + c)"
+                let goalRaw = "(a b c : nat) : ((a + b) + c) = ((a + b) + c)";
 
-                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
+                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3};
 
-                let currentLevelId = "1-1"
+                let currentLevelId = "1-1";
+
+                let helpStr = "Welcome to LemmaCraft! Every level will be focused on proving one lemma. To do this, we will set the lemma to be our goal and manipulate the goal until we’ve proven the lemma. “a + b + c = a + b + c” is this level’s lemma and goal: if you can make both sides of the goal exactly the same, you prove the lemma; meaning that if you can show that “a + b + c” is indeed the same thing as “a + b + c” then you can confidently say that “a + b + c = a + b + c”. This might seem obvious, but in the future both sides of the lemma will not be the same, and you’ll have to manipulate the equation to show that the lemma is true.<br/><br/>This screen is where you prove the goal is exactly the same. On the left is your Lemma list. This is like your “toolbox” with some helpful tools. On your right is your work bench. This is where you can manipulate these magic formulas. Notice that in the middle of the work bench are three draggable blocks. These are your hypotheses, and the three in this level will not be used (If you’re curious, “a : nat” means “a is a natural number,” but we won’t use these just yet).<br/><br/>At the top of the work bench is your goal, “a + b + c = a + b + c”. Fortunately, both sides of the equation are exactly the same. You can cast a reflection by double-clicking the goal.<br/><br/>Go ahead! Double click.";
+
+                if (helpStr.length <= 2) {
+                        document.getElementById('separator').style.display = 'none'
+                        document.getElementById('help').style.display = 'none'
+                        document.getElementById('lemmaName').style.display = 'none'
+                }
         </script>
 
         <script src="../../js/level.js"></script>

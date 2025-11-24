@@ -69,8 +69,14 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                <p class="text-xl font-bold mb-4">A New Spell</span></p>
-                                <p class="mb-4" id="tip-body"><br/>As you cast the reflection, the apple begins to transform. Slowly, like a block of ice melting in the sun, the spot on the apple fades into a smooth, enchanting crimson.<br/><br/>“Hoy! Simon!” You look over your shoulder to find Magi Grambletόn, your assigned wizard, sitting on a fallen tree. He removes his pointy gray hat as he stands up. “I’ve been thinkin’: you know these basic reflection spells pretty well. Mighty fast learner. How’s about we learn a new spell?”<br/><br/>“Yes, I’d love to. What kind of spell?” you ask. Of course you are ready for a new spell. You’ve been ready since the second day of school, after he taught you to do a reflection.<br/><br/>“A powerful spell, a rewrite, many lemmas you can make with it. And some of these lemmas have powerful magic in them. Shall we try turning this beautiful apple into an orange now?”<br/><br/>To perform a rewrite, use one of your hypotheses. Remember that the hypotheses are the draggable blocks in the middle of your workbench. Notice that if you substitute “x + 7” into the equation for “y”, the equation becomes symmetrical on both sides. Drag the hypothesis “y = x + 7” onto the goal and watch it transform. <br/><br/>Now, both sides are equal and you can cast a reflection by double-clicking on the goal.<br/><br/></p>
+                                
+                                <h3 class="text-lg font-semibold text-center">A New Spell</h3>
+                                <p class="mb-4" id="tip-body">As you cast the reflection, the apple begins to transform. Slowly, like a block of ice in the sun, the spot on the apple melts into a smooth, enchanting crimson.<br/><br/>“Hoy! Simon!” You look over your shoulder to find Magi Grambletόn, your assigned wizard, sitting on a fallen tree. He removes his pointy gray hat as he stands up. “I’ve been thinkin’: you know these basic reflection spells pretty well. Mighty fast learner. How’s about we learn a new spell?”<br/><br/>“Yes, I’d love to. What kind of spell?” you ask. Of course you are ready for a new spell. You’ve been ready since the second day of school, after he taught you to do a reflection.<br/><br/>“A powerful spell: a rewrite. Powerful indeed! Many lemmas you can make with it. And some of these lemmas have powerful magic in them. Shall we try turning this beautiful apple into an orange now?”</p>
+                                <br />
+                                <hr id="separator" />
+                                <br />
+                                <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">rewrite</h3>
+                                <p id="help" class="mb-4" id="tip-body">To prove this lemma, we will have to use a new ability: a rewrite. Rewrites allow you to manipulate goals into something you can use a reflection to solve.<br/><br/>To perform a rewrite, use one of your hypotheses. Remember that the hypotheses are the draggable blocks in the middle of your workbench. Notice that if you substitute “x + 7” into the equation for “y”, the equation becomes symmetrical on both sides. Drag the hypothesis “y = x + 7” onto the goal and watch it transform. <br/><br/>Now, both sides are equal and you can cast a reflection by double-clicking on the goal.</p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
@@ -100,13 +106,21 @@
         </div>
 
         <script>
-                const axioms = []
+                const axioms = [];
 
-                let goalRaw = "(x y : nat) (y = x + 7) : (2 * y) = (2 * (x + 7))"
+                let goalRaw = "(x y : nat) (y = x + 7) : (2 * y) = (2 * (x + 7))";
 
-                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
+                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3};
 
-                let currentLevelId = "1-2"
+                let currentLevelId = "1-2";
+
+                let helpStr = "To prove this lemma, we will have to use a new ability: a rewrite. Rewrites allow you to manipulate goals into something you can use a reflection to solve.<br/><br/>To perform a rewrite, use one of your hypotheses. Remember that the hypotheses are the draggable blocks in the middle of your workbench. Notice that if you substitute “x + 7” into the equation for “y”, the equation becomes symmetrical on both sides. Drag the hypothesis “y = x + 7” onto the goal and watch it transform. <br/><br/>Now, both sides are equal and you can cast a reflection by double-clicking on the goal.";
+
+                if (helpStr.length <= 2) {
+                        document.getElementById('separator').style.display = 'none'
+                        document.getElementById('help').style.display = 'none'
+                        document.getElementById('lemmaName').style.display = 'none'
+                }
         </script>
 
         <script src="../../js/level.js"></script>

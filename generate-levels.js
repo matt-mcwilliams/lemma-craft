@@ -51,8 +51,10 @@ chapters.forEach((world, worldIndex) => {
                 templateContent = templateContent.replaceAll('{{ nextLink }}', nextLink);
                 templateContent = templateContent.replaceAll('{{ levelName }}', level.name);
                 templateContent = templateContent.replaceAll('{{ levelCode }}', levelCode);
-                templateContent = templateContent.replaceAll('{{ tipName }}', level.name);
-                templateContent = templateContent.replaceAll('{{ tipDescription }}', level.description.replaceAll('\n', '<br/>'));
+                templateContent = templateContent.replaceAll('{{ storyName }}', level.name);
+                templateContent = templateContent.replaceAll('{{ lemmaName }}', level.lemmaName);
+                templateContent = templateContent.replaceAll('{{ story }}', level.story?.trim().replaceAll('\n', '<br/>'));
+                templateContent = templateContent.replaceAll('{{ help }}', level.help?.trim().replaceAll('\n', '<br/>') ?? '');
                 templateContent = templateContent.replaceAll('{{ axiomCategory }}', axiomCategory);
                 templateContent = templateContent.replaceAll('{{ currentLevelId }}', `"${worldIndex+1}-${levelIndex+1}"`);
 

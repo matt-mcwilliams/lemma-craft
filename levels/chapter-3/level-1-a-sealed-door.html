@@ -69,8 +69,14 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                <p class="text-xl font-bold mb-4">A Sealed Door</span></p>
-                                <p class="mb-4" id="tip-body"><br/>As long as you stay on the ship, you are undetectable by the goblins. You can see your crew and you can see the ship, but goblin-targeted magic veils you and the ship from their sight.<br/><br/>You anchor out two hundred yards from the island and take the ship’s row boats to the shore. While walking on the beach, you find three axioms, as silver and smooth as the ones you received at the academy, lying on the ground. You take them and put them into your bag. Then, you hike up the hill and look around. Gale claims that his family lived underground in this hill, but he cannot find the door to enter. Gale looks at you and says, “I intend to visit my home while I’m here. The door was once here—I think—but has since been destroyed. Can you do something about it?”<br/><br/>You open your spell-book and begin to cast the spell. <br/><br/>The three new axioms define multiplication recursively:<br/><br/><strong>mul:</strong> The multiplication of two natural numbers is another natural number.<br/><br/><strong>mul_zero:</strong> The multiplication of any natural number by zero is zero.<br/><br/><strong>mul_succ:</strong> This axiom defines multiplication of any non-zero number: Any non-zero number can be written as “succ b” for some number b, thus mul_succ defines multiplication for any natural numbers a and b: a * succ b = a * b + a. You can intuit why this is true by imagining it written like this:<br/><br/>a * succ b <br/>= a * ( b + 1 ) <br/>= a * b + a * 1 <br/>= a * b + a<br/><br/>To prove this lemma, zero_mul, begin by applying induction on <em>m</em> by dragging “m : nat” onto the “i” next to the goal.<br/><br/>                                </p>
+                                
+                                <h3 class="text-lg font-semibold text-center">A Sealed Door</h3>
+                                <p class="mb-4" id="tip-body">As long as you stay on the ship, you are undetectable by the goblins. You can see your crew and you can see the ship, but goblin-targeted magic veils you and the ship from their sight.<br/><br/>You anchor out two hundred meters from the island and take the ship’s row boats to the shore. While walking along the beach, you find three axioms lying on the ground, each as silver and as smooth as the ones you received at the academy. You take them and put them into your bag. <br/><br/>You then hike up the hill and examine the island. Gale claims that his family lived underneath this hill, but he cannot find the door to enter. He looks at you and says, “I dearly wish to visit my home while I’m here. The door was once here, I think, but has been destroyed. Can you do something about it?”<br/><br/>You open your spell-book and begin to cast the spell.</p>
+                                <br />
+                                <hr id="separator" />
+                                <br />
+                                <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">zero_mul</h3>
+                                <p id="help" class="mb-4" id="tip-body">The three new axioms define multiplication recursively:<br/><br/><strong>mul:</strong> The multiplication of two natural numbers is another natural number.<br/><br/><strong>mul_zero:</strong> The multiplication of any natural number by zero is zero.<br/><br/><strong>mul_succ:</strong> This axiom defines multiplication of any non-zero number: Any non-zero number can be written as “succ b” for some number b, thus mul_succ defines multiplication for any natural numbers a and b: <br/><br/>a * succ b = a * b + a<br/><br/>You can intuit why this is true by imagining it written like this:<br/><br/>a * succ b <br/>= a * ( b + 1 ) <br/>= a * b + a * 1 <br/>= a * b + a<br/><br/>To prove this lemma, begin by applying induction on <em>m</em> by dragging “m : nat” onto the “i” next to the goal.</p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
@@ -100,13 +106,21 @@
         </div>
 
         <script>
-                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (succ n1) = (n1 + 1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2}]
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (n1 + 1) = (succ n1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2}];
 
-                let goalRaw = "(m : nat) : (0 * m) = (0)"
+                let goalRaw = "(m : nat) : (0 * m) = (0)";
 
-                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
+                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3};
 
-                let currentLevelId = "3-1"
+                let currentLevelId = "3-1";
+
+                let helpStr = "The three new axioms define multiplication recursively:<br/><br/><strong>mul:</strong> The multiplication of two natural numbers is another natural number.<br/><br/><strong>mul_zero:</strong> The multiplication of any natural number by zero is zero.<br/><br/><strong>mul_succ:</strong> This axiom defines multiplication of any non-zero number: Any non-zero number can be written as “succ b” for some number b, thus mul_succ defines multiplication for any natural numbers a and b: <br/><br/>a * succ b = a * b + a<br/><br/>You can intuit why this is true by imagining it written like this:<br/><br/>a * succ b <br/>= a * ( b + 1 ) <br/>= a * b + a * 1 <br/>= a * b + a<br/><br/>To prove this lemma, begin by applying induction on <em>m</em> by dragging “m : nat” onto the “i” next to the goal.";
+
+                if (helpStr.length <= 2) {
+                        document.getElementById('separator').style.display = 'none'
+                        document.getElementById('help').style.display = 'none'
+                        document.getElementById('lemmaName').style.display = 'none'
+                }
         </script>
 
         <script src="../../js/level.js"></script>

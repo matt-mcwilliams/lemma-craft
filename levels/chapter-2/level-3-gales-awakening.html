@@ -69,8 +69,14 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                <p class="text-xl font-bold mb-4">Gale's Awakening</span></p>
-                                <p class="mb-4" id="tip-body"><br/>Sure as day, the map begins to foam over, resulting in a beautiful, detailed map with tight coastlines, beautiful script, and careful paints. The map shows the east coast of the continent Nicholea, and includes a dot marking the village you reside in now, Addithia. The ocean, blue, vast, and empty, spans for a hundred miles to the east until a large green island marked with a sword handle and a skull, labeled “Goblin Island.”<br/><br/>“There lie the bones of my parents and my brother.” As the sailor said this he took a step back and bit on his lip.<br/><br/>“Will you take me there? And avenge your family? The fate of all Nicholea may lie on this quest.”<br/><br/>He paused for a moment. “Aye. I will. We’ll leave with the evening wind. Blood will be shed in the name of my father.”<br/><br/>That evening, you board Gale’s ship—you learned his name from the shopkeeper of the town—and you stare off into the empty ocean. Two dozen sailors, soldiers, and farmers accompany you, but you doubt that that will be enough to overtake the goblins. After all, two dozen wizards was not enough to stop the goblins. But you remind yourself: it isn’t necessary to defeat the goblins, but to find the spell-book and bring it back (or destroy it).<br/><br/>Gale comes down from the upper deck. “We have no wind with us tonight, and this is not a rowing boat. We must hold it until the morning, unless your magic can do anything about it.”<br/><br/>Indeed, controlling the wind is a difficult spell to cast, but it is an important spell. The magical bookmark opens to a new page, this page marked with a small star at the bottom right to signal its importance.<br/><br/>In this lemma, “add_comm”, you prove the commutative property of addition. This is one of the most important lemmas of addition. You should be well prepared to handle this proof!<br/><br/>                                </p>
+                                
+                                <h3 class="text-lg font-semibold text-center">Gale's Awakening</h3>
+                                <p class="mb-4" id="tip-body">Sure as day, the map begins to foam over, resulting in a beautiful, detailed map with tight coastlines, beautiful script, and careful paints. The map shows the east coast of the continent Nicholea, and includes a dot marking the village you reside in now, Addithia. The ocean, blue, vast, and empty, spans for a hundred miles to the east, until it meets a large green island marked with a sword handle thrust into a skull labeled “Goblin Island.”<br/><br/>“There lie the bones of my parents and my brother.” As the sailor said this he took a step back and bit on his lip.<br/><br/>“Will you take me there? And avenge your family? The fate of all Nicholea may lie on this quest.”<br/><br/>He paused for a moment. “Aye. I will. We’ll leave with the evening wind. Goblin blood will be shed in memory of my father.”<br/><br/>That evening, you board Gale’s ship — you learned his name from the shopkeeper of the town — and you stare off into the empty ocean. Two dozen sailors, soldiers, and farmers accompany you, but you doubt that that will be enough to overtake the goblins. After all, two dozen wizards was not enough to stop the goblins. Much of your company is far too skinny to be of use in battle. But you remind yourself: you don’t need to defeat the goblins, just find the spell-book and bring it back.<br/><br/>Gale comes down from the upper deck. “We have no wind with us tonight, and this is not a rowing boat. We must wait until the morning, unless your magic can do anything about it.”<br/><br/>Indeed, controlling the wind is a difficult spell to cast, but it is an important spell. The magical bookmark opens to a new page, this one marked with a small star to signal its importance.<br/><br/>In this lemma, “add_comm”, you prove the commutative property of addition. This is one of the most important lemmas of addition. You should be well prepared to handle this monumental proof!</p>
+                                <br />
+                                <hr id="separator" />
+                                <br />
+                                <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">add_comm</h3>
+                                <p id="help" class="mb-4" id="tip-body"></p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
@@ -100,13 +106,21 @@
         </div>
 
         <script>
-                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1}]
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1}];
 
-                let goalRaw = "(a b : nat) : (a + b) = (b + a)"
+                let goalRaw = "(a b : nat) : (a + b) = (b + a)";
 
-                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
+                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3};
 
-                let currentLevelId = "2-3"
+                let currentLevelId = "2-3";
+
+                let helpStr = "";
+
+                if (helpStr.length <= 2) {
+                        document.getElementById('separator').style.display = 'none'
+                        document.getElementById('help').style.display = 'none'
+                        document.getElementById('lemmaName').style.display = 'none'
+                }
         </script>
 
         <script src="../../js/level.js"></script>

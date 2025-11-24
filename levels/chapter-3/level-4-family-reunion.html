@@ -69,8 +69,14 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                <p class="text-xl font-bold mb-4">Family Reunion</span></p>
-                                <p class="mb-4" id="tip-body"><br/>The cave begins to shake. You made a big mistake. Why wouldn’t you listen to the bookmark? Is Gale’s wishes more important than your life? You start running out the cave, but when you turn around, Gale is hanging back, and on one knee he kneels next to his kin’s soulless bodies. The bodies, each nearly as dry as a skeleton, begin to animate. The largest body, probably Gale’s father, lifts his hand to Gale’s face to wipe away his tears. You leave the room before you can see anything else.<br/><br/>The entrance of the cave collapses as you sprint out of the cave, leaving a mess of rubble. You cannot enter the cave. Gale is now trapped, and you will never see him again. You instruct the sailors, who have been anxiously waiting outside of the cave, to make camp; tonight you will mourn Gale’s loss. Though he is not dead, you fear going back into the cave. Something about the cave seems dark, like a night that won’t end, and you interpret that as a warning to avoid the cave.<br/><br/>Cast this lemma’s spell to make food for the camp. This lemma is the distributive property, and it is one of the most important lemmas in multiplication. More specifically, this is known as left distributivity (called left_distrib) because the “t” is on the left side of the multiplication symbol. We will prove right distributivity later.<br/><br/>                                </p>
+                                
+                                <h3 class="text-lg font-semibold text-center">Family Reunion</h3>
+                                <p class="mb-4" id="tip-body">The cave begins to shake. You made a big mistake. Why wouldn’t you listen to the bookmark? Are Gale’s wishes more important than your life? You start running out the cave, but when you look back, Gale is hanging back, and on one knee he kneels next to his family’s soulless bodies. The bodies, each nearly as dry as a skeleton, begin to animate slowly. The largest body, probably Gale’s father, wearily lifts his hand to Gale’s face to wipe away a tear. You leave the room before you can see anything else.<br/><br/>The entrance of the cave collapses as you sprint out of the cave, leaving a mess of rubble. You cannot enter the cave. Gale is now trapped, and you will never see him again. You instruct the sailors, who have been anxiously waiting outside of the cave, to make camp; tonight you will mourn Gale’s loss. Though he is not dead, you fear going back into the cave. Something about the cave seems dark, like a night that won’t end, and you interpret that as a warning to avoid the cave. In the morning you will set out for the goblin dungeon and try to find the book.<br/><br/>Cast this lemma’s spell to make food for the camp.</p>
+                                <br />
+                                <hr id="separator" />
+                                <br />
+                                <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">left_distrib</h3>
+                                <p id="help" class="mb-4" id="tip-body">This lemma is the distributive property, and it is one of the most important lemmas in multiplication. More specifically, this is known as left distributivity (called left_distrib) because the “t” is on the left side of the multiplication symbol. We will prove right distributivity later.</p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
@@ -100,13 +106,21 @@
         </div>
 
         <script>
-                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (succ n1) = (n1 + 1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2},{"name":"mul_one","raw":"(n1 : nat) : (n1 * 1) = (n1)","category":2},{"name":"one_mul","raw":"(n1 : nat) : (1 * n1) = (n1)","category":2}]
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (n1 + 1) = (succ n1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2},{"name":"mul_one","raw":"(n1 : nat) : (n1 * 1) = (n1)","category":2},{"name":"one_mul","raw":"(n1 : nat) : (1 * n1) = (n1)","category":2}];
 
-                let goalRaw = "(t a b : nat) : (t * (a + b)) = ((t * a) + (t * b))"
+                let goalRaw = "(t a b : nat) : (t * (a + b)) = ((t * a) + (t * b))";
 
-                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3}
+                let AxiomCategory = {"numbers":0,"addition":1,"multiplication":2,"exponents":3};
 
-                let currentLevelId = "3-4"
+                let currentLevelId = "3-4";
+
+                let helpStr = "This lemma is the distributive property, and it is one of the most important lemmas in multiplication. More specifically, this is known as left distributivity (called left_distrib) because the “t” is on the left side of the multiplication symbol. We will prove right distributivity later.";
+
+                if (helpStr.length <= 2) {
+                        document.getElementById('separator').style.display = 'none'
+                        document.getElementById('help').style.display = 'none'
+                        document.getElementById('lemmaName').style.display = 'none'
+                }
         </script>
 
         <script src="../../js/level.js"></script>
