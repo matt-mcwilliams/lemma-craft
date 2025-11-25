@@ -225,6 +225,7 @@ Go ahead! Use add_succ to prove this. By proving both steps of the goal you prov
         {
                 path: 'levels/chapter-2/',
                 name: 'Goblin Hunting',
+                mathName: 'Addition World',
                 levels: [
                         {
                                 name: 'The Sage Dies',
@@ -366,6 +367,7 @@ Try solving this level without using your mouse at all. Getting comfortable with
         {
                 path: 'levels/chapter-3/',
                 name: 'The Cave and the Mountain',
+                mathName: 'Multiplication World',
                 levels: [
                         {
                                 name: 'A Sealed Door',
@@ -612,7 +614,8 @@ You open your spellbook to the bookmark, and begin to cast the spell. This lemma
         {
                 
                 path: 'levels/chapter-4/',
-                name: 'Exponents',
+                name: 'The End of the World',
+                mathName: 'Power World',
                 levels: [
                         {
                                 name: 'The Path is Hidden',
@@ -859,8 +862,8 @@ Hint:
 
 If you need to target, for example, the following two terms in an add_comm rewrite, here’s how you do it.
 
-
 a * a + b * b → b * b + a * a
+
 
 First, grab a “mul” from the toolbox that looks like this and click on it to bring it into the workbench: 
 

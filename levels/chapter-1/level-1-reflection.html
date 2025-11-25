@@ -54,12 +54,12 @@
 
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
                         <div class="text-black sticky bottom-0 px-4 py-2 bg-soft-white border-t-2 border-t-dark-gray outline-t-4 outline-t-white">
-                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">Basic Alchemy</strong><div>Level 1-1</div></div>
+                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">reflection</strong><div>Level 1-1</div></div>
                                 <div class="flex jusity-stretch gap-3">
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="#">←</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="../../index.html">🏠︎</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="">⟳</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-2-a-new-spell.html">→</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-2-rewrite.html">→</a>
                                 </div>
                         </div>
                 </div>
@@ -69,12 +69,6 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                
-                                <h3 class="text-lg font-semibold text-center">Basic Alchemy</h3>
-                                <p class="mb-4" id="tip-body">You wake up to find yourself in a soft bed in a lush, green village. Outside your window, you see the giant golden bell overlooking the walled-in school-town.<br/><br/>It’s been two weeks since you began alchemy school. The school is small, with only thirty students each apprenticed to a wizard, and one Principal known only as the Second Sage. The Second Sage is the keeper of the spell-book, the most powerful object in the world. Wars have been fought over this book since the beginning of time. <br/><br/>Most of the apprentices have been here for multiple years and are waiting on the Principal's leave to graduate. They’ve learned beautiful, powerful spells. But not you. Your wizard, who hasn’t shown up on time once this year, is somewhat forgetful. His last student quit before three months had passed, and if he doesn’t soon teach you a spell that does anything useful, you might do the same.<br/><br/>As you arrive at the blood-red apple orchard  where you are scheduled to meet him, you try out the only spell you know: a reflection. A reflection is really, really simple. You can transform an object into another object — but only if you can prove this transformation’s Lemma.<br/><br/>You pull down one of the apples in the tree above you and notice a dark brown spot. Fortunately, you know how to transform the apple with a reflection: the magic formula to remove a blemish is “a + b + c = a + b + c”. To cast the spell, you must prove the lemma.</p>
-                                <br />
-                                <hr id="separator" />
-                                <br />
                                 <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">reflection</h3>
                                 <p id="help" class="mb-4" id="tip-body">Welcome to LemmaCraft! Every level will be focused on proving one lemma. To do this, we will set the lemma to be our goal and manipulate the goal until we’ve proven the lemma. “a + b + c = a + b + c” is this level’s lemma and goal: if you can make both sides of the goal exactly the same, you prove the lemma; meaning that if you can show that “a + b + c” is indeed the same thing as “a + b + c” then you can confidently say that “a + b + c = a + b + c”. This might seem obvious, but in the future both sides of the lemma will not be the same, and you’ll have to manipulate the equation to show that the lemma is true.<br/><br/>This screen is where you prove the goal is exactly the same. On the left is your Lemma list. This is like your “toolbox” with some helpful tools. On your right is your work bench. This is where you can manipulate these magic formulas. Notice that in the middle of the work bench are three draggable blocks. These are your hypotheses, and the three in this level will not be used (If you’re curious, “a : nat” means “a is a natural number,” but we won’t use these just yet).<br/><br/>At the top of the work bench is your goal, “a + b + c = a + b + c”. Fortunately, both sides of the equation are exactly the same. You can cast a reflection by double-clicking the goal.<br/><br/>Go ahead! Double click.</p>
                         </div>
@@ -93,7 +87,7 @@
 
                                 <div class="flex gap-4">
                                         <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="#">Previous Level ( [ )</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-2-a-new-spell.html">Next Level ( ] )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-2-rewrite.html">Next Level ( ] )</a>
                                 </div>
                         </div>
 
@@ -106,7 +100,7 @@
         </div>
 
         <script>
-                const axioms = [];
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (n1 + 1) = (succ n1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2},{"name":"mul_one","raw":"(n1 : nat) : (n1 * 1) = (n1)","category":2},{"name":"one_mul","raw":"(n1 : nat) : (1 * n1) = (n1)","category":2},{"name":"left_distrib","raw":"(n1 n2 n3 : nat) : (n1 * (n2 + n3)) = ((n1 * n2) + (n1 * n3))","category":2},{"name":"mul_assoc","raw":"(n1 n2 n3 : nat) : ((n1 * n2) * n3) = (n1 * (n2 * n3))","category":2},{"name":"succ_mul","raw":"(n1 n2 : nat) : ((succ n1) * n2) = ((n1 * n2) + n2)","category":2},{"name":"right_distrib","raw":"(n1 n2 n3 : nat) : ((n1 + n2) * n3) = ((n1 * n3) + (n2 * n3))","category":2},{"name":"mul_comm","raw":"(n1 n2 : nat) : (n1 * n2) = (n2 * n1)","category":2},{"name":"mul_comm_left","raw":"(n1 n2 n3 : nat) : (n1 * (n2 * n3)) = (n2 * (n1 * n3))","category":2},{"name":"pow","raw":"(n1 n2 : nat) : n1 ^ n2 : nat","category":3},{"name":"pow_zero","raw":"(n1 : nat) : (n1 ^ 0) = (1)","category":3},{"name":"pow_succ","raw":"(n1 n2 : nat) : (n1 ^ (succ(n2))) = ((n1 ^ n2) * n1)","category":3},{"name":"zero_pow_zero","raw":"(0 ^ 0) = (1)","category":3},{"name":"zero_pow_succ","raw":"(n1 : nat) : ((0) ^ (succ n1)) = (0)","category":3},{"name":"pow_one","raw":"(n1 : nat) : (n1 ^ 1) = (n1)","category":3},{"name":"one_pow","raw":"(n1 : nat) : (1 ^ n1) = (1)","category":3},{"name":"pow_add","raw":"(n1 n2 n3 : nat) :( n1 ^ (n2 + n3)) = ((n1 ^ n2) * (n1 ^ n3))","category":3},{"name":"mul_pow","raw":"(n1 n2 n3 : nat) : ((n1 * n2) ^ n3) = ((n1 ^ n3) * (n2 ^ n3))","category":3}];
 
                 let goalRaw = "(a b c : nat) : ((a + b) + c) = ((a + b) + c)";
 
@@ -117,9 +111,9 @@
                 let helpStr = "Welcome to LemmaCraft! Every level will be focused on proving one lemma. To do this, we will set the lemma to be our goal and manipulate the goal until we’ve proven the lemma. “a + b + c = a + b + c” is this level’s lemma and goal: if you can make both sides of the goal exactly the same, you prove the lemma; meaning that if you can show that “a + b + c” is indeed the same thing as “a + b + c” then you can confidently say that “a + b + c = a + b + c”. This might seem obvious, but in the future both sides of the lemma will not be the same, and you’ll have to manipulate the equation to show that the lemma is true.<br/><br/>This screen is where you prove the goal is exactly the same. On the left is your Lemma list. This is like your “toolbox” with some helpful tools. On your right is your work bench. This is where you can manipulate these magic formulas. Notice that in the middle of the work bench are three draggable blocks. These are your hypotheses, and the three in this level will not be used (If you’re curious, “a : nat” means “a is a natural number,” but we won’t use these just yet).<br/><br/>At the top of the work bench is your goal, “a + b + c = a + b + c”. Fortunately, both sides of the equation are exactly the same. You can cast a reflection by double-clicking the goal.<br/><br/>Go ahead! Double click.";
 
                 if (helpStr.length <= 2) {
-                        document.getElementById('separator').style.display = 'none'
-                        document.getElementById('help').style.display = 'none'
-                        document.getElementById('lemmaName').style.display = 'none'
+                        document.getElementById('tip-card').style.display = 'none'
+                        document.getElementById('whiteboard').style.gridColumn = `span 6 / span 6`
+                        document.getElementById('help-toggle').style.display = 'none'
                 }
         </script>
 

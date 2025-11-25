@@ -46,7 +46,7 @@
 <body class="h-screen select-none" onload="init()" >
         <div class="grid grid-cols-8 h-full content-stretch divide-x-2 divide-black">
                 <div class="relative h-screen bg-soft-white overflow-y-none flex flex-col pt-6 col-span-2">
-                        <h1 class="px-6 text-2xl font-bold mb-2">LemmaCraft</h1>
+                        <h1 class="px-6 text-2xl font-bold mb-2"><img src="../../imgs/wizardHat.svg" class="w-8 inline mr-3 mb-2">LemmaCraft</h1>
                         <input type="text" class="block bg-light-gray rounded-xl border-2 border-dark-gray px-6 py-3 mx-6" 
                                 placeholder="Search for lemmas:"
                                 oninput="updateAxioms(this.value)"
@@ -76,7 +76,7 @@
                                 <hr id="separator" />
                                 <br />
                                 <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">add_squared</h3>
-                                <p id="help" class="mb-4" id="tip-body">Hint:<br/><br/>If you need to target, for example, the following two terms in an add_comm rewrite, here’s how you do it.<br/><br/><br/>a * a + b * b → b * b + a * a<br/><br/>First, grab a “mul” from the toolbox that looks like this and click on it to bring it into the workbench: <br/><br/>(n1 n2 : nat) n1 * n2 : nat<br/><br/><br/>Then, drag “a : nat” onto this hypothesis twice so that the hypothesis now looks like this:  <br/><br/>a * a : nat<br/><br/><br/>Drag this new hypothesis (a * a : nat) onto an add_comm hypothesis to make it look like this:  <br/><br/>( n2 : nat ) : a * a + n2 = n2 + a * a<br/><br/><br/>Repeat with “b : nat” and you’ll get this: <br/><br/>a * a + b * b = b * b + a * a<br/><br/>which can be used to carry out the rewrite</p>
+                                <p id="help" class="mb-4" id="tip-body">Hint:<br/><br/>If you need to target, for example, the following two terms in an add_comm rewrite, here’s how you do it.<br/><br/>a * a + b * b → b * b + a * a<br/><br/><br/>First, grab a “mul” from the toolbox that looks like this and click on it to bring it into the workbench: <br/><br/>(n1 n2 : nat) n1 * n2 : nat<br/><br/><br/>Then, drag “a : nat” onto this hypothesis twice so that the hypothesis now looks like this:  <br/><br/>a * a : nat<br/><br/><br/>Drag this new hypothesis (a * a : nat) onto an add_comm hypothesis to make it look like this:  <br/><br/>( n2 : nat ) : a * a + n2 = n2 + a * a<br/><br/><br/>Repeat with “b : nat” and you’ll get this: <br/><br/>a * a + b * b = b * b + a * a<br/><br/>which can be used to carry out the rewrite</p>
                         </div>
                         <button class="bottom-6 w-full mx-6 mx-auto block bg-teal text-white px-6 py-2 rounded cursor-pointer" onclick="hideTip()">Close</button>
                 </div>
@@ -114,7 +114,7 @@
 
                 let currentLevelId = "4-8";
 
-                let helpStr = "Hint:<br/><br/>If you need to target, for example, the following two terms in an add_comm rewrite, here’s how you do it.<br/><br/><br/>a * a + b * b → b * b + a * a<br/><br/>First, grab a “mul” from the toolbox that looks like this and click on it to bring it into the workbench: <br/><br/>(n1 n2 : nat) n1 * n2 : nat<br/><br/><br/>Then, drag “a : nat” onto this hypothesis twice so that the hypothesis now looks like this:  <br/><br/>a * a : nat<br/><br/><br/>Drag this new hypothesis (a * a : nat) onto an add_comm hypothesis to make it look like this:  <br/><br/>( n2 : nat ) : a * a + n2 = n2 + a * a<br/><br/><br/>Repeat with “b : nat” and you’ll get this: <br/><br/>a * a + b * b = b * b + a * a<br/><br/>which can be used to carry out the rewrite";
+                let helpStr = "Hint:<br/><br/>If you need to target, for example, the following two terms in an add_comm rewrite, here’s how you do it.<br/><br/>a * a + b * b → b * b + a * a<br/><br/><br/>First, grab a “mul” from the toolbox that looks like this and click on it to bring it into the workbench: <br/><br/>(n1 n2 : nat) n1 * n2 : nat<br/><br/><br/>Then, drag “a : nat” onto this hypothesis twice so that the hypothesis now looks like this:  <br/><br/>a * a : nat<br/><br/><br/>Drag this new hypothesis (a * a : nat) onto an add_comm hypothesis to make it look like this:  <br/><br/>( n2 : nat ) : a * a + n2 = n2 + a * a<br/><br/><br/>Repeat with “b : nat” and you’ll get this: <br/><br/>a * a + b * b = b * b + a * a<br/><br/>which can be used to carry out the rewrite";
 
                 if (helpStr.length <= 2) {
                         document.getElementById('separator').style.display = 'none'

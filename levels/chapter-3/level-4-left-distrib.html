@@ -54,12 +54,12 @@
 
                         <div id="axiom-list" class="px-6 h-full py-6 overflow-y-scroll"></div>
                         <div class="text-black sticky bottom-0 px-4 py-2 bg-soft-white border-t-2 border-t-dark-gray outline-t-4 outline-t-white">
-                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">Family Reunion</strong><div>Level 3-4</div></div>
+                                <div class="flex justify-between gap-3"><strong class="block" id="level-name">left_distrib</strong><div>Level 3-4</div></div>
                                 <div class="flex jusity-stretch gap-3">
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-3-its-a-tomb.html">←</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-3-one-mul.html">←</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="../../index.html">🏠︎</a>
                                         <a class="bg-light-gray block w-full cursor-pointer text-center" href="">⟳</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-5-terrible-thunder.html">→</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center" href="level-5-mul-assoc.html">→</a>
                                 </div>
                         </div>
                 </div>
@@ -69,12 +69,6 @@
                         <div class="sticky top-0 flex justify-end">
                                 <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
-                                
-                                <h3 class="text-lg font-semibold text-center">Family Reunion</h3>
-                                <p class="mb-4" id="tip-body">The cave begins to shake. You made a big mistake. Why wouldn’t you listen to the bookmark? Are Gale’s wishes more important than your life? You start running out the cave, but when you look back, Gale is hanging back, and on one knee he kneels next to his family’s soulless bodies. The bodies, each nearly as dry as a skeleton, begin to animate slowly. The largest body, probably Gale’s father, wearily lifts his hand to Gale’s face to wipe away a tear. You leave the room before you can see anything else.<br/><br/>The entrance of the cave collapses as you sprint out of the cave, leaving a mess of rubble. You cannot enter the cave. Gale is now trapped, and you will never see him again. You instruct the sailors, who have been anxiously waiting outside of the cave, to make camp; tonight you will mourn Gale’s loss. Though he is not dead, you fear going back into the cave. Something about the cave seems dark, like a night that won’t end, and you interpret that as a warning to avoid the cave. In the morning you will set out for the goblin dungeon and try to find the book.<br/><br/>Cast this lemma’s spell to make food for the camp.</p>
-                                <br />
-                                <hr id="separator" />
-                                <br />
                                 <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">left_distrib</h3>
                                 <p id="help" class="mb-4" id="tip-body">This lemma is the distributive property, and it is one of the most important lemmas in multiplication. More specifically, this is known as left distributivity (called left_distrib) because the “t” is on the left side of the multiplication symbol. We will prove right distributivity later.</p>
                         </div>
@@ -92,8 +86,8 @@
                                 <h2 class="text-xl font-bold mb-4 text-center">Level Complete!</h2>
 
                                 <div class="flex gap-4">
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="level-3-its-a-tomb.html">Previous Level ( [ )</a>
-                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-5-terrible-thunder.html">Next Level ( ] )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="prev-link" href="level-3-one-mul.html">Previous Level ( [ )</a>
+                                        <a class="bg-light-gray block w-full cursor-pointer text-center py-4 w-fit min-w-40" id="next-link" href="level-5-mul-assoc.html">Next Level ( ] )</a>
                                 </div>
                         </div>
 
@@ -106,7 +100,7 @@
         </div>
 
         <script>
-                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (n1 + 1) = (succ n1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2},{"name":"mul_one","raw":"(n1 : nat) : (n1 * 1) = (n1)","category":2},{"name":"one_mul","raw":"(n1 : nat) : (1 * n1) = (n1)","category":2}];
+                const axioms = [{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (n1 + 1) = (succ n1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2},{"name":"mul_one","raw":"(n1 : nat) : (n1 * 1) = (n1)","category":2},{"name":"one_mul","raw":"(n1 : nat) : (1 * n1) = (n1)","category":2},{"name":"left_distrib","raw":"(n1 n2 n3 : nat) : (n1 * (n2 + n3)) = ((n1 * n2) + (n1 * n3))","category":2},{"name":"mul_assoc","raw":"(n1 n2 n3 : nat) : ((n1 * n2) * n3) = (n1 * (n2 * n3))","category":2},{"name":"succ_mul","raw":"(n1 n2 : nat) : ((succ n1) * n2) = ((n1 * n2) + n2)","category":2},{"name":"right_distrib","raw":"(n1 n2 n3 : nat) : ((n1 + n2) * n3) = ((n1 * n3) + (n2 * n3))","category":2},{"name":"mul_comm","raw":"(n1 n2 : nat) : (n1 * n2) = (n2 * n1)","category":2},{"name":"mul_comm_left","raw":"(n1 n2 n3 : nat) : (n1 * (n2 * n3)) = (n2 * (n1 * n3))","category":2},{"name":"pow","raw":"(n1 n2 : nat) : n1 ^ n2 : nat","category":3},{"name":"pow_zero","raw":"(n1 : nat) : (n1 ^ 0) = (1)","category":3},{"name":"pow_succ","raw":"(n1 n2 : nat) : (n1 ^ (succ(n2))) = ((n1 ^ n2) * n1)","category":3},{"name":"zero_pow_zero","raw":"(0 ^ 0) = (1)","category":3},{"name":"zero_pow_succ","raw":"(n1 : nat) : ((0) ^ (succ n1)) = (0)","category":3},{"name":"pow_one","raw":"(n1 : nat) : (n1 ^ 1) = (n1)","category":3},{"name":"one_pow","raw":"(n1 : nat) : (1 ^ n1) = (1)","category":3},{"name":"pow_add","raw":"(n1 n2 n3 : nat) :( n1 ^ (n2 + n3)) = ((n1 ^ n2) * (n1 ^ n3))","category":3},{"name":"mul_pow","raw":"(n1 n2 n3 : nat) : ((n1 * n2) ^ n3) = ((n1 ^ n3) * (n2 ^ n3))","category":3},{"name":"succ","raw":"(n : nat) : succ n : nat","category":0},{"name":"zero","raw":"0 : nat","category":0},{"name":"add","raw":"(n1 n2 : nat) : n1 + n2 : nat","category":1},{"name":"add_zero","raw":"(n1 : nat) : n1 + 0 = n1","category":1},{"name":"add_succ","raw":"(n1 n2 : nat) : (n1 + (succ(n2))) = (succ (n1 + n2))","category":1},{"name":"one","raw":"1 : nat","category":0},{"name":"one_eq_succ_zero","raw":"(1) = (succ 0)","category":0},{"name":"two","raw":"2 : nat","category":0},{"name":"two_eq_succ_zero","raw":"(2) = (succ 1)","category":0},{"name":"zero_add","raw":"(n1 : nat) : (0 + n1) = (n1)","category":1},{"name":"add_assoc","raw":"(n1 n2 n3 : nat) : (n1 + (n2 + n3)) = ((n1 + n2) + n3)","category":1},{"name":"succ_add","raw":"(n1 n2 : nat) : ((succ n1) + n2) = (succ (n1 + n2))","category":1},{"name":"add_comm","raw":"(n1 n2 : nat) : (n1 + n2) = (n2 + n1)","category":1},{"name":"add_one","raw":"(n1 : nat) : (n1 + 1) = (succ n1)","category":1},{"name":"mul","raw":"(n1 n2 : nat) : n1 * n2 : nat","category":2},{"name":"mul_zero","raw":"(n1 : nat) : (n1 * 0) = (0)","category":2},{"name":"mul_succ","raw":"(n1 n2 : nat) : (n1 * (succ(n2))) = ((n1 * n2) + n1)","category":2},{"name":"zero_mul","raw":"(n1 : nat) :( 0 * n1) = (0)","category":2},{"name":"mul_one","raw":"(n1 : nat) : (n1 * 1) = (n1)","category":2},{"name":"one_mul","raw":"(n1 : nat) : (1 * n1) = (n1)","category":2}];
 
                 let goalRaw = "(t a b : nat) : (t * (a + b)) = ((t * a) + (t * b))";
 
@@ -117,9 +111,9 @@
                 let helpStr = "This lemma is the distributive property, and it is one of the most important lemmas in multiplication. More specifically, this is known as left distributivity (called left_distrib) because the “t” is on the left side of the multiplication symbol. We will prove right distributivity later.";
 
                 if (helpStr.length <= 2) {
-                        document.getElementById('separator').style.display = 'none'
-                        document.getElementById('help').style.display = 'none'
-                        document.getElementById('lemmaName').style.display = 'none'
+                        document.getElementById('tip-card').style.display = 'none'
+                        document.getElementById('whiteboard').style.gridColumn = `span 6 / span 6`
+                        document.getElementById('help-toggle').style.display = 'none'
                 }
         </script>
 

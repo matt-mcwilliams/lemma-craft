@@ -42,9 +42,34 @@
 
         </style>
 </head>
-<body class="bg-soft-white">
-        <h1 class="text-center text-7xl pt-16 font-bold font-mono">LemmaCraft</h1>
-        <div class="grid grid-cols-4 gap-x-4 px-4 pt-16 pb-8 max-w-4xl mx-auto items-stretch" id="level-grid">
+<body class="bg-soft-white relative w-full">
+        <img src="../../imgs/wizardHat.svg" class="h-full block text-center mx-auto w-auto pt-16">
+        <h1 class="text-7xl font-bold mb-2 text-center pt-4 mb-16">LemmaCraft</h1>
+
+
+        <div class="absolute mx-auto bg-soft-white w-full min-h-full text-lg" id="mode-selector">
+                <p class="text-left mb-6 max-w-xl mx-auto">Welcome!</p>
+                <p class="text-left mb-6 max-w-xl mx-auto">LemmaCraft is a math proof game where you prove simple lemmas on every level. There are two modes to play the game in. </p>
+                <p class="text-left mb-6 max-w-xl mx-auto">In <strong>Story Mode</strong>, you'll follow Simon, a young wizard apprentice who finds himself responsible for the fate of the free world. This story follows his hunt for a goblin army that pillaged his village, taking with them a spell-book powerful enough to overwhelm the free world. Perfect for anyone who loves a cozy fantasy adventure.</p>
+                <p class="text-left mb-8 max-w-xl mx-auto"><strong>Just Here for the Math</strong> focuses exclusively on the engaging math proofs you must solve on the adventure. Perfect for anyone motivated by the thrill of problem solving who doesn't care for the fantastical adventures in Story Mode.</p>
+                <p class="text-center max-w-xl mx-auto underline underline-offset-2 font-bold">Choose your mode:</p>
+                <p class="text-center mb-8 max-w-xl mx-auto">You can change your mind later</p>
+                <div class="flex gap-x-6 justify-center mb-32">
+                        <button class="block bg-gray-200 rounded-xl border-2 border-gray-300 shadow w-80 min-h-60 z-20 hover:-translate-y-2 cursor-pointer group transition duration-300 hover:bg-gray-400 hover:border-gray-600" onclick="setMode('story')">
+                                <img src="./imgs/story-image.png" alt="" class="rounded-t-lg group-hover:brightness-50 transition duration-300">
+                                <span class="block py-2">Story Mode</span>
+                        </button>
+                        <button class="block bg-gray-200 rounded-xl border-2 border-gray-300 shadow w-80 min-h-60 z-20 hover:-translate-y-2 cursor-pointer group transition duration-300 hover:bg-gray-400 hover:border-gray-600" onclick="setMode('math')">
+                                <img src="./imgs/math-image-2.png" alt="" class="rounded-t-lg group-hover:brightness-50 transition duration-300">
+                                <span class="block py-2">Just Here for the Math</span>
+                        </button>
+                </div>
+        </div>
+
+        <div class="block w-4xl mx-auto text-left px-4">
+                <button class="bg-light-gray px-6 py-3 mb-2 rounded-full cursor-pointer hover:bg-gray-400 transition ml-auto block" onclick="changeMode()">Mode</button>
+        </div>
+        <div class="grid grid-cols-4 gap-x-4 px-4 pb-8 max-w-4xl mx-auto items-stretch" id="level-grid">
                 <!-- Javascript injects HTML here -->
         </div>
         <p class="text-center mb-4">© 2025 Matthew McWilliams. Report bugs or get in contact
@@ -54,46 +79,63 @@
         <script type="module">
                 import { chapters } from "./worlds.js";
 
-                const levelGridEl = document.getElementById('level-grid')
+                window.setMode = function(mode) {
 
-                let currentlyUp = true
+                        window.localStorage.setItem('gamemode', mode)
 
-                chapters.forEach((world, worldIndex) => {
-                        
-                        const levelComplete = world.levels.every((level, levelIndex) => localStorage.getItem(`${worldIndex+1}-${levelIndex+1}`) === 'complete')
-                        
-                        const worldEl = document.createElement('div')
-                        
-                        const linkBlockEl = document.createElement('a')
-                        linkBlockEl.href = `${world.path}level-1-${world.levels[0].urlName}.html`
-                        linkBlockEl.classList.add("block", levelComplete ? "bg-teal" : (currentlyUp ? "bg-teal" : "bg-light-gray"), "text-center", "py-12" ,"rounded-xl", "hover:-translate-y-2", 'h-full')
-                        linkBlockEl.innerHTML = `
-                        <strong>World ${worldIndex+1}</strong>
-                        <p class="px-6">${world.name}</p>
-                        `
-                        worldEl.append(linkBlockEl)
-                        levelGridEl.appendChild(worldEl)
-                        
-                        const levelListEl = document.createElement('ol')
-                        levelListEl.classList.add('list-decimal', 'ml-10', 'mt-4', 'row-start-2')
-                        world.levels.forEach((level, levelIndex) => {
-                                const levelComplete = localStorage.getItem(`${worldIndex+1}-${levelIndex+1}`) === 'complete'
+                        document.getElementById('mode-selector').classList.add('hidden')
+
+                        const levelGridEl = document.getElementById('level-grid')
+
+                        let currentlyUp = true
+
+                        chapters.forEach((world, worldIndex) => {
                                 
-                                const liEl = document.createElement('li')
-                                liEl.classList.add('mb-2', 'pl-3')
+                                const levelComplete = world.levels.every((level, levelIndex) => localStorage.getItem(`${worldIndex+1}-${levelIndex+1}`) === 'complete')
                                 
-                                const aEl = document.createElement('a')
-                                aEl.href = `${world.path}level-${levelIndex+1}-${world.levels[levelIndex].urlName}.html`
-                                aEl.innerText = (levelComplete ? '✅  ' : '') + level.name
-                                aEl.classList.add('underline')
+                                const worldEl = document.createElement('div')
                                 
-                                liEl.append(aEl)
-                                levelListEl.append(liEl)
+                                const linkBlockEl = document.createElement('a')
+                                linkBlockEl.href = `${world.path}level-1-${world.levels[0].urlName}.html`
+                                linkBlockEl.classList.add("block", levelComplete ? "bg-teal" : (currentlyUp ? "bg-teal" : "bg-light-gray"), "text-center", "py-12" ,"rounded-xl", "hover:-translate-y-2", 'h-full')
+                                linkBlockEl.innerHTML = `
+                                <strong>Chapter ${worldIndex+1}</strong>
+                                <p class="px-6">${mode == 'story' ? world.name : world.mathName}</p>
+                                `
+                                worldEl.append(linkBlockEl)
+                                levelGridEl.appendChild(worldEl)
+                                
+                                const levelListEl = document.createElement('ol')
+                                levelListEl.classList.add('list-decimal', 'ml-10', 'mt-4', 'row-start-2')
+                                world.levels.forEach((level, levelIndex) => {
+                                        const levelComplete = localStorage.getItem(`${worldIndex+1}-${levelIndex+1}`) === 'complete'
+                                        
+                                        const liEl = document.createElement('li')
+                                        liEl.classList.add('mb-2', 'pl-3')
+                                        
+                                        const aEl = document.createElement('a')
+                                        aEl.href = `${world.path}level-${levelIndex+1}-${mode == 'story' ? world.levels[levelIndex].urlName : world.levels[levelIndex].lemmaName.replaceAll('_', '-')}.html`
+                                        aEl.innerText = (levelComplete ? '✅  ' : '') + (mode == 'story' ? level.name : level.lemmaName)
+                                        aEl.classList.add('underline')
+                                        
+                                        liEl.append(aEl)
+                                        levelListEl.append(liEl)
+                                })
+                                levelGridEl.appendChild(levelListEl)
+                                        
+                                currentlyUp &=levelComplete
                         })
-                        levelGridEl.appendChild(levelListEl)
-                                
-                        currentlyUp &=levelComplete
-                })
+                }
+
+                window.changeMode = function() {
+                        window.localStorage.removeItem('gamemode')
+                        window.location.reload()
+                }
+
+                const gamemode = window.localStorage.getItem('gamemode')
+                if (gamemode == 'story' || gamemode == 'math') {
+                        window.setMode(gamemode)
+                }
                 
         </script>
 </body>
