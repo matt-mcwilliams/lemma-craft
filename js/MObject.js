@@ -412,7 +412,6 @@ class MObject {
                                         
                                 default:
                                         console.log(searchChunk.chunkList)
-                                        break;
                         }
                         return false
                 })

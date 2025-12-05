@@ -43,15 +43,15 @@
         </div>
 
         <div class="flex w-4xl mx-auto px-4 justify-between mb-4">
-                <div class="flex py-3 mb-2 rounded-full cursor-pointer gap-x-4 group bg-gray-200 pl-8 pr-8 hover:pr-16 py-6 hover:bg-gray-300">
+                <a class="flex py-3 mb-2 rounded-full cursor-pointer gap-x-4 group bg-gray-200 pl-8 pr-8 hover:pr-16 py-6 hover:bg-gray-300" id="next-level-link" href="#">
                         <div>
                                 <p class="font-bold underline text-xl">Up Next:</p>
-                                <p class="text-xl">Level 3-5: Terrible Thunder  </p>
+                                <p class="block text-xl">Level <span id="next-level-world">3</span>-<span id="next-level-index">5</span>: <span id="next-level-name">Level Name</span></p>
                         </div>
                         <button class="block bg-light-gray px-6 rounded-full group-hover:bg-gray-400 group-hover:ml-8 group-hover:translate-x-8 transition cursor-pointer">
                                 →
                         </button>
-                </div>
+                </a>
                 <button class="block bg-light-gray px-6 py-3 rounded-full cursor-pointer hover:bg-gray-400 transition block h-min mt-auto" onclick="changeMode()">Mode</button>
         </div>
         <div class="grid grid-cols-4 gap-x-4 px-4 pb-8 max-w-4xl mx-auto items-stretch" id="level-grid">
@@ -81,6 +81,7 @@
                         let nextLevelName = undefined
                         let nextLevelIndex = undefined
                         let nextLevelWorld = undefined
+                        let nextLevelLink = undefined
 
                         chapters.forEach((world, worldIndex) => {
                                 
@@ -103,20 +104,24 @@
                                 levelListEl.classList.add('list-decimal', 'ml-10', 'mt-4', 'row-start-2')
                                 world.levels.forEach((level, levelIndex) => {
                                         const levelComplete = localStorage.getItem(`${worldIndex+1}-${levelIndex+1}`) === 'complete'
-                                        console.log(level.name)
+                                        
+                                        const link = `${world.path}level-${levelIndex+1}-${mode == 'story' ? world.levels[levelIndex].urlName : world.levels[levelIndex].lemmaName.replaceAll('_', '-')}.html`
 
-                                        if (!levelComplete) {
-                                                nextLevelWorld |= worldIndex + 1
-                                                nextLevelIndex |= levelIndex + 1
-                                                nextLevelName |= level.name
+                                        const displayName = (mode == 'story' ? level.name : level.lemmaName)
+                                        
+                                        if (!levelComplete && nextLevelName == undefined) {
+                                                nextLevelWorld = worldIndex + 1
+                                                nextLevelIndex = levelIndex + 1
+                                                nextLevelName = displayName
+                                                nextLevelLink = link
                                         }
                                         
                                         const liEl = document.createElement('li')
                                         liEl.classList.add('mb-2', 'pl-3')
                                         
                                         const aEl = document.createElement('a')
-                                        aEl.href = `${world.path}level-${levelIndex+1}-${mode == 'story' ? world.levels[levelIndex].urlName : world.levels[levelIndex].lemmaName.replaceAll('_', '-')}.html`
-                                        aEl.innerText = (levelComplete ? '✅  ' : '') + (mode == 'story' ? level.name : level.lemmaName)
+                                        aEl.href = link
+                                        aEl.innerText = (levelComplete ? '✅  ' : '') + displayName
                                         aEl.classList.add('underline')
                                         
                                         liEl.append(aEl)
@@ -127,7 +132,10 @@
                                 currentlyUp &=levelComplete
                         })
 
-                        alert(nextLevelWorld + "-" + nextLevelIndex + ": " + nextLevelName)
+                        document.getElementById('next-level-world').innerText = nextLevelWorld
+                        document.getElementById('next-level-index').innerText = nextLevelIndex
+                        document.getElementById('next-level-name').innerText = nextLevelName
+                        document.getElementById('next-level-link').href = nextLevelLink
                 }
 
                 window.changeMode = function() {
