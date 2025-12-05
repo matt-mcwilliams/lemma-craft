@@ -67,7 +67,7 @@
                         id="tip-card">
                         <div>
                         <div class="sticky top-0 flex justify-end">
-                                <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
+                                <img src="../../imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
                                 
                                 <h3 class="text-lg font-semibold text-center">A New Spell</h3>
@@ -114,7 +114,7 @@
 
                 let currentLevelId = "1-2";
 
-                let helpStr = "To prove this lemma, we will have to use a new ability: a rewrite. Rewrites allow you to manipulate goals into something you can use a reflection to solve.<br/><br/>To perform a rewrite, use one of your hypotheses. Remember that the hypotheses are the draggable blocks in the middle of your workbench. Notice that if you substitute “x + 7” into the equation for “y”, the equation becomes symmetrical on both sides. Drag the hypothesis “y = x + 7” onto the goal and watch it transform. <br/><br/>Now, both sides are equal and you can cast a reflection by double-clicking on the goal.";
+                let helpStr = `To prove this lemma, we will have to use a new ability: a rewrite. Rewrites allow you to manipulate goals into something you can use a reflection to solve.<br/><br/>To perform a rewrite, use one of your hypotheses. Remember that the hypotheses are the draggable blocks in the middle of your workbench. Notice that if you substitute “x + 7” into the equation for “y”, the equation becomes symmetrical on both sides. Drag the hypothesis “y = x + 7” onto the goal and watch it transform. <br/><br/>Now, both sides are equal and you can cast a reflection by double-clicking on the goal.`;
 
                 if (helpStr.length <= 2) {
                         document.getElementById('separator').style.display = 'none'

@@ -67,7 +67,7 @@
                         id="tip-card">
                         <div>
                         <div class="sticky top-0 flex justify-end">
-                                <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
+                                <img src="../../imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
                                 <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">add_assoc</h3>
                                 <p id="help" class="mb-4" id="tip-body">This lemma is the associative property of addition. To get started, perform induction on one of the variables. Which variable do you think will be easiest to induct on? Remember, your current axioms allow you to operate on the rightmost variable most easily. For instance, a + succ b is manipulatable while succ a + b is not, at least for now. <br/><br/>Also, notice that your previous lemma is available in your toolbox along with your axioms (“zero_add”).</p>
@@ -108,7 +108,7 @@
 
                 let currentLevelId = "2-1";
 
-                let helpStr = "This lemma is the associative property of addition. To get started, perform induction on one of the variables. Which variable do you think will be easiest to induct on? Remember, your current axioms allow you to operate on the rightmost variable most easily. For instance, a + succ b is manipulatable while succ a + b is not, at least for now. <br/><br/>Also, notice that your previous lemma is available in your toolbox along with your axioms (“zero_add”).";
+                let helpStr = `This lemma is the associative property of addition. To get started, perform induction on one of the variables. Which variable do you think will be easiest to induct on? Remember, your current axioms allow you to operate on the rightmost variable most easily. For instance, a + succ b is manipulatable while succ a + b is not, at least for now. <br/><br/>Also, notice that your previous lemma is available in your toolbox along with your axioms (“zero_add”).`;
 
                 if (helpStr.length <= 2) {
                         document.getElementById('tip-card').style.display = 'none'

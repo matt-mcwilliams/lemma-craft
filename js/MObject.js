@@ -55,6 +55,11 @@ class MObject {
                 
                 this.chunks = this.raw.replace(/\(/g,    ' ( ')
                                       .replace(/\)/g,    ' ) ')
+                                      .replace(/\+/g,    ' + ')
+                                      .replace(/\*/g,    ' * ')
+                                      .replace(/\^/g,    ' ^ ')
+                                      .replace(/\:/g,    ' : ')
+                                      .replace(/\=/g,    ' = ')
                                       .split(' ')
                                       .filter(x => x.length > 0)
 
@@ -141,9 +146,7 @@ class MObject {
                 let topLevelSymbolOrder = -1
                 let topLevelSymbolIndex = -1
 
-                const lastColon = this.chunks.lastIndexOf(':')
-
-                for (let index = lastColon+1; index < this.chunks.length; index++) {
+                for (let index = 0; index < this.chunks.length; index++) {
                         const chunk = this.chunks[index];
                         
                         if (chunk == '(') {
@@ -266,12 +269,10 @@ class MObject {
 
         rw (mobject2, backward = false, didwork = false, start = 0) {
 
-                console.log(this, mobject2)
 
                 // Check for variable unbounding
 
-
-                if (mobject2.chunks.length >= 3 && mobject2.chunks[mobject2.chunks.length - 2] == ':' && this.variables.length > 0) {
+                if (mobject2.chunks.length >= 3 && mobject2.chunks[mobject2.chunks.length - 2] == ':' && mobject2.chunks[mobject2.chunks.length - 1] == 'nat' && this.variables.length > 0) {
 
 
                         const newVariable = mobject2.chunks.slice(0, mobject2.chunks.length - 2)
@@ -287,8 +288,8 @@ class MObject {
 
                 }
 
-                
-                
+
+
                 // Check for equality replacment
                 
                 if (mobject2.symbol !== '=') {
@@ -386,11 +387,14 @@ class MObject {
 
                         switch (searchChunk.type) {
                                 case ParChunk.VARIABLE:
+                                        if (variableList[searchChunk.chunkList[0]]) {
+                                                return variableList[searchChunk.chunkList[0]] == thisChunk.chunkList
+                                        }
                                         variableList[searchChunk.chunkList[0]] = thisChunk.chunkList
                                         return true
                                 
                                 case ParChunk.SYMBOL:
-                                        return searchChunk.chunkList[0] === thisChunk.chunkList[0] && thisChunk.chunkList.length == 1
+                                        return searchChunk.chunkList[0] === thisChunk.chunkList[0] && thisChunk.type == ParChunk.SYMBOL
                                 
                                 case ParChunk.PARENTHESIS:
                                         const subSearchMobject = new MObject(searchChunk.chunkList.join(" ")) 
@@ -418,13 +422,11 @@ class MObject {
         }
 
         findFirstMatch(mobject2) {
-                const thisParChunks = MObject.chunkIntoParenthesisGroups(this)
-
                 const doesRawMatch = this.checkMatch(mobject2)
                 if (doesRawMatch) {
                         return {raw: this.chunks.join(' '), variableList: doesRawMatch}
                 }
-
+                
                 // If mobject2 is a single chunk, allow matching any single chunk in this.chunks
                 if (mobject2.chunks.length === 1) {
                         for (let i = 0; i < this.chunks.length; i++) {
@@ -433,6 +435,8 @@ class MObject {
                                 }
                         }
                 }
+
+                const thisParChunks = MObject.chunkIntoParenthesisGroups(this)
 
                 for (let i = 0; i < thisParChunks.length; i++) {
                         const chunk = thisParChunks[i];

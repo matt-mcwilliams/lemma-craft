@@ -67,7 +67,7 @@
                         id="tip-card">
                         <div>
                         <div class="sticky top-0 flex justify-end">
-                                <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
+                                <img src="../../imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
                                 
                                 <h3 class="text-lg font-semibold text-center">The Third Sage</h3>
@@ -114,7 +114,7 @@
 
                 let currentLevelId = "4-8";
 
-                let helpStr = "Hint:<br/><br/>If you need to target, for example, the following two terms in an add_comm rewrite, here’s how you do it.<br/><br/>a * a + b * b → b * b + a * a<br/><br/><br/>First, grab a “mul” from the toolbox that looks like this and click on it to bring it into the workbench: <br/><br/>(n1 n2 : nat) n1 * n2 : nat<br/><br/><br/>Then, drag “a : nat” onto this hypothesis twice so that the hypothesis now looks like this:  <br/><br/>a * a : nat<br/><br/><br/>Drag this new hypothesis (a * a : nat) onto an add_comm hypothesis to make it look like this:  <br/><br/>( n2 : nat ) : a * a + n2 = n2 + a * a<br/><br/><br/>Repeat with “b : nat” and you’ll get this: <br/><br/>a * a + b * b = b * b + a * a<br/><br/>which can be used to carry out the rewrite";
+                let helpStr = `Hint:<br/><br/>If you need to target, for example, the following two terms in an add_comm rewrite, here’s how you do it.<br/><br/>a * a + b * b → b * b + a * a<br/><br/><br/>First, grab a “mul” from the toolbox that looks like this and click on it to bring it into the workbench: <br/><br/>(n1 n2 : nat) n1 * n2 : nat<br/><br/><br/>Then, drag “a : nat” onto this hypothesis twice so that the hypothesis now looks like this:  <br/><br/>a * a : nat<br/><br/><br/>Drag this new hypothesis (a * a : nat) onto an add_comm hypothesis to make it look like this:  <br/><br/>( n2 : nat ) : a * a + n2 = n2 + a * a<br/><br/><br/>Repeat with “b : nat” and you’ll get this: <br/><br/>a * a + b * b = b * b + a * a<br/><br/>which can be used to carry out the rewrite`;
 
                 if (helpStr.length <= 2) {
                         document.getElementById('separator').style.display = 'none'

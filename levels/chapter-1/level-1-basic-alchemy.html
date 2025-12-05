@@ -67,7 +67,7 @@
                         id="tip-card">
                         <div>
                         <div class="sticky top-0 flex justify-end">
-                                <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
+                                <img src="../../imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
                                 
                                 <h3 class="text-lg font-semibold text-center">Basic Alchemy</h3>
@@ -114,7 +114,7 @@
 
                 let currentLevelId = "1-1";
 
-                let helpStr = "Welcome to LemmaCraft! Every level will be focused on proving one lemma. To do this, we will set the lemma to be our goal and manipulate the goal until we’ve proven the lemma. “a + b + c = a + b + c” is this level’s lemma and goal: if you can make both sides of the goal exactly the same, you prove the lemma; meaning that if you can show that “a + b + c” is indeed the same thing as “a + b + c” then you can confidently say that “a + b + c = a + b + c”. This might seem obvious, but in the future both sides of the lemma will not be the same, and you’ll have to manipulate the equation to show that the lemma is true.<br/><br/>This screen is where you prove the goal is exactly the same. On the left is your Lemma list. This is like your “toolbox” with some helpful tools. On your right is your work bench. This is where you can manipulate these magic formulas. Notice that in the middle of the work bench are three draggable blocks. These are your hypotheses, and the three in this level will not be used (If you’re curious, “a : nat” means “a is a natural number,” but we won’t use these just yet).<br/><br/>At the top of the work bench is your goal, “a + b + c = a + b + c”. Fortunately, both sides of the equation are exactly the same. You can cast a reflection by double-clicking the goal.<br/><br/>Go ahead! Double click.";
+                let helpStr = `Welcome to LemmaCraft! Every level will be focused on proving one lemma. To do this, we will set the lemma to be our goal and manipulate the goal until we’ve proven the lemma. “a + b + c = a + b + c” is this level’s lemma and goal: if you can make both sides of the goal exactly the same, you prove the lemma; meaning that if you can show that “a + b + c” is indeed the same thing as “a + b + c” then you can confidently say that “a + b + c = a + b + c”. This might seem obvious, but in the future both sides of the lemma will not be the same, and you’ll have to manipulate the equation to show that the lemma is true.<br/><br/>This screen is where you prove the goal is exactly the same. On the left is your Lemma list. This is like your “toolbox” with some helpful tools. On your right is your work bench. This is where you can manipulate these magic formulas. Notice that in the middle of the work bench are three draggable blocks. These are your hypotheses, and the three in this level will not be used (If you’re curious, “a : nat” means “a is a natural number,” but we won’t use these just yet).<br/><br/>At the top of the work bench is your goal, “a + b + c = a + b + c”. Fortunately, both sides of the equation are exactly the same. You can cast a reflection by double-clicking the goal.<br/><br/>Go ahead! Double click.`;
 
                 if (helpStr.length <= 2) {
                         document.getElementById('separator').style.display = 'none'

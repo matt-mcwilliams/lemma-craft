@@ -67,7 +67,7 @@
                         id="tip-card">
                         <div>
                         <div class="sticky top-0 flex justify-end">
-                                <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
+                                <img src="../../imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
                                 
                                 <h3 class="text-lg font-semibold text-center">No Place Like Home</h3>
@@ -114,7 +114,7 @@
 
                 let currentLevelId = "4-2";
 
-                let helpStr = "This lemma is straightforward and proves that 0 ^ n = 0 for all n > 0 — we know that this is false when n = 0 because of the previous lemma; this lemma proves it true for all others because all natural numbers are either 0 or the successor of another natural number.";
+                let helpStr = `This lemma is straightforward and proves that 0 ^ n = 0 for all n > 0 — we know that this is false when n = 0 because of the previous lemma; this lemma proves it true for all others because all natural numbers are either 0 or the successor of another natural number.`;
 
                 if (helpStr.length <= 2) {
                         document.getElementById('separator').style.display = 'none'

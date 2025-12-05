@@ -67,7 +67,7 @@
                         id="tip-card">
                         <div>
                         <div class="sticky top-0 flex justify-end">
-                                <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
+                                <img src="../../imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
                                 <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">left_distrib</h3>
                                 <p id="help" class="mb-4" id="tip-body">This lemma is the distributive property, and it is one of the most important lemmas in multiplication. More specifically, this is known as left distributivity (called left_distrib) because the “t” is on the left side of the multiplication symbol. We will prove right distributivity later.</p>
@@ -108,7 +108,7 @@
 
                 let currentLevelId = "3-4";
 
-                let helpStr = "This lemma is the distributive property, and it is one of the most important lemmas in multiplication. More specifically, this is known as left distributivity (called left_distrib) because the “t” is on the left side of the multiplication symbol. We will prove right distributivity later.";
+                let helpStr = `This lemma is the distributive property, and it is one of the most important lemmas in multiplication. More specifically, this is known as left distributivity (called left_distrib) because the “t” is on the left side of the multiplication symbol. We will prove right distributivity later.`;
 
                 if (helpStr.length <= 2) {
                         document.getElementById('tip-card').style.display = 'none'

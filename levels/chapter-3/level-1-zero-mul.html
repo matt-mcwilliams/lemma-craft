@@ -67,7 +67,7 @@
                         id="tip-card">
                         <div>
                         <div class="sticky top-0 flex justify-end">
-                                <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
+                                <img src="../../imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
                                 <h3 id="lemmaName" class="text-lg font-semibold text-center font-mono">zero_mul</h3>
                                 <p id="help" class="mb-4" id="tip-body">The three new axioms define multiplication recursively:<br/><br/><strong>mul:</strong> The multiplication of two natural numbers is another natural number.<br/><br/><strong>mul_zero:</strong> The multiplication of any natural number by zero is zero.<br/><br/><strong>mul_succ:</strong> This axiom defines multiplication of any non-zero number: Any non-zero number can be written as “succ b” for some number b, thus mul_succ defines multiplication for any natural numbers a and b: <br/><br/>a * succ b = a * b + a<br/><br/>You can intuit why this is true by imagining it written like this:<br/><br/>a * succ b <br/>= a * ( b + 1 ) <br/>= a * b + a * 1 <br/>= a * b + a<br/><br/>To prove this lemma, begin by applying induction on <em>m</em> by dragging “m : nat” onto the “i” next to the goal.</p>
@@ -108,7 +108,7 @@
 
                 let currentLevelId = "3-1";
 
-                let helpStr = "The three new axioms define multiplication recursively:<br/><br/><strong>mul:</strong> The multiplication of two natural numbers is another natural number.<br/><br/><strong>mul_zero:</strong> The multiplication of any natural number by zero is zero.<br/><br/><strong>mul_succ:</strong> This axiom defines multiplication of any non-zero number: Any non-zero number can be written as “succ b” for some number b, thus mul_succ defines multiplication for any natural numbers a and b: <br/><br/>a * succ b = a * b + a<br/><br/>You can intuit why this is true by imagining it written like this:<br/><br/>a * succ b <br/>= a * ( b + 1 ) <br/>= a * b + a * 1 <br/>= a * b + a<br/><br/>To prove this lemma, begin by applying induction on <em>m</em> by dragging “m : nat” onto the “i” next to the goal.";
+                let helpStr = `The three new axioms define multiplication recursively:<br/><br/><strong>mul:</strong> The multiplication of two natural numbers is another natural number.<br/><br/><strong>mul_zero:</strong> The multiplication of any natural number by zero is zero.<br/><br/><strong>mul_succ:</strong> This axiom defines multiplication of any non-zero number: Any non-zero number can be written as “succ b” for some number b, thus mul_succ defines multiplication for any natural numbers a and b: <br/><br/>a * succ b = a * b + a<br/><br/>You can intuit why this is true by imagining it written like this:<br/><br/>a * succ b <br/>= a * ( b + 1 ) <br/>= a * b + a * 1 <br/>= a * b + a<br/><br/>To prove this lemma, begin by applying induction on <em>m</em> by dragging “m : nat” onto the “i” next to the goal.`;
 
                 if (helpStr.length <= 2) {
                         document.getElementById('tip-card').style.display = 'none'

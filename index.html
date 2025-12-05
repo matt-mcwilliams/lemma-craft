@@ -5,30 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Welcome to LemmaCraft | Math Proof Game</title>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <!-- CookieYes Consent Banner (before GA4) -->
-        <!-- Start cookieyes banner --> <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/5880e3f55d5b7196c9f07546/script.js"></script> <!-- End cookieyes banner -->
-
-        <!-- Google Consent Mode -->
-        <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-        </script>
-        <script>
-        gtag('consent', 'default', {
-        'analytics_storage': 'denied'
-        });
-        </script>
-
-       
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-WM0NQY2HW0"></script>
-        <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', 'G-WM0NQY2HW0');
-        </script>
 
         <style type="text/tailwindcss">
                 
@@ -43,15 +19,15 @@
         </style>
 </head>
 <body class="bg-soft-white relative w-full">
-        <img src="./imgs/wizardHat.svg" class="h-full block text-center mx-auto w-auto pt-16">
-        <h1 class="text-7xl font-bold mb-2 text-center pt-4 mb-16">LemmaCraft</h1>
+        <img src="./imgs/wizardHat.svg" class="h-full block text-center mx-auto w-auto pt-16 " id="hat-svg">
+        <h1 class="text-7xl font-bold mb-2 text-center pt-4 mb-10">LemmaCraft</h1>
 
 
         <div class="absolute mx-auto bg-soft-white w-full min-h-full text-lg" id="mode-selector">
                 <p class="text-left mb-6 max-w-xl mx-auto">Welcome!</p>
                 <p class="text-left mb-6 max-w-xl mx-auto">LemmaCraft is a math proof game where you prove simple lemmas on every level. There are two modes to play the game in. </p>
                 <p class="text-left mb-6 max-w-xl mx-auto">In <strong>Story Mode</strong>, you'll follow Simon, a young wizard apprentice who finds himself responsible for the fate of the free world. This story follows his hunt for a goblin army that pillaged his village, taking with them a spell-book powerful enough to overwhelm the free world. Perfect for anyone who loves a cozy fantasy adventure.</p>
-                <p class="text-left mb-8 max-w-xl mx-auto"><strong>Just Here for the Math</strong> focuses exclusively on the engaging math proofs you must solve on the adventure. Perfect for anyone motivated by the thrill of problem solving who doesn't care for the fantastical adventures in Story Mode.</p>
+                <p class="text-left mb-8 max-w-xl mx-auto"><strong>Just Here for the Math</strong> focuses exclusively on the engaging math proofs you must solve on the adventure. A standalone game perfect for anyone motivated by the thrill of problem solving who doesn't care for the fantastical adventures in Story Mode.</p>
                 <p class="text-center max-w-xl mx-auto underline underline-offset-2 font-bold">Choose your mode:</p>
                 <p class="text-center mb-8 max-w-xl mx-auto">You can change your mind later</p>
                 <div class="flex gap-x-6 justify-center mb-32">
@@ -66,8 +42,17 @@
                 </div>
         </div>
 
-        <div class="block w-4xl mx-auto text-left px-4">
-                <button class="bg-light-gray px-6 py-3 mb-2 rounded-full cursor-pointer hover:bg-gray-400 transition ml-auto block" onclick="changeMode()">Mode</button>
+        <div class="flex w-4xl mx-auto px-4 justify-between mb-4">
+                <div class="flex py-3 mb-2 rounded-full cursor-pointer gap-x-4 group bg-gray-200 pl-8 pr-8 hover:pr-16 py-6 hover:bg-gray-300">
+                        <div>
+                                <p class="font-bold underline text-xl">Up Next:</p>
+                                <p class="text-xl">Level 3-5: Terrible Thunder  </p>
+                        </div>
+                        <button class="block bg-light-gray px-6 rounded-full group-hover:bg-gray-400 group-hover:ml-8 group-hover:translate-x-8 transition cursor-pointer">
+                                →
+                        </button>
+                </div>
+                <button class="block bg-light-gray px-6 py-3 rounded-full cursor-pointer hover:bg-gray-400 transition block h-min mt-auto" onclick="changeMode()">Mode</button>
         </div>
         <div class="grid grid-cols-4 gap-x-4 px-4 pb-8 max-w-4xl mx-auto items-stretch" id="level-grid">
                 <!-- Javascript injects HTML here -->
@@ -81,13 +66,21 @@
 
                 window.setMode = function(mode) {
 
+
+
                         window.localStorage.setItem('gamemode', mode)
 
                         document.getElementById('mode-selector').classList.add('hidden')
 
+                        const hatSvgEl = document.getElementById('hat-svg')
+                        hatSvgEl.scrollIntoView({ behavior: 'auto', block: 'start' })
+                        
                         const levelGridEl = document.getElementById('level-grid')
-
                         let currentlyUp = true
+
+                        let nextLevelName = undefined
+                        let nextLevelIndex = undefined
+                        let nextLevelWorld = undefined
 
                         chapters.forEach((world, worldIndex) => {
                                 
@@ -104,11 +97,19 @@
                                 `
                                 worldEl.append(linkBlockEl)
                                 levelGridEl.appendChild(worldEl)
+
                                 
                                 const levelListEl = document.createElement('ol')
                                 levelListEl.classList.add('list-decimal', 'ml-10', 'mt-4', 'row-start-2')
                                 world.levels.forEach((level, levelIndex) => {
                                         const levelComplete = localStorage.getItem(`${worldIndex+1}-${levelIndex+1}`) === 'complete'
+                                        console.log(level.name)
+
+                                        if (!levelComplete) {
+                                                nextLevelWorld |= worldIndex + 1
+                                                nextLevelIndex |= levelIndex + 1
+                                                nextLevelName |= level.name
+                                        }
                                         
                                         const liEl = document.createElement('li')
                                         liEl.classList.add('mb-2', 'pl-3')
@@ -125,6 +126,8 @@
                                         
                                 currentlyUp &=levelComplete
                         })
+
+                        alert(nextLevelWorld + "-" + nextLevelIndex + ": " + nextLevelName)
                 }
 
                 window.changeMode = function() {

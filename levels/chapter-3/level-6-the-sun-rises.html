@@ -67,7 +67,7 @@
                         id="tip-card">
                         <div>
                         <div class="sticky top-0 flex justify-end">
-                                <img src="/imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
+                                <img src="../../imgs/x.png" alt="" class="w-6 cursor-pointer" onclick="hideTip()">
                         </div>
                                 
                                 <h3 class="text-lg font-semibold text-center">The Sun Rises</h3>
@@ -114,7 +114,7 @@
 
                 let currentLevelId = "3-6";
 
-                let helpStr = "This lemma is called succ_mul, and it is necessary for proving multiplicative commutativity.<br/><br/>A quick trick: if you need to specify which part of the equation you want to target with your rewrites, which happens when there are multiple parts of the goal that meet the correct format, you can drag the variables into the hypothesis. <br/><br/>For example, if you have an equation like this:  “ (a + b) + c ” and you want to use the commutative property to switch the “a” and “b” around, using the commutative property like normal would result in “ c + (a + b) ”. <br/><br/>To target the correct variables, click the additive commutative property to introduce it into the workbench, and then drag “ a : nat ” onto the commutative property hypothesis in the workbench. After that, drag “ b : nat ” onto the hypothesis. This specifies the correct variables for the rewrite and allows you to be precise with your rewrites and resolve any uncertainty.";
+                let helpStr = `This lemma is called succ_mul, and it is necessary for proving multiplicative commutativity.<br/><br/>A quick trick: if you need to specify which part of the equation you want to target with your rewrites, which happens when there are multiple parts of the goal that meet the correct format, you can drag the variables into the hypothesis. <br/><br/>For example, if you have an equation like this:  “ (a + b) + c ” and you want to use the commutative property to switch the “a” and “b” around, using the commutative property like normal would result in “ c + (a + b) ”. <br/><br/>To target the correct variables, click the additive commutative property to introduce it into the workbench, and then drag “ a : nat ” onto the commutative property hypothesis in the workbench. After that, drag “ b : nat ” onto the hypothesis. This specifies the correct variables for the rewrite and allows you to be precise with your rewrites and resolve any uncertainty.`;
 
                 if (helpStr.length <= 2) {
                         document.getElementById('separator').style.display = 'none'
