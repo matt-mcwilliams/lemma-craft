@@ -15,7 +15,7 @@ if (fs.existsSync(levelsRoot)) {
         fs.rmSync(levelsRoot, { recursive: true, force: true });
 }
 
-let conclusionLevel = "../../../conclusion/story.html"
+let conclusionLevel = "../../conclusion/story.html"
 
 
 chapters.forEach((world, worldIndex) => {
@@ -75,7 +75,7 @@ function lemmaToUrlName(lemmaName) {
 }
 
 
-conclusionLevel = "../../../conclusion/math.html"
+conclusionLevel = "../../conclusion/math.html"
 
 
 chapters.forEach((world, worldIndex) => {
