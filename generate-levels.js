@@ -15,6 +15,8 @@ if (fs.existsSync(levelsRoot)) {
         fs.rmSync(levelsRoot, { recursive: true, force: true });
 }
 
+let conclusionLevel = "../../../conclusion/story.html"
+
 
 chapters.forEach((world, worldIndex) => {
 
@@ -40,7 +42,7 @@ chapters.forEach((world, worldIndex) => {
 
                 const previousLink = previousLevel ? path.join(prevNewWorld ? `../../${chapters[worldIndex-1].path}` : '.', `${'level-' + (prevNewWorld ? chapters[worldIndex-1].levels.length : levelIndex) + '-' + previousLevel.urlName}.html`) : '#';
 
-                const nextLink = nextLevel ? path.join(nextNewWorld ? `../../${chapters[worldIndex+1].path}` : '.', `${'level-' + ((levelIndex+1)%(world.levels.length)+1) + '-' + nextLevel.urlName}.html`) : '#';
+                const nextLink = nextLevel ? path.join(nextNewWorld ? `../../${chapters[worldIndex+1].path}` : '.', `${'level-' + ((levelIndex+1)%(world.levels.length)+1) + '-' + nextLevel.urlName}.html`) : conclusionLevel;
                 const levelCode = `Level ${worldIndex+1}-${levelIndex+1}`
 
                 const levelPath = path.join(levelsDir, `${'level-' + (levelIndex+1) + '-' + level.urlName}.html`);
@@ -73,6 +75,9 @@ function lemmaToUrlName(lemmaName) {
 }
 
 
+conclusionLevel = "../../../conclusion/math.html"
+
+
 chapters.forEach((world, worldIndex) => {
 
         const levelsDir = path.join(__dirname, world.path);
@@ -97,7 +102,8 @@ chapters.forEach((world, worldIndex) => {
 
                 const previousLink = previousLevel ? path.join(prevNewWorld ? `../../${chapters[worldIndex-1].path}` : '.', `${'level-' + (prevNewWorld ? chapters[worldIndex-1].levels.length : levelIndex) + '-' + lemmaToUrlName(previousLevel.lemmaName)}.html`) : '#';
 
-                const nextLink = nextLevel ? path.join(nextNewWorld ? `../../${chapters[worldIndex+1].path}` : '.', `${'level-' + ((levelIndex+1)%(world.levels.length)+1) + '-' + lemmaToUrlName(nextLevel.lemmaName)}.html`) : '#';
+                const nextLink = nextLevel ? path.join(nextNewWorld ? `../../${chapters[worldIndex+1].path}` : '.', `${'level-' + ((levelIndex+1)%(world.levels.length)+1) + '-' + lemmaToUrlName(nextLevel.lemmaName)}.html`) : conclusionLevel;
+                
                 const levelCode = `Level ${worldIndex+1}-${levelIndex+1}`
 
                 const levelPath = path.join(levelsDir, `${'level-' + (levelIndex+1) + '-' + lemmaToUrlName(level.lemmaName)}.html`);

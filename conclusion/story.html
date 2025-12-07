@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="../imgs/wizard-hat-icon.svg">
+        <title>The End - LemmaCraft</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <style type="text/tailwindcss">
+                
+                @theme {
+                        --color-soft-white: #f5f5f5;
+                        --color-teal: #26A69A;
+                        --color-light-gray: #B0BEC5;
+                        --color-bright-yellow: #FFCA28;
+                        --color-dark-gray: #37474F;
+                }
+
+        </style>
+</head>
+<body class="bg-soft-white">
+        <img src="../imgs/wizardHat.svg" class="h-full block text-center mx-auto w-auto pt-16 " id="hat-svg">
+        <h1 class="text-7xl font-bold mb-2 text-center pt-4 mb-10">LemmaCraft</h1>
+
+
+        <div class="mx-auto w-full min-h-full text-lg mb-36" id="mode-selector">
+                <p class="text-left mb-6 max-w-xl mx-auto">That's the end!</p>
+                <p class="text-left mb-6 max-w-xl mx-auto">You've successfully defeated the Goblin King and restored peace in the country. Give yourself a pat on the back! </p>
+                <img src="../imgs/congrats-gif-2.gif" class="block mx-auto my-6 w-full max-w-xl" alt="">
+                <p class="text-left mb-6 max-w-xl mx-auto">Here are a few things you might like next: </p>
+                <p class="text-left mb-6 max-w-xl mx-auto"><a class="text-blue-800 underline font-semibold" href="https://adam.math.hhu.de/#/g/leanprover-community/nng4" target="_blank">The Natural Number Game</a> has a similar level structure to LemmaCraft. It has a lot more levels and uses the Lean programming language to prove lemmas, as opposed to the drag and drop interface of LemmaCraft.</p>
+                <p class="text-left mb-6 max-w-xl mx-auto">The <a class="text-blue-800 underline font-semibold" href="https://www.mattm.site/blog/lemma-craft" target="_blank">Project Writeup</a> explains how LemmaCraft works under the hood. Learn about the underlying structures and algorithms that make LemmaCraft what it is.</p>
+                <button class="mb-8 block max-w-xl mx-auto mt-8 px-6 py-2 bg-teal text-white font-semibold rounded hover:opacity-90 cursor-pointer" onclick="navigator.share({title: 'LemmaCraft', text: 'Check out LemmaCraft - a proof design game!', url: 'https:\/\/www.mattm.site/lemma-craft'})">Share This Project!</button>
+                <p class="text-left mb-6 max-w-xl mx-auto">Go <a class="text-blue-800 underline font-semibold" href="https://www.mattm.site" target="_blank">Home</a> to see my other projects and essays. If you enjoyed LemmaCraft, you'll love my other projects.</p>
+                <p class="text-left mb-6 max-w-xl mx-auto">If you'd like to see more levels in LemmaCraft, let me know on X <a class="text-blue-800 underline font-semibold" href="https://x.com/mattmcwilli" target="_blank">@mattmcwilli</a>! There is a lot of room for expansion and if there is sufficient demand, I'll add some more levels and abilities. DMs open!</p>
+                <p class="text-left mb-6 w-fit mx-auto"><a class="text-blue-800 underline font-semibold" href="https://mattm.site">Home</a><a class=" ml-12 text-blue-800 underline font-semibold" href="https://mattm.site/lemma-craft">Level Select</a></p>
+        </div>
+
+</body>
+</html>

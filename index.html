@@ -3,6 +3,7 @@
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="./imgs/wizard-hat-icon.svg">
         <title>Welcome to LemmaCraft | Math Proof Game</title>
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
@@ -52,6 +53,7 @@
                                 →
                         </button>
                 </a>
+                <p></p>
                 <button class="block bg-light-gray px-6 py-3 rounded-full cursor-pointer hover:bg-gray-400 transition block h-min mt-auto" onclick="changeMode()">Mode</button>
         </div>
         <div class="grid grid-cols-4 gap-x-4 px-4 pb-8 max-w-4xl mx-auto items-stretch" id="level-grid">
@@ -130,6 +132,10 @@
                                         
                                 currentlyUp &=levelComplete
                         })
+
+                        if (nextLevelName == undefined) {
+                                document.getElementById('next-level-link').classList.add('hidden')
+                        }
 
                         document.getElementById('next-level-world').innerText = nextLevelWorld
                         document.getElementById('next-level-index').innerText = nextLevelIndex
